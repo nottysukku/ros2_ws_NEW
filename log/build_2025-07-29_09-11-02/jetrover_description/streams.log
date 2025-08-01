@@ -1,0 +1,19 @@
+[1.223s] Invoking command in '/home/sukritchopra/ros2_ws/src/jetrover_description': PYTHONPATH=/home/sukritchopra/ros2_ws/build/jetrover_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/jetrover_description build --build-base /home/sukritchopra/ros2_ws/build/jetrover_description/build install --record /home/sukritchopra/ros2_ws/build/jetrover_description/install.log --single-version-externally-managed install_data
+[1.490s] running egg_info
+[1.510s] writing ../../build/jetrover_description/jetrover_description.egg-info/PKG-INFO
+[1.510s] writing dependency_links to ../../build/jetrover_description/jetrover_description.egg-info/dependency_links.txt
+[1.511s] writing requirements to ../../build/jetrover_description/jetrover_description.egg-info/requires.txt
+[1.511s] writing top-level names to ../../build/jetrover_description/jetrover_description.egg-info/top_level.txt
+[1.554s] reading manifest file '../../build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'
+[1.556s] writing manifest file '../../build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'
+[1.557s] running build
+[1.557s] running build_py
+[1.557s] running install
+[1.562s] running install_lib
+[1.583s] running install_data
+[1.585s] running install_egg_info
+[1.606s] removing '/home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages/jetrover_description-0.0.0-py3.12.egg-info' (and everything under it)
+[1.607s] Copying ../../build/jetrover_description/jetrover_description.egg-info to /home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages/jetrover_description-0.0.0-py3.12.egg-info
+[1.609s] running install_scripts
+[1.743s] writing list of installed files to '/home/sukritchopra/ros2_ws/build/jetrover_description/install.log'
+[1.776s] Invoked command in '/home/sukritchopra/ros2_ws/src/jetrover_description' returned '0': PYTHONPATH=/home/sukritchopra/ros2_ws/build/jetrover_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/jetrover_description build --build-base /home/sukritchopra/ros2_ws/build/jetrover_description/build install --record /home/sukritchopra/ros2_ws/build/jetrover_description/install.log --single-version-externally-managed install_data

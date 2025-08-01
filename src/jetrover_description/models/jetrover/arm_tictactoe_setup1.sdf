@@ -1,0 +1,1092 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="robotic_arm_world">
+     <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <pose>0 0 -0.025 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <pose>0 0 -0.025 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <!-- Base Mount Model -->
+    <model name="base_mount">
+      <pose>0 0.475 1.500 0 0 0</pose>
+      <static>false</static>
+      
+      <link name="base_mount_link">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <iyy>0.001</iyy>
+            <izz>0.001</izz>
+          </inertia>
+        </inertial>
+        <visual name="base_mount_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.061</radius>
+              <length>0.055</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+        <collision name="base_mount_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.061</radius>
+              <length>0.055</length>
+            </cylinder>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Arm Link 1 Model -->
+    <model name="arm_link1">
+      <pose>0 0.475 1.5250 0 0 0</pose>
+      
+      <link name="link1">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>9.55287669839149E-05 0.000953445773182543 0.0181622223429797 0 0 0</pose>
+          <mass>0.018996290781889</mass>
+          <inertia>
+            <ixx>3.52401713486466E-06</ixx>
+            <ixy>-9.57766622211234E-11</ixy>
+            <ixz>1.77834467690429E-11</ixz>
+            <iyy>2.92480468671507E-06</iyy>
+            <iyz>2.27263787135776E-08</iyz>
+            <izz>2.43231516201483E-06</izz>
+          </inertia>
+        </inertial>
+        <visual name="link1_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link1.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.2 0.8 0.2 1</ambient>
+            <diffuse>0.2 0.8 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="link1_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link1.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+      
+      <!-- Joint Position Control Plugin -->
+      <plugin filename="libgazebo_ros_joint_position_controller.so" name="link1_controller">
+        <ros>
+          <namespace>/arm_link1</namespace>
+        </ros>
+        <joint_name>joint1</joint_name>
+        <pid_gain>100 1 10</pid_gain>
+      </plugin>
+      
+      <!-- Joint State Publisher Plugin -->
+      <plugin filename="libgazebo_ros_joint_state_publisher.so" name="link1_joint_state_publisher">
+        <ros>
+          <namespace>/arm_link1</namespace>
+          <remapping>joint_states:=joint_states</remapping>
+        </ros>
+        <update_rate>50</update_rate>
+        <joint_name>joint1</joint_name>
+      </plugin>
+    </model>
+
+    <!-- Servo Link 1 Model -->
+    <model name="servo_link1_model">
+      <pose>0 0.475 1.5324 0 0 0</pose>
+      
+      <link name="servo_link1">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>6.74971199241745E-05 -0.00653404855626152 0.0238958340366914 0 0 0</pose>
+          <mass>0.0116330609777772</mass>
+          <inertia>
+            <ixx>1.75977694435981E-06</ixx>
+            <ixy>-9.73060826949638E-11</ixy>
+            <ixz>2.47639220332551E-12</ixz>
+            <iyy>2.04910641988494E-06</iyy>
+            <iyz>-1.98639869902586E-08</iyz>
+            <izz>5.57260556249774E-07</izz>
+          </inertia>
+        </inertial>
+        <visual name="servo_link1_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/servo_link1.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="servo_link1_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/servo_link1_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Arm Link 2 Model -->
+    <model name="arm_link2">
+      <pose>0 0.475 1.5663 0 0 0</pose>
+      
+      <link name="link2">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0.000156299570425157 -0.000455113699913916 0.0717727028511975 0 0 0</pose>
+          <mass>0.0329250074531705</mass>
+          <inertia>
+            <ixx>3.91620966174037E-05</ixx>
+            <ixy>-5.45461883923424E-11</ixy>
+            <ixz>-1.84994427464167E-07</ixz>
+            <iyy>3.08453562297899E-05</iyy>
+            <iyz>3.5881427402197E-09</iyz>
+            <izz>1.15081900975983E-05</izz>
+          </inertia>
+        </inertial>
+        <visual name="link2_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link2.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.2 0.8 0.2 1</ambient>
+            <diffuse>0.2 0.8 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="link2_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link2_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+      
+      <!-- Joint Position Control Plugin -->
+      <plugin filename="libgazebo_ros_joint_position_controller.so" name="link2_controller">
+        <ros>
+          <namespace>/arm_link2</namespace>
+        </ros>
+        <joint_name>joint2</joint_name>
+        <pid_gain>100 1 10</pid_gain>
+      </plugin>
+      
+      <!-- Joint State Publisher Plugin -->
+      <plugin filename="libgazebo_ros_joint_state_publisher.so" name="link2_joint_state_publisher">
+        <ros>
+          <namespace>/arm_link2</namespace>
+          <remapping>joint_states:=joint_states</remapping>
+        </ros>
+        <update_rate>50</update_rate>
+        <joint_name>joint2</joint_name>
+      </plugin>
+    </model>
+
+    <!-- Arm Link 3 Model -->
+    <model name="arm_link3">
+      <pose>0 0.475 1.6957 0 0 0</pose>
+      
+      <link name="link3">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0.000128456440925698 -0.000761424622733717 0.071772743785429 0 0 0</pose>
+          <mass>0.0329250074463074</mass>
+          <inertia>
+            <ixx>3.91621699579612E-05</ixx>
+            <ixy>-5.40097530558062E-11</ixy>
+            <ixz>-1.73786652512013E-07</ixz>
+            <iyy>3.08451969920239E-05</iyy>
+            <iyz>3.63874236522223E-09</iyz>
+            <izz>1.15078234912494E-05</izz>
+          </inertia>
+        </inertial>
+        <visual name="link3_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link3.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.2 0.8 0.2 1</ambient>
+            <diffuse>0.2 0.8 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="link3_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link3_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+      
+      <!-- Joint Position Control Plugin -->
+      <plugin filename="libgazebo_ros_joint_position_controller.so" name="link3_controller">
+        <ros>
+          <namespace>/arm_link3</namespace>
+        </ros>
+        <joint_name>joint3</joint_name>
+        <pid_gain>100 1 10</pid_gain>
+      </plugin>
+      
+      <!-- Joint State Publisher Plugin -->
+      <plugin filename="libgazebo_ros_joint_state_publisher.so" name="link3_joint_state_publisher">
+        <ros>
+          <namespace>/arm_link3</namespace>
+          <remapping>joint_states:=joint_states</remapping>
+        </ros>
+        <update_rate>50</update_rate>
+        <joint_name>joint3</joint_name>
+      </plugin>
+    </model>
+
+    <!-- Arm Link 4 Model -->
+    <model name="arm_link4">
+      <pose>0 0.475 1.8252 0 0 0</pose>
+      
+      <link name="link4">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>-0.000261855576526311 0.000239368359066633 0.0220971301535388 0 0 0</pose>
+          <mass>0.00959141779390409</mass>
+          <inertia>
+            <ixx>7.94977139591732E-06</ixx>
+            <ixy>-8.29446018776969E-10</ixy>
+            <ixz>5.6880898756802E-08</ixz>
+            <iyy>4.29063067361656E-06</iyy>
+            <iyz>-1.84622131688891E-10</iyz>
+            <izz>5.33833388813501E-06</izz>
+          </inertia>
+        </inertial>
+        <visual name="link4_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link4.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.2 0.8 0.2 1</ambient>
+            <diffuse>0.2 0.8 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="link4_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link4_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+      
+      <!-- Joint Position Control Plugin -->
+      <plugin filename="libgazebo_ros_joint_position_controller.so" name="link4_controller">
+        <ros>
+          <namespace>/arm_link4</namespace>
+        </ros>
+        <joint_name>joint4</joint_name>
+        <pid_gain>100 1 10</pid_gain>
+      </plugin>
+      
+      <!-- Joint State Publisher Plugin -->
+      <plugin filename="libgazebo_ros_joint_state_publisher.so" name="link4_joint_state_publisher">
+        <ros>
+          <namespace>/arm_link4</namespace>
+          <remapping>joint_states:=joint_states</remapping>
+        </ros>
+        <update_rate>50</update_rate>
+        <joint_name>joint4</joint_name>
+      </plugin>
+    </model>
+
+    <!-- Servo Link 2 Model -->
+    <model name="servo_link2_model">
+      <pose>0 0.475 1.8797 0 0 0</pose>
+      
+      <link name="servo_link2">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0.00829457691057159 0.000114732113040695 -0.0125525321145837 0 0 0</pose>
+          <mass>0.00701021225113507</mass>
+          <inertia>
+            <ixx>6.10646998888003E-07</ixx>
+            <ixy>1.66839713815154E-09</ixy>
+            <ixz>-2.07626862362467E-08</ixz>
+            <iyy>9.477990166652E-07</iyy>
+            <iyz>5.12927100881908E-09</iyz>
+            <izz>1.44691449724265E-06</izz>
+          </inertia>
+        </inertial>
+        <visual name="servo_link2_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/servo_link2.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="servo_link2_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/servo_link2_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Arm Link 5 Model -->
+    <model name="arm_link5">
+      <pose>0 0.475 1.9151 0 0 0</pose>
+      
+      <link name="link5">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>-5.40141895711381E-05 -8.30141354428709E-06 0.00351551092860852 0 0 0</pose>
+          <mass>0.00101775298619909</mass>
+          <inertia>
+            <ixx>2.35834256739382E-08</ixx>
+            <ixy>-1.92177809145012E-12</ixy>
+            <ixz>-3.88572739181837E-12</ixz>
+            <iyy>2.35740360938003E-08</iyy>
+            <iyz>-1.1228386368903E-13</iyz>
+            <izz>4.40224050991292E-08</izz>
+          </inertia>
+        </inertial>
+        <visual name="link5_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link5.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="link5_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/link5.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+      
+      <!-- Joint Position Control Plugin -->
+      <plugin filename="libgazebo_ros_joint_position_controller.so" name="link5_controller">
+        <ros>
+          <namespace>/arm_link5</namespace>
+        </ros>
+        <joint_name>joint5</joint_name>
+        <pid_gain>100 1 10</pid_gain>
+      </plugin>
+      
+      <!-- Joint State Publisher Plugin -->
+      <plugin filename="libgazebo_ros_joint_state_publisher.so" name="link5_joint_state_publisher">
+        <ros>
+          <namespace>/arm_link5</namespace>
+          <remapping>joint_states:=joint_states</remapping>
+        </ros>
+        <update_rate>50</update_rate>
+        <joint_name>joint5</joint_name>
+      </plugin>
+    </model>
+
+    <!-- Complete Gripper Model -->
+    <model name="gripper_model">
+      <pose>0 0.475 1.8755 0 0 0</pose>
+      
+      <link name="gripper_link">
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0.0145481835889059 -0.00315257290321308 0.0253492053712461 0 0 0</pose>
+          <mass>0.0174988490314194</mass>
+          <inertia>
+            <ixx>4.12615692688456E-06</ixx>
+            <ixy>-2.75102939068049E-08</ixy>
+            <ixz>-7.61180742281118E-09</ixz>
+            <iyy>1.57023365316943E-06</iyy>
+            <iyz>2.2563082379695E-08</iyz>
+            <izz>3.2612101868791E-06</izz>
+          </inertia>
+        </inertial>
+        <visual name="gripper_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/gripper_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="gripper_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/gripper_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <!-- Right Gripper Finger -->
+      <link name="r_link">
+        <pose>-0.0073166 -0.013992 0.027059 0 0 0</pose>
+        <inertial>
+          <pose>0.00154652142582958 0.000534112070478834 0.00624030428121536 0 0 0</pose>
+          <mass>0.00206265647704866</mass>
+          <inertia>
+            <ixx>3.97215843669342E-07</ixx>
+            <ixy>-2.75699120579387E-10</ixy>
+            <ixz>-2.19901048536124E-09</ixz>
+            <iyy>3.22472627342115E-07</iyy>
+            <iyz>1.07303783544668E-08</iyz>
+            <izz>7.78708186672131E-08</izz>
+          </inertia>
+        </inertial>
+        <visual name="r_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/r_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="r_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/r_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="r_joint" type="revolute">
+        <parent>gripper_link</parent>
+        <child>r_link</child>
+        <pose>-0.0073166 -0.013992 0.027059 0 0 0</pose>
+        <axis>
+          <xyz>0.99996 -0.004699 -0.0070434</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+          </limit>
+          <dynamics>
+            <damping>1.0</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- Left Gripper Finger -->
+      <link name="l_link">
+        <pose>-0.0073352 0.013977 0.027057 0 0 0</pose>
+        <inertial>
+          <pose>0.0015384031888858 -0.000403232726847674 0.00579759783012201 0 0 0</pose>
+          <mass>0.00218924933187322</mass>
+          <inertia>
+            <ixx>4.0534152698165E-07</ixx>
+            <ixy>3.60077827494503E-10</ixy>
+            <ixz>-1.99675888093364E-09</ixz>
+            <iyy>3.31222174181852E-07</iyy>
+            <iyz>-8.79337758250917E-09</iyz>
+            <izz>7.74319582642917E-08</izz>
+          </inertia>
+        </inertial>
+        <visual name="l_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/l_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="l_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/l_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="l_joint" type="revolute">
+        <parent>gripper_link</parent>
+        <child>l_link</child>
+        <pose>-0.0073352 0.013977 0.027057 0 0 0</pose>
+        <axis>
+          <xyz>0.99997 0.0055811 -0.0058397</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+          </limit>
+          <dynamics>
+            <damping>1.0</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- Left Inner Link -->
+      <link name="l_in_link">
+        <pose>-0.0144975 0.018917 0.073076 0 0 0</pose>
+        <inertial>
+          <pose>0.00610191812065245 2.91459132896708E-05 0.0144573768632076 0 0 0</pose>
+          <mass>0.000776872870694597</mass>
+          <inertia>
+            <ixx>9.87455572181138E-08</ixx>
+            <ixy>5.06340928475727E-12</ixy>
+            <ixz>-6.79685646256186E-10</ixz>
+            <iyy>9.76635148452203E-08</iyy>
+            <iyz>-6.12115908323794E-12</iyz>
+            <izz>2.25695364751658E-09</izz>
+          </inertia>
+        </inertial>
+        <visual name="l_in_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/l_in_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="l_in_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/l_in_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="l_in_joint" type="revolute">
+        <parent>l_link</parent>
+        <child>l_in_link</child>
+        <pose>-0.0071623 0.0049403 0.046019 0 0 0</pose>
+        <axis>
+          <xyz>0.99996 0.0046983 -0.0070439</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+          </limit>
+          <dynamics>
+            <damping>1.0</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- Left Outer Link -->
+      <link name="l_out_link">
+        <pose>-0.0142932 0.018917 0.102075 0 0 0</pose>
+        <inertial>
+          <pose>0.00602407836518577 0.0014461936314294 0.00961214041434189 0 0 0</pose>
+          <mass>0.00384735908281124</mass>
+          <inertia>
+            <ixx>8.77337978935691E-07</ixx>
+            <ixy>1.36760329013846E-09</ixy>
+            <ixz>-6.9462127438421E-09</ixz>
+            <iyy>8.19648792008027E-07</iyy>
+            <iyz>1.56177294727923E-07</iyz>
+            <izz>7.0687486597803E-08</izz>
+          </inertia>
+        </inertial>
+        <visual name="l_out_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/l_out_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="l_out_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/l_out_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="l_out_joint" type="revolute">
+        <parent>l_in_link</parent>
+        <child>l_out_link</child>
+        <pose>0.00020427 0 0.028999 0 0 0</pose>
+        <axis>
+          <xyz>0.99996 0.0046983 -0.0070439</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+          </limit>
+          <dynamics>
+            <damping>1.0</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- Right Inner Link -->
+      <link name="r_in_link">
+        <pose>-0.0144789 -0.018935 0.073076 0 0 0</pose>
+        <inertial>
+          <pose>0.00610191812065006 -2.81924690068705E-05 0.0144573787538957 0 0 0</pose>
+          <mass>0.000776872870694522</mass>
+          <inertia>
+            <ixx>9.87465668171204E-08</ixx>
+            <ixy>-5.11173808106636E-12</ixy>
+            <ixz>-6.79692406191707E-10</ixz>
+            <iyy>9.7664293636849E-08</iyy>
+            <iyz>-5.14018800149497E-13</iyz>
+            <izz>2.25718458778487E-09</izz>
+          </inertia>
+        </inertial>
+        <visual name="r_in_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/r_in_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="r_in_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/r_in_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="r_in_joint" type="revolute">
+        <parent>r_link</parent>
+        <child>r_in_link</child>
+        <pose>-0.0071623 -0.004943 0.046019 0 0 0</pose>
+        <axis>
+          <xyz>-0.99996 0.0046987 0.0070436</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+          </limit>
+          <dynamics>
+            <damping>1.0</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- Right Outer Link -->
+      <link name="r_out_link">
+        <pose>-0.0142746 -0.018935 0.102075 0 0 0</pose>
+        <inertial>
+          <pose>0.0060622 -0.0014474 0.0096107 0 0 0</pose>
+          <mass>0.0038474</mass>
+          <inertia>
+            <ixx>8.7734E-07</ixx>
+            <ixy>-1.2815E-09</ixy>
+            <ixz>-6.7006E-09</ixz>
+            <iyy>8.1957E-07</iyy>
+            <iyz>-1.5635E-07</iyz>
+            <izz>7.0761E-08</izz>
+          </inertia>
+        </inertial>
+        <visual name="r_out_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/r_out_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="r_out_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/gripper/r_out_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="r_out_joint" type="revolute">
+        <parent>r_in_link</parent>
+        <child>r_out_link</child>
+        <pose>0.00020427 0 0.028999 0 0 0</pose>
+        <axis>
+          <xyz>-0.99996 0.0046987 0.0070436</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+          </limit>
+          <dynamics>
+            <damping>1.0</damping>
+          </dynamics>
+        </axis>
+      </joint>
+
+      <!-- End effector link -->
+      <link name="end_effector_link">
+        <pose>0 0 0.08 0 0 0</pose>
+        <inertial>
+          <mass>0.001</mass>
+          <inertia>
+            <ixx>0.000001</ixx>
+            <iyy>0.000001</iyy>
+            <izz>0.000001</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+      <joint name="end_effector_joint" type="fixed">
+        <parent>gripper_link</parent>
+        <child>end_effector_link</child>
+        <pose>0 0 0.08 0 0 0</pose>
+      </joint>
+
+      <!-- Joint Position Control Plugin for Gripper -->
+      <plugin filename="libgazebo_ros_joint_position_controller.so" name="gripper_controller">
+        <ros>
+          <namespace>/gripper</namespace>
+        </ros>
+        <joint_name>r_joint</joint_name>
+        <joint_name>l_joint</joint_name>
+        <joint_name>l_in_joint</joint_name>
+        <joint_name>l_out_joint</joint_name>
+        <joint_name>r_in_joint</joint_name>
+        <joint_name>r_out_joint</joint_name>
+        <pid_gain>100 1 10</pid_gain>
+      </plugin>
+      
+      <!-- Joint State Publisher Plugin for Gripper -->
+      <plugin filename="libgazebo_ros_joint_state_publisher.so" name="gripper_joint_state_publisher">
+        <ros>
+          <namespace>/gripper</namespace>
+          <remapping>joint_states:=joint_states</remapping>
+        </ros>
+        <update_rate>50</update_rate>
+        <joint_name>r_joint</joint_name>
+        <joint_name>l_joint</joint_name>
+        <joint_name>l_in_joint</joint_name>
+        <joint_name>l_out_joint</joint_name>
+        <joint_name>r_in_joint</joint_name>
+        <joint_name>r_out_joint</joint_name>
+      </plugin>
+    </model>
+
+    <!-- Camera Model -->
+    <model name="camera_model">
+      <pose>0 0.475 1.8797 0 0 -1.57079632679489</pose>
+      
+      <link name="camera_connect_link">
+        <pose>-0.0507060266977644 0 0.0505384841187764 0 0 0</pose>
+        <inertial>
+          <pose>-0.00050566 0.010186 0.0012735 0 0 0</pose>
+          <mass>0.0029007</mass>
+          <inertia>
+            <ixx>4.5276E-07</ixx>
+            <ixy>-3.2151E-10</ixy>
+            <ixz>-8.627E-12</ixz>
+            <iyy>5.4068E-07</iyy>
+            <iyz>-1.2081E-08</iyz>
+            <izz>9.9085E-07</izz>
+          </inertia>
+        </inertial>
+        <visual name="camera_connect_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/camera_connect_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="camera_connect_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/camera_connect_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <link name="depth_cam_link">
+        <pose>-0.0507060266977644 0.0 0.065013484118776 3.14159 -1.5708 -1.5708</pose>
+        <inertial>
+          <pose>0.00232981322860787 0.000387137406184821 -2.84059740606052E-05 0 0 0</pose>
+          <mass>0.015428</mass>
+          <inertia>
+            <ixx>1.3945E-06</ixx>
+            <ixy>-1.5684E-08</ixy>
+            <ixz>-2.3104E-07</ixz>
+            <iyy>1.2848E-05</iyy>
+            <iyz>1.3156E-09</iyz>
+            <izz>1.361E-05</izz>
+          </inertia>
+        </inertial>
+        <visual name="depth_cam_visual">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/depth_cam_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>0.753 0.753 0.753 1</ambient>
+            <diffuse>0.753 0.753 0.753 1</diffuse>
+          </material>
+        </visual>
+        <collision name="depth_cam_collision">
+          <geometry>
+            <mesh>
+              <uri>meshes_1/arm/depth_cam_link_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+      </link>
+
+      <joint name="depth_cam_joint" type="fixed">
+        <parent>camera_connect_link</parent>
+        <child>depth_cam_link</child>
+        <pose>0 0.0 0.014475 3.14159 -1.5708 -1.5708</pose>
+      </joint>
+
+      <!-- Depth Camera Frame for simulation -->
+      <link name="depth_cam_frame">
+        <pose>-0.0507060266977644 0.0 0.065013484118776 0 0 0</pose>
+        <inertial>
+          <mass>0.001</mass>
+          <inertia>
+            <ixx>1e-6</ixx>
+            <iyy>1e-6</iyy>
+            <izz>1e-6</izz>
+          </inertia>
+        </inertial>
+      </link>
+
+      <joint name="depth_cam_joint_sim" type="fixed">
+        <parent>depth_cam_link</parent>
+        <child>depth_cam_frame</child>
+        <pose>0 0 0 -1.5708 0 -1.5708</pose>
+      </joint>
+    </model>
+
+    <!-- Inter-Model Joints to Connect the Arm -->
+    <!-- Joint 1: Base Mount to Link1 -->
+    <joint name="joint1" type="revolute">
+      <parent>base_mount::base_mount_link</parent>
+      <child>arm_link1::link1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2.09</lower>
+          <upper>2.09</upper>
+          <effort>1000</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>1.0</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- Fixed Joint: Link1 to Servo Link1 -->
+    <joint name="servo_joint1" type="fixed">
+      <parent>arm_link1::link1</parent>
+      <child>servo_link1_model::servo_link1</child>
+    </joint>
+
+    <!-- Joint 2: Servo Link1 to Link2 -->
+    <joint name="joint2" type="revolute">
+      <parent>servo_link1_model::servo_link1</parent>
+      <child>arm_link2::link2</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.09</lower>
+          <upper>2.09</upper>
+          <effort>1000</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>1.0</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- Joint 3: Link2 to Link3 -->
+    <joint name="joint3" type="revolute">
+      <parent>arm_link2::link2</parent>
+      <child>arm_link3::link3</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.09</lower>
+          <upper>2.09</upper>
+          <effort>1000</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>1.0</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- Joint 4: Link3 to Link4 -->
+    <joint name="joint4" type="revolute">
+      <parent>arm_link3::link3</parent>
+      <child>arm_link4::link4</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.09</lower>
+          <upper>2.09</upper>
+          <effort>1000</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>1.0</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- Fixed Joint: Link4 to Servo Link2 -->
+    <joint name="servo_joint2" type="fixed">
+      <parent>arm_link4::link4</parent>
+      <child>servo_link2_model::servo_link2</child>
+    </joint>
+
+    <!-- Joint 5: Servo Link2 to Link5 -->
+    <joint name="joint5" type="revolute">
+      <parent>servo_link2_model::servo_link2</parent>
+      <child>arm_link5::link5</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-2.09</lower>
+          <upper>2.09</upper>
+          <effort>1000</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>1.0</damping>
+        </dynamics>
+      </axis>
+    </joint>
+
+    <!-- Fixed Joint: Link5 to Gripper -->
+    <joint name="gripper_joint" type="fixed">
+      <parent>arm_link5::link5</parent>
+      <child>gripper_model::gripper_link</child>
+    </joint>
+
+    <!-- Fixed Joint: Link4 to Camera -->
+    <joint name="camera_connect_joint" type="fixed">
+      <parent>arm_link4::link4</parent>
+      <child>camera_model::camera_connect_link</child>
+    </joint>
+
+    <!-- Global Joint Position Controller for Main Arm Joints -->
+    <plugin filename="libgazebo_ros_joint_position_controller.so" name="arm_joint_controller">
+      <ros>
+        <namespace>/robotic_arm</namespace>
+      </ros>
+      <joint_name>joint1</joint_name>
+      <joint_name>joint2</joint_name>
+      <joint_name>joint3</joint_name>
+      <joint_name>joint4</joint_name>
+      <joint_name>joint5</joint_name>
+      <pid_gain>100 1 10</pid_gain>
+    </plugin>
+
+    <!-- Global Joint State Publisher for Main Arm Joints -->
+    <plugin filename="libgazebo_ros_joint_state_publisher.so" name="arm_joint_state_publisher">
+      <ros>
+        <namespace>/robotic_arm</namespace>
+        <remapping>joint_states:=joint_states</remapping>
+      </ros>
+      <update_rate>50</update_rate>
+      <joint_name>joint1</joint_name>
+      <joint_name>joint2</joint_name>
+      <joint_name>joint3</joint_name>
+      <joint_name>joint4</joint_name>
+      <joint_name>joint5</joint_name>
+    </plugin>
+
+  </world>
+</sdf>

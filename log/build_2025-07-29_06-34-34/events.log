@@ -1,0 +1,145 @@
+[0.000000] (-) TimerEvent: {}
+[0.000761] (jetrover_description) JobQueued: {'identifier': 'jetrover_description', 'dependencies': OrderedDict()}
+[0.001348] (jetrover_description) JobStarted: {'identifier': 'jetrover_description'}
+[0.099545] (-) TimerEvent: {}
+[0.200047] (-) TimerEvent: {}
+[0.300562] (-) TimerEvent: {}
+[0.401092] (-) TimerEvent: {}
+[0.501677] (-) TimerEvent: {}
+[0.602406] (-) TimerEvent: {}
+[0.703097] (-) TimerEvent: {}
+[0.803713] (-) TimerEvent: {}
+[0.904291] (-) TimerEvent: {}
+[1.004860] (-) TimerEvent: {}
+[1.105336] (-) TimerEvent: {}
+[1.205760] (-) TimerEvent: {}
+[1.306236] (-) TimerEvent: {}
+[1.406728] (-) TimerEvent: {}
+[1.507188] (-) TimerEvent: {}
+[1.607984] (-) TimerEvent: {}
+[1.708544] (-) TimerEvent: {}
+[1.809088] (-) TimerEvent: {}
+[1.909634] (-) TimerEvent: {}
+[2.010136] (-) TimerEvent: {}
+[2.077288] (jetrover_description) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/jetrover_description', 'build', '--build-base', '/home/sukritchopra/ros2_ws/build/jetrover_description/build', 'install', '--record', '/home/sukritchopra/ros2_ws/build/jetrover_description/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/sukritchopra/ros2_ws/src/jetrover_description', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'sukritchopra', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'GIT_ASKPASS': '/home/sukritchopra/.vscode-server/bin/c306e94f98122556ca081f527b466015e1bc37b0/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/sukritchopra', 'OLDPWD': '/home/sukritchopra/ros2_ws/src/jetrover_description/urdf', 'TERM_PROGRAM_VERSION': '1.102.2', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-3e6d1d3a-ddc6-411e-b036-7462b8af9b64.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/sukritchopra/.vscode-server/bin/c306e94f98122556ca081f527b466015e1bc37b0/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/sukritchopra/.vscode-server/bin/c306e94f98122556ca081f527b466015e1bc37b0/node', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'sukritchopra', 'NAME': 'MSI', 'WSL_INTEROP': '/run/WSL/366_interop', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/sukritchopra/.vscode-server/bin/c306e94f98122556ca081f527b466015e1bc37b0/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/java8path:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/dotnet/:/mnt/c/mingw32/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Microsoft SQL Server/150/Tools/Binn/:/mnt/c/Users/sukri/AppData/Local/Programs/cursor/resources/app/bin:/mnt/c/Users/sukri/AppData/Local/Programs/cursor/resources/app/bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/sukri/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/sukri/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/sukri/AppData/Local/GitHubDesktop/bin:/mnt/c/Users/sukri/.dotnet/tools:/mnt/c/Users/sukri/AppData/Local/Programs/cursor/resources/app/bin:/mnt/c/Users/sukri/AppData/Roaming/npm:/snap/bin:/home/sukritchopra/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand', 'XDG_RUNTIME_DIR': '/run/user/1000/', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-9c04b54117.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'IGN_GAZEBO_RESOURCE_PATH': '/opt/ros/jazzy/share', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/sukritchopra/ros2_ws/build/jetrover_description', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/sukritchopra/ros2_ws/build/jetrover_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'WSL2_GUI_APPS_ENABLED': '1', 'HOSTTYPE': 'x86_64', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor', 'WSLENV': 'VSCODE_WSL_EXT_LOCATION/up'}, 'shell': False}
+[2.110349] (-) TimerEvent: {}
+[2.210825] (-) TimerEvent: {}
+[2.311515] (-) TimerEvent: {}
+[2.412214] (-) TimerEvent: {}
+[2.512880] (-) TimerEvent: {}
+[2.613577] (jetrover_description) StdoutLine: {'line': b'running egg_info\n'}
+[2.613992] (-) TimerEvent: {}
+[2.614396] (jetrover_description) StdoutLine: {'line': b'creating ../../build/jetrover_description/jetrover_description.egg-info\n'}
+[2.655619] (jetrover_description) StdoutLine: {'line': b'writing ../../build/jetrover_description/jetrover_description.egg-info/PKG-INFO\n'}
+[2.656249] (jetrover_description) StdoutLine: {'line': b'writing dependency_links to ../../build/jetrover_description/jetrover_description.egg-info/dependency_links.txt\n'}
+[2.656758] (jetrover_description) StdoutLine: {'line': b'writing requirements to ../../build/jetrover_description/jetrover_description.egg-info/requires.txt\n'}
+[2.657064] (jetrover_description) StdoutLine: {'line': b'writing top-level names to ../../build/jetrover_description/jetrover_description.egg-info/top_level.txt\n'}
+[2.657400] (jetrover_description) StdoutLine: {'line': b"writing manifest file '../../build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'\n"}
+[2.714181] (-) TimerEvent: {}
+[2.736262] (jetrover_description) StdoutLine: {'line': b"reading manifest file '../../build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'\n"}
+[2.738377] (jetrover_description) StdoutLine: {'line': b"writing manifest file '../../build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'\n"}
+[2.739103] (jetrover_description) StdoutLine: {'line': b'running build\n'}
+[2.739411] (jetrover_description) StdoutLine: {'line': b'running build_py\n'}
+[2.739933] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/build/jetrover_description/build\n'}
+[2.741128] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/build/jetrover_description/build/lib\n'}
+[2.742031] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/build/jetrover_description/build/lib/jetrover_description\n'}
+[2.743047] (jetrover_description) StdoutLine: {'line': b'copying jetrover_description/__init__.py -> /home/sukritchopra/ros2_ws/build/jetrover_description/build/lib/jetrover_description\n'}
+[2.743518] (jetrover_description) StdoutLine: {'line': b'running install\n'}
+[2.754084] (jetrover_description) StdoutLine: {'line': b'running install_lib\n'}
+[2.793957] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages/jetrover_description\n'}
+[2.795075] (jetrover_description) StdoutLine: {'line': b'copying /home/sukritchopra/ros2_ws/build/jetrover_description/build/lib/jetrover_description/__init__.py -> /home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages/jetrover_description\n'}
+[2.796167] (jetrover_description) StdoutLine: {'line': b'byte-compiling /home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages/jetrover_description/__init__.py to __init__.cpython-312.pyc\n'}
+[2.797778] (jetrover_description) StdoutLine: {'line': b'running install_data\n'}
+[2.798096] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/ament_index\n'}
+[2.798904] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/ament_index/resource_index\n'}
+[2.799832] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/ament_index/resource_index/packages\n'}
+[2.800849] (jetrover_description) StdoutLine: {'line': b'copying resource/jetrover_description -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/ament_index/resource_index/packages\n'}
+[2.801399] (jetrover_description) StdoutLine: {'line': b'copying package.xml -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description\n'}
+[2.801716] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/launch\n'}
+[2.802670] (jetrover_description) StdoutLine: {'line': b'copying launch/display.launch.py -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/launch\n'}
+[2.803141] (jetrover_description) StdoutLine: {'line': b'copying launch/robot_description.launch.py -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/launch\n'}
+[2.803477] (jetrover_description) StdoutLine: {'line': b'copying launch/rviz.launch.py -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/launch\n'}
+[2.803796] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.804737] (jetrover_description) StdoutLine: {'line': b'copying urdf/car_mecanum.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.805174] (jetrover_description) StdoutLine: {'line': b'copying urdf/jetrover.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.805502] (jetrover_description) StdoutLine: {'line': b'copying urdf/imu.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.805768] (jetrover_description) StdoutLine: {'line': b'copying urdf/inertial_matrix.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.806136] (jetrover_description) StdoutLine: {'line': b'copying urdf/lidar.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.806436] (jetrover_description) StdoutLine: {'line': b'copying urdf/gripper.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.806837] (jetrover_description) StdoutLine: {'line': b'copying urdf/common.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.807148] (jetrover_description) StdoutLine: {'line': b'copying urdf/lidar_g4.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.807435] (jetrover_description) StdoutLine: {'line': b'copying urdf/lidar_a1.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.807724] (jetrover_description) StdoutLine: {'line': b'copying urdf/connect.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.808063] (jetrover_description) StdoutLine: {'line': b'copying urdf/car_tank.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.808549] (jetrover_description) StdoutLine: {'line': b'copying urdf/car_acker.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.808862] (jetrover_description) StdoutLine: {'line': b'copying urdf/depth_camera.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.809094] (jetrover_description) StdoutLine: {'line': b'copying urdf/materials.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.809457] (jetrover_description) StdoutLine: {'line': b'copying urdf/arm.urdf.xacro -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/urdf\n'}
+[2.809816] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/rviz\n'}
+[2.810718] (jetrover_description) StdoutLine: {'line': b'copying rviz/view.rviz -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/rviz\n'}
+[2.811042] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes\n'}
+[2.811907] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/acker\n'}
+[2.812841] (jetrover_description) StdoutLine: {'line': b'copying meshes/acker/base_green_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/acker\n'}
+[2.813997] (jetrover_description) StdoutLine: {'line': b'copying meshes/acker/wheel_right_back_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/acker\n'}
+[2.814216] (-) TimerEvent: {}
+[2.816101] (jetrover_description) StdoutLine: {'line': b'copying meshes/acker/wheel_left_back_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/acker\n'}
+[2.818676] (jetrover_description) StdoutLine: {'line': b'copying meshes/acker/wheel_right_front_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/acker\n'}
+[2.821478] (jetrover_description) StdoutLine: {'line': b'copying meshes/acker/wheel_left_front_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/acker\n'}
+[2.824369] (jetrover_description) StdoutLine: {'line': b'copying meshes/acker/base_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/acker\n'}
+[2.825616] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.826970] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link3_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.827624] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/depth_cam_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.829894] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link4.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.831064] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/servo_link1_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.831519] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link1.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.832207] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link3.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.833761] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/depth_cam_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.834296] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/gripper_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.835837] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/gripper_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.836552] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link2.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.837929] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link2_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.838494] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link4_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.838870] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/servo_link2.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.839868] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/servo_link2_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.840219] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/link5.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.840735] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/servo_link1.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.841784] (jetrover_description) StdoutLine: {'line': b'copying meshes/arm/camera_connect_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/arm\n'}
+[2.842126] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/common\n'}
+[2.843393] (jetrover_description) StdoutLine: {'line': b'copying meshes/common/back_shell_green_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/common\n'}
+[2.845258] (jetrover_description) StdoutLine: {'line': b'copying meshes/common/back_shell_black_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/common\n'}
+[2.845972] (jetrover_description) StdoutLine: {'line': b'copying meshes/common/lidar_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/common\n'}
+[2.846686] (jetrover_description) StdoutLine: {'line': b'copying meshes/common/back_shell_black_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/common\n'}
+[2.848336] (jetrover_description) StdoutLine: {'line': b'copying meshes/common/imu_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/common\n'}
+[2.848772] (jetrover_description) StdoutLine: {'line': b'copying meshes/common/back_shell_green_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/common\n'}
+[2.849470] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/gripper\n'}
+[2.850513] (jetrover_description) StdoutLine: {'line': b'copying meshes/gripper/r_in_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/gripper\n'}
+[2.850884] (jetrover_description) StdoutLine: {'line': b'copying meshes/gripper/l_out_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/gripper\n'}
+[2.851538] (jetrover_description) StdoutLine: {'line': b'copying meshes/gripper/r_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/gripper\n'}
+[2.851977] (jetrover_description) StdoutLine: {'line': b'copying meshes/gripper/l_in_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/gripper\n'}
+[2.852352] (jetrover_description) StdoutLine: {'line': b'copying meshes/gripper/l_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/gripper\n'}
+[2.852739] (jetrover_description) StdoutLine: {'line': b'copying meshes/gripper/r_out_link.STL -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/gripper\n'}
+[2.853330] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.854229] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/base_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.854958] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_right_front_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.855475] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_right_back_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.857605] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_left_back_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.859620] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_left_back_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.860090] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_right_front_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.862315] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_left_front_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.864616] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/base_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.866536] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_right_back_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.866979] (jetrover_description) StdoutLine: {'line': b'copying meshes/mecanum/wheel_left_front_link_collision.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/mecanum\n'}
+[2.867447] (jetrover_description) StdoutLine: {'line': b'creating /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/tank\n'}
+[2.868506] (jetrover_description) StdoutLine: {'line': b'copying meshes/tank/base_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/tank\n'}
+[2.871371] (jetrover_description) StdoutLine: {'line': b'copying meshes/tank/wheel_link.stl -> /home/sukritchopra/ros2_ws/install/jetrover_description/share/jetrover_description/meshes/tank\n'}
+[2.890362] (jetrover_description) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.914467] (-) TimerEvent: {}
+[2.932294] (jetrover_description) StdoutLine: {'line': b'Copying ../../build/jetrover_description/jetrover_description.egg-info to /home/sukritchopra/ros2_ws/install/jetrover_description/lib/python3.12/site-packages/jetrover_description-0.0.0-py3.12.egg-info\n'}
+[2.935651] (jetrover_description) StdoutLine: {'line': b'running install_scripts\n'}
+[3.014776] (-) TimerEvent: {}
+[3.115274] (-) TimerEvent: {}
+[3.215328] (jetrover_description) StdoutLine: {'line': b"writing list of installed files to '/home/sukritchopra/ros2_ws/build/jetrover_description/install.log'\n"}
+[3.215666] (-) TimerEvent: {}
+[3.269038] (jetrover_description) CommandEnded: {'returncode': 0}
+[3.300996] (jetrover_description) JobEnded: {'identifier': 'jetrover_description', 'rc': 0}
+[3.302741] (-) EventReactorShutdown: {}

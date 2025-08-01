@@ -1,0 +1,1510 @@
+<?xml version="1.0"?>
+<sdf version='1.10'>
+  <world name='arm_tictactoe_NW_poseC1.2'>
+    <physics name='1ms' type='ignored'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
+    <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
+    <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
+    <gravity>0 0 -9.8000000000000007</gravity>
+    <magnetic_field>5.5644999999999998e-06 2.2875799999999999e-05 -4.2388400000000002e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.400000006 0.400000006 0.400000006 1</ambient>
+      <background>0.699999988 0.699999988 0.699999988 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <model name='ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+            </contact>
+            <friction>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </friction>
+            <bounce/>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.800000012 0.800000012 0.800000012 1</ambient>
+            <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+            <specular>0 0 0 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='study_table'>
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name='table_link'>
+        <inertial>
+          <mass>50</mass>
+          <inertia>
+            <ixx>10</ixx>
+            <iyy>8</iyy>
+            <izz>6</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='table_top'>
+          <pose>0 0 0.375 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>1.5 1 0.050000000000000003</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.800000012 0.600000024 0.400000006 1</ambient>
+            <diffuse>0.800000012 0.600000024 0.400000006 1</diffuse>
+          </material>
+        </visual>
+        <visual name='table_leg1'>
+          <pose>0.69999999999999996 0.45000000000000001 0.17499999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.10000000000000001 0.10000000000000001 0.34999999999999998</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.699999988 0.5 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.5 0.300000012 1</diffuse>
+          </material>
+        </visual>
+        <visual name='table_leg2'>
+          <pose>-0.69999999999999996 0.45000000000000001 0.17499999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.10000000000000001 0.10000000000000001 0.34999999999999998</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.699999988 0.5 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.5 0.300000012 1</diffuse>
+          </material>
+        </visual>
+        <visual name='table_leg3'>
+          <pose>0.69999999999999996 -0.45000000000000001 0.17499999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.10000000000000001 0.10000000000000001 0.34999999999999998</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.699999988 0.5 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.5 0.300000012 1</diffuse>
+          </material>
+        </visual>
+        <visual name='table_leg4'>
+          <pose>-0.69999999999999996 -0.45000000000000001 0.17499999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.10000000000000001 0.10000000000000001 0.34999999999999998</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.699999988 0.5 0.300000012 1</ambient>
+            <diffuse>0.699999988 0.5 0.300000012 1</diffuse>
+          </material>
+        </visual>
+        <collision name='table_collision'>
+          <pose>0 0 0.375 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>1.5 1 0.050000000000000003</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='wall_visual'>
+          <pose>0 0.47499999999999998 0.90000000000000002 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.80000000000000004 0.050000000000000003 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.899999976 0.899999976 0.899999976 1</ambient>
+            <diffuse>0.899999976 0.899999976 0.899999976 1</diffuse>
+          </material>
+        </visual>
+        <collision name='wall_collision'>
+          <pose>0 0.47499999999999998 0.90000000000000002 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.80000000000000004 0.050000000000000003 1</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <pose>0 0 0 0 0 0</pose>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='tictactoe_game'>
+      <static>true</static>
+      <pose>0 0.20000000000000001 0.42499999999999999 0 0 0</pose>
+      <link name='board'>
+        <inertial>
+          <mass>2</mass>
+          <inertia>
+            <ixx>0.10000000000000001</ixx>
+            <iyy>0.10000000000000001</iyy>
+            <izz>0.10000000000000001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='board_visual'>
+          <geometry>
+            <box>
+              <size>0.40000000000000002 0.40000000000000002 0.050000000000000003</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.200000003 0.200000003 0.800000012 1</ambient>
+            <diffuse>0.200000003 0.200000003 0.800000012 1</diffuse>
+          </material>
+        </visual>
+        <visual name='grid_line1'>
+          <pose>-0.067000000000000004 0 0.025999999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.40000000000000002 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+          </material>
+        </visual>
+        <visual name='grid_line2'>
+          <pose>0.067000000000000004 0 0.025999999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.40000000000000002 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+          </material>
+        </visual>
+        <visual name='grid_line3'>
+          <pose>0 -0.067000000000000004 0.025999999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.40000000000000002 0.01 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+          </material>
+        </visual>
+        <visual name='grid_line4'>
+          <pose>0 0.067000000000000004 0.025999999999999999 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.40000000000000002 0.01 0.002</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+          </material>
+        </visual>
+        <collision name='board_collision'>
+          <geometry>
+            <box>
+              <size>0.40000000000000002 0.40000000000000002 0.050000000000000003</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <pose>0 0 0 0 0 0</pose>
+        <enable_wind>false</enable_wind>
+      </link>
+      <link name='x_piece_1'>
+        <pose>0.29999999999999999 -0.10000000000000001 -0.020000000000000018 0 0 0</pose>
+        <inertial>
+          <mass>0.10000000000000001</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <iyy>0.001</iyy>
+            <izz>0.001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='x_visual_1'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.800000012 0.200000003 0.200000003 1</ambient>
+            <diffuse>0.800000012 0.200000003 0.200000003 1</diffuse>
+          </material>
+        </visual>
+        <collision name='x_collision_1'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <enable_wind>false</enable_wind>
+      </link>
+      <link name='x_piece_2'>
+        <pose>0.34999999999999998 -0.10000000000000001 -0.020000000000000018 0 0 0</pose>
+        <inertial>
+          <mass>0.10000000000000001</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <iyy>0.001</iyy>
+            <izz>0.001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='x_visual_2'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.800000012 0.200000003 0.200000003 1</ambient>
+            <diffuse>0.800000012 0.200000003 0.200000003 1</diffuse>
+          </material>
+        </visual>
+        <collision name='x_collision_2'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <enable_wind>false</enable_wind>
+      </link>
+      <link name='x_piece_3'>
+        <pose>0.40000000000000002 -0.10000000000000001 -0.020000000000000018 0 0 0</pose>
+        <inertial>
+          <mass>0.10000000000000001</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <iyy>0.001</iyy>
+            <izz>0.001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='x_visual_3'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.800000012 0.200000003 0.200000003 1</ambient>
+            <diffuse>0.800000012 0.200000003 0.200000003 1</diffuse>
+          </material>
+        </visual>
+        <collision name='x_collision_3'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <enable_wind>false</enable_wind>
+      </link>
+      <link name='o_piece_1'>
+        <pose>-0.29999999999999999 -0.10000000000000001 -0.020000000000000018 0 0 0</pose>
+        <inertial>
+          <mass>0.10000000000000001</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <iyy>0.001</iyy>
+            <izz>0.001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='o_visual_1'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.200000003 0.800000012 0.200000003 1</ambient>
+            <diffuse>0.200000003 0.800000012 0.200000003 1</diffuse>
+          </material>
+        </visual>
+        <collision name='o_collision_1'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <enable_wind>false</enable_wind>
+      </link>
+      <link name='o_piece_2'>
+        <pose>-0.34999999999999998 -0.10000000000000001 -0.020000000000000018 0 0 0</pose>
+        <inertial>
+          <mass>0.10000000000000001</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <iyy>0.001</iyy>
+            <izz>0.001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='o_visual_2'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.200000003 0.800000012 0.200000003 1</ambient>
+            <diffuse>0.200000003 0.800000012 0.200000003 1</diffuse>
+          </material>
+        </visual>
+        <collision name='o_collision_2'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <enable_wind>false</enable_wind>
+      </link>
+      <link name='o_piece_3'>
+        <pose>-0.40000000000000002 -0.10000000000000001 -0.020000000000000018 0 0 0</pose>
+        <inertial>
+          <mass>0.10000000000000001</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <iyy>0.001</iyy>
+            <izz>0.001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='o_visual_3'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.200000003 0.800000012 0.200000003 1</ambient>
+            <diffuse>0.200000003 0.800000012 0.200000003 1</diffuse>
+          </material>
+        </visual>
+        <collision name='o_collision_3'>
+          <geometry>
+            <cylinder>
+              <radius>0.029999999999999999</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <enable_wind>false</enable_wind>
+      </link>
+      <self_collide>false</self_collide>
+    </model>
+    <model name='jetrover'>
+      <pose>8.4602460581514171e-08 -0.25865789861719291 0.39999999430096167 -3.8741323695874329e-08 -1.4177481769122289e-06 1.3957081486430245e-07</pose>
+      <static>false</static>
+      <self_collide>false</self_collide>
+      <link name='base_footprint'>
+        <inertial>
+          <pose>0 0 0.058000000000000003 0 0 0</pose>
+          <mass>2.7044057052136559</mass>
+          <inertia>
+            <ixx>0.024835337117375289</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.024835337117375289</iyy>
+            <iyz>0</iyz>
+            <izz>0.033570101918370988</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_footprint_cylinder_collision'>
+          <pose>0 0 0.058000000000000003 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.10000000000000001</radius>
+              <length>0.11600000000000001</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='base_footprint_cylinder_visual'>
+          <pose>0 0 0.058000000000000003 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.10000000000000001</radius>
+              <length>0.11600000000000001</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <diffuse>0.5 1 0.5 1</diffuse>
+            <ambient>0.5 1 0.5 1</ambient>
+          </material>
+        </visual>
+        <pose>0 0 0 0 0 0</pose>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint1' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>base_footprint</parent>
+        <child>link1</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.0899999999999999</lower>
+            <upper>2.0899999999999999</upper>
+            <effort>10000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>100.0</damping>
+            <friction>50.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link1'>
+        <pose>0.025133083973300496 -6.9547018144433537e-09 0.15349373966969496 2.6189295467640234e-07 1.3811804755900474e-06 0.15982526003809991</pose>
+        <inertial>
+          <pose>8.4882317065151008e-05 -0.0018903126840200471 0.020339854275225711 0 0 0</pose>
+          <mass>0.030629351759666201</mass>
+          <inertia>
+            <ixx>5.9254568915084221e-06</ixx>
+            <ixy>-1.7073764982422979e-09</ixy>
+            <ixz>1.179843003882826e-09</ixz>
+            <iyy>5.2110986859518246e-06</iyy>
+            <iyz>3.1259704103886081e-07</iyz>
+            <izz>3.394062289608808e-06</izz>
+          </inertia>
+        </inertial>
+        <collision name='link1_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link1.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <collision name='link1_fixed_joint_lump__servo_link1_collision_1'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/servo_link1_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link1_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link1.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.5 1 0.5 1</diffuse>
+            <ambient>0.5 1 0.5 1</ambient>
+          </material>
+        </visual>
+        <visual name='link1_fixed_joint_lump__servo_link1_visual_1'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/servo_link1.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint2' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link1</parent>
+        <child>link2</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.0899999999999999</lower>
+            <upper>2.0899999999999999</upper>
+            <effort>10000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>100.0</damping>
+            <friction>50.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link2'>
+        <pose>0.025133132532832968 -8.176248900149119e-09 0.22735854088963126 3.1415921257504404 -1.0515940347303638 -2.981767649603821</pose>
+        <inertial>
+          <pose>0.00015629957042515699 -0.00045511369991391599 0.071772702851197495 0 0 0</pose>
+          <mass>0.0329250074531705</mass>
+          <inertia>
+            <ixx>3.9162096617403702e-05</ixx>
+            <ixy>-5.45461883923424e-11</ixy>
+            <ixz>-1.84994427464167e-07</ixz>
+            <iyy>3.0845356229789902e-05</iyy>
+            <iyz>3.5881427402197002e-09</iyz>
+            <izz>1.1508190097598299e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link2_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link2_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link2.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.5 1 0.5 1</diffuse>
+            <ambient>0.5 1 0.5 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint3' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link2</parent>
+        <child>link3</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.0899999999999999</lower>
+            <upper>2.0899999999999999</upper>
+            <effort>10000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>100.0</damping>
+            <friction>50.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link3'>
+        <pose>-0.085796185084219725 -0.017881731724498806 0.16314369025490472 3.1415921253514498 -1.0521005907982286 -2.9817676801269526</pose>
+        <inertial>
+          <pose>0.00012845644092569799 -0.00076142462273371704 0.071772743785429 0 0 0</pose>
+          <mass>0.0329250074463074</mass>
+          <inertia>
+            <ixx>3.91621699579612e-05</ixx>
+            <ixy>-5.4009753055806201e-11</ixy>
+            <ixz>-1.7378665251201299e-07</ixz>
+            <iyy>3.0845196992023903e-05</iyy>
+            <iyz>3.6387423652222298e-09</iyz>
+            <izz>1.15078234912494e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link3_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link3_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link3_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link3.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.5 1 0.5 1</diffuse>
+            <ambient>0.5 1 0.5 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint4' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link3</parent>
+        <child>link4</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-2.0899999999999999</lower>
+            <upper>2.0899999999999999</upper>
+            <effort>10000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>100.0</damping>
+            <friction>50.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link4'>
+        <pose>-0.19678167345106681 -0.035772495195722176 0.098971620959156292 3.1415922688546356 -0.82207207429568008 -2.9817679220150572</pose>
+        <inertial>
+          <pose>-0.024155385718921799 0.0003017349751323721 0.048529459632962173 0 0 0</pose>
+          <mass>0.034930330045039162</mass>
+          <inertia>
+            <ixx>3.5210229125809753e-05</ixx>
+            <ixy>1.013027133785351e-07</ixy>
+            <ixz>1.5667877911856121e-05</ixz>
+            <iyy>5.5524620335933228e-05</iyy>
+            <iyz>-6.19231011536335e-08</iyz>
+            <izz>3.3657929512902879e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='link4_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link4_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <collision name='link4_fixed_joint_lump__camera_connect_link_collision_1'>
+          <pose>-0.050706026697764403 0 0.0505384841187764 0 0 -1.5707963267948899</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/camera_connect_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <collision name='link4_fixed_joint_lump__depth_cam_link_collision_2'>
+          <pose>-0.050706026697764403 0 0.065013484118776402 6.9084068182086093e-15 -1.5707963267948966 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/depth_cam_link_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <collision name='link4_fixed_joint_lump__servo_link2_collision_3'>
+          <pose>0 0 0.054483333950367398 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/servo_link2_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link4_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link4.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.5 1 0.5 1</diffuse>
+            <ambient>0.5 1 0.5 1</ambient>
+          </material>
+        </visual>
+        <visual name='link4_fixed_joint_lump__camera_connect_link_visual_1'>
+          <pose>-0.050706026697764403 0 0.0505384841187764 0 0 -1.5707963267948899</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/camera_connect_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <visual name='link4_fixed_joint_lump__depth_cam_link_visual_2'>
+          <pose>-0.050706026697764403 0 0.065013484118776402 6.9084068182086093e-15 -1.5707963267948966 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/depth_cam_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.941250026 0.941250026 0.941250026 1</diffuse>
+            <ambient>0.941250026 0.941250026 0.941250026 1</ambient>
+          </material>
+        </visual>
+        <visual name='link4_fixed_joint_lump__servo_link2_visual_3'>
+          <pose>0 0 0.054483333950367398 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/servo_link2.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='joint5' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link4</parent>
+        <child>link5</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.0899999999999999</lower>
+            <upper>2.0899999999999999</upper>
+            <effort>10000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>100.0</damping>
+            <friction>50.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link5'>
+        <pose>-0.23618520076813554 -0.042124305688681529 0.061884549204971939 2.3901194727493582 0.37200869208625009 -1.0399615094787829</pose>
+        <inertial>
+          <pose>0.013745583285676721 -0.0029797500659027461 0.029288990452975349 0 0 0</pose>
+          <mass>0.01851660201761849</mass>
+          <inertia>
+            <ixx>4.8746350374566861e-06</ixx>
+            <ixy>1.664776163181491e-08</ixy>
+            <ixz>-3.9064646511571869e-07</ixz>
+            <iyy>2.5142752233430748e-06</iyy>
+            <iyz>1.050404679511314e-07</iyz>
+            <izz>3.519823257486964e-06</izz>
+          </inertia>
+        </inertial>
+        <collision name='link5_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link5.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <collision name='link5_fixed_joint_lump__gripper_link_collision_1'>
+          <pose>0 0 0.0054387999999999997 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/gripper_link_collision.stl</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='link5_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/link5.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <visual name='link5_fixed_joint_lump__gripper_link_visual_1'>
+          <pose>0 0 0.0054387999999999997 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/arm/gripper_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='l_in_joint' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link5</parent>
+        <child>l_in_link</child>
+        <axis>
+          <xyz>0.99996415378467485 0.0046983195165071984 -0.0070439292600142714</xyz>
+          <limit>
+            <lower>-1.5700000000000001</lower>
+            <upper>1.5700000000000001</upper>
+            <effort>5000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>50.0</damping>
+            <friction>25.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_in_link'>
+        <pose>-0.27927087634597886 -0.04525396496721884 0.032602494909975854 -2.4164046897444105 0.36582142418217023 -1.0297276180462276</pose>
+        <inertial>
+          <pose>0.0061019181206524503 2.9145913289670801e-05 0.0144573768632076 0 0 0</pose>
+          <mass>0.000776872870694597</mass>
+          <inertia>
+            <ixx>9.87455572181138e-08</ixx>
+            <ixy>5.0634092847572699e-12</ixy>
+            <ixz>-6.7968564625618604e-10</ixz>
+            <iyy>9.7663514845220301e-08</iyy>
+            <iyz>-6.1211590832379402e-12</iyz>
+            <izz>2.2569536475165801e-09</izz>
+          </inertia>
+        </inertial>
+        <collision name='l_in_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_in_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='l_in_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_in_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='l_out_joint' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>l_in_link</parent>
+        <child>l_out_link</child>
+        <axis>
+          <xyz>0.99996415378467485 0.0046983195165071984 -0.0070439292600142714</xyz>
+          <limit>
+            <lower>-1.5700000000000001</lower>
+            <upper>1.5700000000000001</upper>
+            <effort>5000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>50.0</damping>
+            <friction>25.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_out_link'>
+        <pose>-0.2666841807560511 -0.028856475821702809 0.012263327955009007 -1.7852117299132608 0.36057304007204405 -1.0300547746294442</pose>
+        <inertial>
+          <pose>0.0060240783651857701 0.0014461936314294 0.0096121404143418906 0 0 0</pose>
+          <mass>0.0038473590828112399</mass>
+          <inertia>
+            <ixx>8.77337978935691e-07</ixx>
+            <ixy>1.36760329013846e-09</ixy>
+            <ixz>-6.9462127438421e-09</ixz>
+            <iyy>8.1964879200802704e-07</iyy>
+            <iyz>1.5617729472792301e-07</iyz>
+            <izz>7.0687486597802998e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='l_out_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_out_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='l_out_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_out_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='l_joint' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link5</parent>
+        <child>l_link</child>
+        <axis>
+          <xyz>0.9999673742524674 0.0055810853450007957 -0.0058396846659621122</xyz>
+          <limit>
+            <lower>-1.5700000000000001</lower>
+            <upper>1.5700000000000001</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='l_link'>
+        <pose>-0.2701977334218153 -0.048181119399109074 0.051320388002050521 -3.0540152017570295 0.36926772864020396 -1.0335631923064861</pose>
+        <inertial>
+          <pose>0.0015384031888858 -0.00040323272684767401 0.00579759783012201 0 0 0</pose>
+          <mass>0.0021892493318732202</mass>
+          <inertia>
+            <ixx>4.0534152698165002e-07</ixx>
+            <ixy>3.6007782749450302e-10</ixy>
+            <ixz>-1.99675888093364e-09</ixz>
+            <iyy>3.3122217418185201e-07</iyy>
+            <iyz>-8.7933775825091693e-09</iyz>
+            <izz>7.7431958264291705e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='l_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='l_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='r_in_joint' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link5</parent>
+        <child>r_in_link</child>
+        <axis>
+          <xyz>-0.99996415401839334 0.0046987195192669962 0.0070436292604143715</xyz>
+          <limit>
+            <lower>-1.5700000000000001</lower>
+            <upper>1.5700000000000001</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_in_link'>
+        <pose>-0.27428471266095295 -0.039482912470810483 0.026316529651508547 -2.3190881233751237 0.37829268775059222 -1.0290124818190349</pose>
+        <inertial>
+          <pose>0.0061019181206500598 -2.8192469006870501e-05 0.014457378753895699 0 0 0</pose>
+          <mass>0.00077687287069452197</mass>
+          <inertia>
+            <ixx>9.8746566817120394e-08</ixx>
+            <ixy>-5.1117380810663599e-12</ixy>
+            <ixz>-6.7969240619170703e-10</ixz>
+            <iyy>9.7664293636848998e-08</iyy>
+            <iyz>-5.1401880014949702e-13</iyz>
+            <izz>2.2571845877848701e-09</izz>
+          </inertia>
+        </inertial>
+        <collision name='r_in_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_in_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='r_in_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_in_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='r_out_joint' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>r_in_link</parent>
+        <child>r_out_link</child>
+        <axis>
+          <xyz>-0.99996415401839334 0.0046987195192669962 0.0070436292604143715</xyz>
+          <limit>
+            <lower>-1.5700000000000001</lower>
+            <upper>1.5700000000000001</upper>
+            <effort>1000</effort>
+            <velocity>10</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_out_link'>
+        <pose>-0.25973596687802364 -0.022443059801794341 0.0079055315413613103 -1.1238351597238534 0.37126159416063642 -1.0221280158338111</pose>
+        <inertial>
+          <pose>0.0060622000000000002 -0.0014473999999999999 0.0096106999999999998 0 0 0</pose>
+          <mass>0.0038474</mass>
+          <inertia>
+            <ixx>8.7733999999999999e-07</ixx>
+            <ixy>-1.2815e-09</ixy>
+            <ixz>-6.7005999999999998e-09</ixz>
+            <iyy>8.1956999999999997e-07</iyy>
+            <iyz>-1.5634999999999999e-07</iyz>
+            <izz>7.0760999999999994e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='r_out_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_out_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='r_out_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_out_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <joint name='r_joint' type='revolute'>
+        <pose>0 0 0 0 0 0</pose>
+        <parent>link5</parent>
+        <child>r_link</child>
+        <axis>
+          <xyz>0.99996415401743843 -0.0046990195205087642 -0.0070434292595768092</xyz>
+          <limit>
+            <lower>-1.5700000000000001</lower>
+            <upper>1.5700000000000001</upper>
+            <effort>10000</effort>
+            <velocity>5</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>100.0</damping>
+            <friction>50.0</friction>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='r_link'>
+        <pose>-0.25608006668602967 -0.031864651945881395 0.033523486958749071 -3.0351756446654714 0.37756292948223757 -1.035330143292494</pose>
+        <inertial>
+          <pose>0.0015465214258295801 0.00053411207047883403 0.0062403042812153604 0 0 0</pose>
+          <mass>0.0020626564770486601</mass>
+          <inertia>
+            <ixx>3.9721584366934202e-07</ixx>
+            <ixy>-2.7569912057938703e-10</ixy>
+            <ixz>-2.1990104853612399e-09</ixz>
+            <iyy>3.2247262734211502e-07</iyy>
+            <iyz>1.07303783544668e-08</iyz>
+            <izz>7.7870818667213105e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='r_link_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_link.STL</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='r_link_visual'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <diffuse>0.125 0.125 0.125 1</diffuse>
+            <ambient>0.125 0.125 0.125 1</ambient>
+          </material>
+        </visual>
+        <enable_wind>false</enable_wind>
+      </link>
+      <frame name='back_shell_black_joint' attached_to='base_link'>
+        <pose>-0.0080042302115637693 0.00018689841620892801 0 0 0 0</pose>
+      </frame>
+      <frame name='back_shell_black_link' attached_to='back_shell_black_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='back_shell_green_joint' attached_to='base_link'>
+        <pose>-0.0080041999999999995 0.00018689999999999999 0 0 0 0</pose>
+      </frame>
+      <frame name='back_shell_green_link' attached_to='back_shell_green_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='imu_joint' attached_to='base_link'>
+        <pose>0.0048415999999999997 0.011168000000000001 -0.0057397999999999998 3.1415926535897931 0 -1.5707963267948959</pose>
+      </frame>
+      <frame name='imu_link' attached_to='imu_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='lidar_joint' attached_to='base_link'>
+        <pose>0.090003485935320399 0 0.040519577417955401 0 0 0</pose>
+      </frame>
+      <frame name='lidar_link' attached_to='lidar_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='wheel_left_back_joint' attached_to='base_link'>
+        <pose>-0.0975130776687404 0.11212949919983201 -0.067841082157674606 0 0 0</pose>
+      </frame>
+      <frame name='wheel_left_back_link' attached_to='wheel_left_back_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='wheel_left_front_joint' attached_to='base_link'>
+        <pose>0.097513076949966304 0.11212949984638999 -0.067841082157675106 0 0 0</pose>
+      </frame>
+      <frame name='wheel_left_front_link' attached_to='wheel_left_front_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='wheel_right_back_joint' attached_to='base_link'>
+        <pose>-0.097513076949966998 -0.11212949984638999 -0.067841082157674398 0 0 0</pose>
+      </frame>
+      <frame name='wheel_right_back_link' attached_to='wheel_right_back_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='wheel_right_front_joint' attached_to='base_link'>
+        <pose>0.097513077668739803 -0.11212949919983201 -0.067841082157674704 0 0 0</pose>
+      </frame>
+      <frame name='wheel_right_front_link' attached_to='wheel_right_front_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='base_joint' attached_to='base_footprint'>
+        <pose>0 0 0.11609108215767459 0 0 0</pose>
+      </frame>
+      <frame name='base_link' attached_to='base_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='servo_joint1' attached_to='link1'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='servo_link1' attached_to='servo_joint1'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='depth_cam_joint_sim' attached_to='depth_cam_link'>
+        <pose>0 0 0 -1.5707963267948959 -5.5511151231257827e-17 -1.5707963267948959</pose>
+      </frame>
+      <frame name='depth_cam_frame' attached_to='depth_cam_joint_sim'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='depth_cam_joint' attached_to='camera_connect_link'>
+        <pose>0 0 0.014475 1.5707963267948972 -1.5707963057214724 0</pose>
+      </frame>
+      <frame name='depth_cam_link' attached_to='depth_cam_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='camera_connect_joint' attached_to='link4'>
+        <pose>-0.050706026697764403 0 0.0505384841187764 0 0 -1.5707963267948899</pose>
+      </frame>
+      <frame name='camera_connect_link' attached_to='camera_connect_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='servo_joint2' attached_to='link4'>
+        <pose>0 0 0.054483333950367398 0 0 0</pose>
+      </frame>
+      <frame name='servo_link2' attached_to='servo_joint2'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='end_effector_joint' attached_to='link5'>
+        <pose>0 0 0.080000000000000002 0 0 0</pose>
+      </frame>
+      <frame name='end_effector_link' attached_to='end_effector_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <frame name='gripper_joint' attached_to='link5'>
+        <pose>0 0 0.0054387999999999997 0 0 0</pose>
+      </frame>
+      <frame name='gripper_link' attached_to='gripper_joint'>
+        <pose>0 0 0 0 0 0</pose>
+      </frame>
+      <plugin name='gz::sim::systems::JointStatePublisher' filename='gz-sim-joint-state-publisher-system'>
+        <joint_name>joint1</joint_name>
+        <joint_name>joint2</joint_name>
+        <joint_name>joint3</joint_name>
+        <joint_name>joint4</joint_name>
+        <joint_name>joint5</joint_name>
+        <joint_name>r_joint</joint_name>
+      </plugin>
+      <plugin name='gz::sim::systems::DiffDrive' filename='gz-sim-diff-drive-system'>
+        <left_joint>wheel_left_front_joint</left_joint>
+        <left_joint>wheel_left_back_joint</left_joint>
+        <right_joint>wheel_right_front_joint</right_joint>
+        <right_joint>wheel_right_back_joint</right_joint>
+        <wheel_separation>0.224</wheel_separation>
+        <wheel_radius>0.048</wheel_radius>
+        <odom_publish_frequency>1</odom_publish_frequency>
+        <topic>/cmd_vel</topic>
+        <odom_topic>/odom</odom_topic>
+        <frame_id>odom</frame_id>
+        <child_frame_id>base_footprint</child_frame_id>
+      </plugin>
+      <plugin name='gz::sim::systems::Imu' filename='gz-sim-imu-system'>
+        <link_name>base_footprint</link_name>
+        <topic>/imu</topic>
+      </plugin>
+      <plugin name='gz::sim::systems::Contact' filename='gz-sim-contact-system'/>
+    </model>
+    <light name='sun' type='directional'>
+      <pose>0 0 10 0 0 0</pose>
+      <cast_shadows>true</cast_shadows>
+      <intensity>1</intensity>
+      <direction>-0.5 0.10000000000000001 -0.90000000000000002</direction>
+      <diffuse>0.800000012 0.800000012 0.800000012 1</diffuse>
+      <specular>0.200000003 0.200000003 0.200000003 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <linear>0.0099999997764825821</linear>
+        <constant>0.89999997615814209</constant>
+        <quadratic>0.0010000000474974513</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+  </world>
+</sdf>
