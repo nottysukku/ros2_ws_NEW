@@ -46,7 +46,7 @@ source install/setup.bash
 The launch file needs to be corrected for proper path handling. Update your `display.launch.py`:
 
 ```python
-# filepath: /home/sukritchopra/ros2_ws/src/jetrover_description/launch/display.launch.py
+# filepath: /home/your_username/ros2_ws/src/jetrover_description/launch/display.launch.py
 import os
 from ament_index_python.packages import get_package_share_directory
 
@@ -146,7 +146,7 @@ cd ~/ros2_ws
 source install/setup.bash
 export LIDAR_TYPE=ouster
 export MACHINE_TYPE=jetrover
-ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro /home/sukritchopra/ros2_ws/src/jetrover_description/urdf/jetrover.xacro LIDAR_TYPE:=ouster MACHINE_TYPE:=jetrover)"
+ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro /home/your_username/ros2_ws/src/jetrover_description/urdf/jetrover.xacro LIDAR_TYPE:=ouster MACHINE_TYPE:=jetrover)"
 
 # Terminal 2: Start joint state publisher GUI
 cd ~/ros2_ws
@@ -168,7 +168,7 @@ cd ~/ros2_ws
 source install/setup.bash
 
 # View the arm URDF directly
-ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro /home/sukritchopra/ros2_ws/src/jetrover_description/urdf/arm.urdf.xacro)"
+ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro /home/your_username/ros2_ws/src/jetrover_description/urdf/arm.urdf.xacro)"
 
 # In another terminal
 ros2 run joint_state_publisher_gui joint_state_publisher_gui
@@ -222,8 +222,8 @@ Once RViz opens:
 
 4. **Environment variables not set:**
    ```bash
-   export LIDAR_TYPE=ouster
-   export MACHINE_TYPE=jetrover
+   export LIDAR_TYPE=A1
+   export MACHINE_TYPE=JetRover_Mecanum
    ```
 
 ### Verification Commands:
@@ -236,7 +236,7 @@ ros2 pkg list | grep jetrover
 ros2 pkg executables jetrover_description
 
 # Test xacro conversion manually
-xacro src/jetrover_description/urdf/jetrover.xacro LIDAR_TYPE:=ouster MACHINE_TYPE:=jetrover
+xacro src/jetrover_description/urdf/jetrover.xacro LIDAR_TYPE:=ouster MACHINE_TYPE:=JetRover_Mecanum
 ```
 
 ## Package Structure
@@ -302,19 +302,17 @@ cd ~/ros2_ws/src/jetrover_description/models/jetrover
 
 ```bash
 gz sim jetrover_world.sdf
+or 
+cd /home/your_user_name/ros2_ws/src/jetrover_description/models/jetrover
 ```
 
-#### To launch only the arm model (no gravity, arm model only):
 
-```bash
-gz sim model.sdf
-```
 
 #### To launch Full TicTacToe Setup:
 
 ```bash
 cd ~/ros2_ws/src/jetrover_description/models/jetrover
-gz FINAL_PROTO.sdf
+gz WORKINGPROTO_CorrectDim1.sdf
 ```
 
 > **Note:**  
