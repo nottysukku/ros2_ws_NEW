@@ -188,21 +188,24 @@
           </inertia>
           <pose>0 0 0 0 0 0</pose>
         </inertial>
-        <visual name='wall_visual'>
+        <visual name='wall_base'>
+          <pose>0 0 -0.15 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.34999999999999998 0.050000000000000003 0.59999999999999998</size>
+              <size>0.34999999999999998 0.050000000000000003 0.59999999999999999</size>
             </box>
           </geometry>
           <material>
-            <ambient>1 1 0 1</ambient>
-            <diffuse>1 1 0 1</diffuse>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
           </material>
         </visual>
-        <collision name='wall_collision'>
+     
+        <collision name='wall_base_collision'>
+          <pose>0 0 -0.15 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.34999999999999998 0.050000000000000003 0.59999999999999998</size>
+              <size>0.34999999999999998 0.050000000000000003 0.59999999999999999</size>
             </box>
           </geometry>
           <surface>
@@ -213,6 +216,7 @@
             <contact/>
           </surface>
         </collision>
+    
         <enable_wind>false</enable_wind>
         <pose>0 0 0 0 0 0</pose>
       </link>
@@ -234,22 +238,26 @@
           </inertia>
           <pose>0 0 0 0 0 0</pose>
         </inertial>
+        <!-- Main board visual -->
         <visual name='board_visual'>
+          <pose>0 0 0 0 0 0</pose>
           <geometry>
             <box>
               <size>0.20000000000000001 0.20000000000000001 0.025000000000000001</size>
             </box>
           </geometry>
           <material>
-            <ambient>0.200000003 0.200000003 0.800000012 1</ambient>
-            <diffuse>0.200000003 0.200000003 0.800000012 1</diffuse>
+            <ambient>1.000000003 1.000000003 0.000000012 0.8</ambient>
+            <diffuse>1.000000003 1.000000003 0.0000000012 0.8</diffuse>
           </material>
         </visual>
+        
+        <!-- Grid lines - raised to wall height for structural integrity -->
         <visual name='grid_line1'>
-          <pose>-0.033300000000000003 0 0.012500000000000001 0 0 0</pose>
+          <pose>-0.033300000000000003 0 0.025 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 0.20000000000000001 0.002</size>
+              <size>0.01 0.20000000000000001 0.05</size>
             </box>
           </geometry>
           <material>
@@ -258,10 +266,10 @@
           </material>
         </visual>
         <visual name='grid_line2'>
-          <pose>0.033300000000000003 0 0.012500000000000001 0 0 0</pose>
+          <pose>0.033300000000000003 0 0.025 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 0.20000000000000001 0.002</size>
+              <size>0.01 0.20000000000000001 0.05</size>
             </box>
           </geometry>
           <material>
@@ -270,10 +278,10 @@
           </material>
         </visual>
         <visual name='grid_line3'>
-          <pose>0 -0.033300000000000003 0.012500000000000001 0 0 0</pose>
+          <pose>0 -0.033300000000000003 0.025 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.20000000000000001 0.01 0.002</size>
+              <size>0.20000000000000001 0.01 0.05</size>
             </box>
           </geometry>
           <material>
@@ -282,10 +290,10 @@
           </material>
         </visual>
         <visual name='grid_line4'>
-          <pose>0 0.033300000000000003 0.012500000000000001 0 0 0</pose>
+          <pose>0 0.033300000000000003 0.025 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.20000000000000001 0.01 0.002</size>
+              <size>0.20000000000000001 0.01 0.05</size>
             </box>
           </geometry>
           <material>
@@ -293,7 +301,10 @@
             <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
           </material>
         </visual>
+        
+        <!-- Main board collision - full thickness solid board -->
         <collision name='board_collision'>
+          <pose>0 0 0 0 0 0</pose>
           <geometry>
             <box>
               <size>0.20000000000000001 0.20000000000000001 0.025000000000000001</size>
@@ -307,6 +318,299 @@
             <contact/>
           </surface>
         </collision>
+        
+        <!-- Grid line collisions - structural elements -->
+        <collision name='grid_line1_collision'>
+          <pose>-0.033300000000000003 0 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.20000000000000001 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <collision name='grid_line2_collision'>
+          <pose>0.033300000000000003 0 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.20000000000000001 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <collision name='grid_line3_collision'>
+          <pose>0 -0.033300000000000003 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.20000000000000001 0.01 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <collision name='grid_line4_collision'>
+          <pose>0 0.033300000000000003 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.20000000000000001 0.01 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        
+        <!-- Perimeter walls to contain game pieces - connected to board -->
+        <!-- North wall - extended to connect with grid -->
+        <collision name='wall_north'>
+          <pose>0 0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.23 0.015 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='wall_north_visual'>
+          <pose>0 0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.23 0.015 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
+        <!-- South wall - extended to connect with grid -->
+        <collision name='wall_south'>
+          <pose>0 -0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.23 0.015 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='wall_south_visual'>
+          <pose>0 -0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.23 0.015 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
+        <!-- East wall - extended to connect with grid -->
+        <collision name='wall_east'>
+          <pose>0.1075 0 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.2 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='wall_east_visual'>
+          <pose>0.1075 0 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.2 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
+        <!-- West wall - extended to connect with grid -->
+        <collision name='wall_west'>
+          <pose>-0.1075 0 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.2 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='wall_west_visual'>
+          <pose>-0.1075 0 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.2 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
+        <!-- Corner reinforcements for structural integrity -->
+        <collision name='corner_ne'>
+          <pose>0.1075 0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='corner_ne_visual'>
+          <pose>0.1075 0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name='corner_nw'>
+          <pose>-0.1075 0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='corner_nw_visual'>
+          <pose>-0.1075 0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name='corner_se'>
+          <pose>0.1075 -0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='corner_se_visual'>
+          <pose>0.1075 -0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
+        <collision name='corner_sw'>
+          <pose>-0.1075 -0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name='corner_sw_visual'>
+          <pose>-0.1075 -0.1075 0.025 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.015 0.015 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+          </material>
+        </visual>
+        
         <enable_wind>false</enable_wind>
         <pose>0 0 0 0 0 0</pose>
       </link>
@@ -331,18 +635,18 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>0 0 1 1</ambient>
-            <diffuse>0 0 1 1</diffuse>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
           </material>
         </visual>
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -377,18 +681,18 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>0 0 1 1</ambient>
-            <diffuse>0 0 1 1</diffuse>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
           </material>
         </visual>
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -423,18 +727,18 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>0 0 1 1</ambient>
-            <diffuse>0 0 1 1</diffuse>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
           </material>
         </visual>
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -469,18 +773,18 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>0 0 1 1</ambient>
-            <diffuse>0 0 1 1</diffuse>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
           </material>
         </visual>
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -515,18 +819,18 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>0 0 1 1</ambient>
-            <diffuse>0 0 1 1</diffuse>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
           </material>
         </visual>
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -559,10 +863,10 @@
           <pose>0 0 0 0 0 0</pose>
         </inertial>
         <visual name='front_wall'>
-          <pose>0.067500000000000004 0 0 0 0 0</pose>
+          <pose>0.065 0 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 0.13500000000000001 0.074999999999999997</size>
+              <size>0.01 0.13 0.105</size>
             </box>
           </geometry>
           <material>
@@ -571,10 +875,10 @@
           </material>
         </visual>
         <collision name='front_wall_collision'>
-          <pose>0.067500000000000004 0 0 0 0 0</pose>
+          <pose>0.065 0 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 0.13500000000000001 0.074999999999999997</size>
+              <size>0.01 0.13 0.105</size>
             </box>
           </geometry>
           <surface>
@@ -586,10 +890,10 @@
           </surface>
         </collision>
         <visual name='back_wall'>
-          <pose>-0.067500000000000004 0 0 0 0 0</pose>
+          <pose>-0.065 0 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 0.13500000000000001 0.074999999999999997</size>
+              <size>0.01 0.13 0.105</size>
             </box>
           </geometry>
           <material>
@@ -598,10 +902,10 @@
           </material>
         </visual>
         <collision name='back_wall_collision'>
-          <pose>-0.067500000000000004 0 0 0 0 0</pose>
+          <pose>-0.065 0 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.01 0.13500000000000001 0.074999999999999997</size>
+              <size>0.01 0.13 0.105</size>
             </box>
           </geometry>
           <surface>
@@ -613,10 +917,10 @@
           </surface>
         </collision>
         <visual name='left_wall'>
-          <pose>0 0.067500000000000004 0 0 0 0</pose>
+          <pose>0 0.065 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.13500000000000001 0.01 0.074999999999999997</size>
+              <size>0.13 0.01 0.105</size>
             </box>
           </geometry>
           <material>
@@ -625,10 +929,10 @@
           </material>
         </visual>
         <collision name='left_wall_collision'>
-          <pose>0 0.067500000000000004 0 0 0 0</pose>
+          <pose>0 0.065 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.13500000000000001 0.01 0.074999999999999997</size>
+              <size>0.13 0.01 0.105</size>
             </box>
           </geometry>
           <surface>
@@ -640,10 +944,10 @@
           </surface>
         </collision>
         <visual name='right_wall'>
-          <pose>0 -0.067500000000000004 0 0 0 0</pose>
+          <pose>0 -0.065 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.13500000000000001 0.01 0.074999999999999997</size>
+              <size>0.13 0.01 0.105</size>
             </box>
           </geometry>
           <material>
@@ -652,10 +956,10 @@
           </material>
         </visual>
         <collision name='right_wall_collision'>
-          <pose>0 -0.067500000000000004 0 0 0 0</pose>
+          <pose>0 -0.065 0 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.13500000000000001 0.01 0.074999999999999997</size>
+              <size>0.13 0.01 0.105</size>
             </box>
           </geometry>
           <surface>
@@ -671,6 +975,8 @@
       </link>
       <self_collide>false</self_collide>
     </model>
+
+
     <model name='x_piece_1'>
       <static>false</static>
       <pose>0.16868799924850464 -0.091408386826515198 0.41999901327813727 0 0 0</pose>
@@ -690,18 +996,18 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>1 1 1 0.8</ambient>
+            <diffuse>1 1 1 0.8</diffuse>
           </material>
         </visual>
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -736,18 +1042,18 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>1 1 1 0.8</ambient>
+            <diffuse>1 1 1 0.8</diffuse>
           </material>
         </visual>
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -782,18 +1088,18 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>1 1 1 0.8</ambient>
+            <diffuse>1 1 1 0.8</diffuse>
           </material>
         </visual>
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -828,18 +1134,18 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>1 1 1 0.8</ambient>
+            <diffuse>1 1 1 0.8</diffuse>
           </material>
         </visual>
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -874,18 +1180,18 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>1 1 1 0.8</ambient>
+            <diffuse>1 1 1 0.8</diffuse>
           </material>
         </visual>
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.015</radius>
             </sphere>
           </geometry>
           <surface>
@@ -943,8 +1249,8 @@
             </cylinder>
           </geometry>
           <material>
-            <diffuse>1 0 0 1</diffuse>
-            <ambient>1 0 0 1</ambient>
+            <diffuse>0 1 0.4 1</diffuse>
+            <ambient>0 1 0.4 1</ambient>
           </material>
         </visual>
         <enable_wind>false</enable_wind>
