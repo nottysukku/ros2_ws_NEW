@@ -14,6 +14,8 @@ setup(
         (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.*'))),
         (os.path.join('share', package_name, 'urdf'), glob(os.path.join('urdf', '*.*'))),
         (os.path.join('share', package_name, 'rviz'), glob(os.path.join('rviz', '*.*'))),
+        (os.path.join('share', package_name, 'scripts'), glob(os.path.join('scripts', '*.*'))),
+        (os.path.join('share', package_name, 'models/jetrover'), glob(os.path.join('models/jetrover', '*.*'))),
         (os.path.join('share', package_name, 'meshes/acker'), glob(os.path.join('meshes/acker', '*.*'))),
         (os.path.join('share', package_name, 'meshes/arm'), glob(os.path.join('meshes/arm', '*.*'))),
         (os.path.join('share', package_name, 'meshes/common'), glob(os.path.join('meshes/common', '*.*'))),
@@ -26,11 +28,13 @@ setup(
     zip_safe=True,
     maintainer='ubuntu',
     maintainer_email='1270161395@qq.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='JetRover robot description package with Gazebo simulation support',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'joint_demo = scripts.joint_controller_demo:main',
+            'manual_control = scripts.manual_joint_control:main',
         ],
     },
 )

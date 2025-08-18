@@ -1,0 +1,109 @@
+[1.126s] Invoking command in '/home/sukritchopra/ros2_ws/src/jetrover_description': PYTHONPATH=/home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/jetrover_description build --build-base /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/build install --record /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/install.log --single-version-externally-managed install_data
+[1.383s] running egg_info
+[1.383s] creating build/jetrover_description/jetrover_description.egg-info
+[1.403s] writing build/jetrover_description/jetrover_description.egg-info/PKG-INFO
+[1.403s] writing dependency_links to build/jetrover_description/jetrover_description.egg-info/dependency_links.txt
+[1.403s] writing requirements to build/jetrover_description/jetrover_description.egg-info/requires.txt
+[1.404s] writing top-level names to build/jetrover_description/jetrover_description.egg-info/top_level.txt
+[1.404s] writing manifest file 'build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'
+[1.444s] reading manifest file 'build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'
+[1.445s] writing manifest file 'build/jetrover_description/jetrover_description.egg-info/SOURCES.txt'
+[1.445s] running build
+[1.445s] running build_py
+[1.445s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/build
+[1.446s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/build/lib
+[1.446s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/build/lib/jetrover_description
+[1.447s] copying jetrover_description/__init__.py -> /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/build/lib/jetrover_description
+[1.447s] running install
+[1.452s] running install_lib
+[1.472s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/lib/python3.12/site-packages/jetrover_description
+[1.472s] copying /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/build/lib/jetrover_description/__init__.py -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/lib/python3.12/site-packages/jetrover_description
+[1.473s] byte-compiling /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/lib/python3.12/site-packages/jetrover_description/__init__.py to __init__.cpython-312.pyc
+[1.474s] running install_data
+[1.474s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/ament_index
+[1.474s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/ament_index/resource_index
+[1.475s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/ament_index/resource_index/packages
+[1.475s] copying resource/jetrover_description -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/ament_index/resource_index/packages
+[1.476s] copying package.xml -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description
+[1.476s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/launch
+[1.476s] copying launch/display.launch.py -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/launch
+[1.477s] copying launch/robot_description.launch.py -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/launch
+[1.477s] copying launch/rviz.launch.py -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/launch
+[1.478s] copying launch/gazebo.launch.py -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/launch
+[1.478s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.479s] copying urdf/car_mecanum.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.479s] copying urdf/jetrover.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.480s] copying urdf/imu.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.480s] copying urdf/inertial_matrix.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.481s] copying urdf/lidar.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.481s] copying urdf/gripper.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.482s] copying urdf/common.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.482s] copying urdf/lidar_g4.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.483s] copying urdf/lidar_a1.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.483s] copying urdf/connect.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.484s] copying urdf/car_tank.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.484s] copying urdf/car_acker.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.485s] copying urdf/depth_camera.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.485s] copying urdf/materials.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.486s] copying urdf/arm.urdf.xacro -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/urdf
+[1.486s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/rviz
+[1.487s] copying rviz/view.rviz -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/rviz
+[1.487s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes
+[1.488s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/acker
+[1.488s] copying meshes/acker/base_green_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/acker
+[1.490s] copying meshes/acker/wheel_right_back_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/acker
+[1.492s] copying meshes/acker/wheel_left_back_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/acker
+[1.495s] copying meshes/acker/wheel_right_front_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/acker
+[1.498s] copying meshes/acker/wheel_left_front_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/acker
+[1.501s] copying meshes/acker/base_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/acker
+[1.502s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.503s] copying meshes/arm/link3_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.504s] copying meshes/arm/depth_cam_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.506s] copying meshes/arm/link4.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.507s] copying meshes/arm/servo_link1_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.508s] copying meshes/arm/link1.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.509s] copying meshes/arm/link3.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.511s] copying meshes/arm/depth_cam_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.512s] copying meshes/arm/gripper_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.514s] copying meshes/arm/gripper_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.515s] copying meshes/arm/link2.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.516s] copying meshes/arm/link2_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.518s] copying meshes/arm/link4_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.519s] copying meshes/arm/servo_link2.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.520s] copying meshes/arm/servo_link2_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.520s] copying meshes/arm/link5.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.521s] copying meshes/arm/servo_link1.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.523s] copying meshes/arm/camera_connect_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/arm
+[1.523s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/common
+[1.524s] copying meshes/common/back_shell_green_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/common
+[1.526s] copying meshes/common/back_shell_black_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/common
+[1.527s] copying meshes/common/lidar_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/common
+[1.528s] copying meshes/common/back_shell_black_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/common
+[1.529s] copying meshes/common/imu_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/common
+[1.530s] copying meshes/common/back_shell_green_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/common
+[1.531s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/gripper
+[1.532s] copying meshes/gripper/r_in_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/gripper
+[1.532s] copying meshes/gripper/l_out_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/gripper
+[1.534s] copying meshes/gripper/r_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/gripper
+[1.534s] copying meshes/gripper/l_in_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/gripper
+[1.535s] copying meshes/gripper/l_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/gripper
+[1.535s] copying meshes/gripper/r_out_link.STL -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/gripper
+[1.536s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.537s] copying meshes/mecanum/base_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.538s] copying meshes/mecanum/wheel_right_front_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.540s] copying meshes/mecanum/wheel_right_back_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.542s] copying meshes/mecanum/wheel_left_back_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.544s] copying meshes/mecanum/wheel_left_back_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.545s] copying meshes/mecanum/wheel_right_front_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.547s] copying meshes/mecanum/wheel_left_front_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.549s] copying meshes/mecanum/base_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.552s] copying meshes/mecanum/wheel_right_back_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.552s] copying meshes/mecanum/wheel_left_front_link_collision.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/mecanum
+[1.553s] creating /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/tank
+[1.554s] copying meshes/tank/base_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/tank
+[1.557s] copying meshes/tank/wheel_link.stl -> /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/share/jetrover_description/meshes/tank
+[1.575s] running install_egg_info
+[1.595s] Copying build/jetrover_description/jetrover_description.egg-info to /home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/lib/python3.12/site-packages/jetrover_description-0.0.0-py3.12.egg-info
+[1.596s] running install_scripts
+[1.727s] writing list of installed files to '/home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/install.log'
+[1.759s] Invoked command in '/home/sukritchopra/ros2_ws/src/jetrover_description' returned '0': PYTHONPATH=/home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sukritchopra/ros2_ws/src/jetrover_description/install/jetrover_description/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/jetrover_description build --build-base /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/build install --record /home/sukritchopra/ros2_ws/src/jetrover_description/build/jetrover_description/install.log --single-version-externally-managed install_data

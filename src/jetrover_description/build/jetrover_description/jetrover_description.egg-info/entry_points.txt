@@ -1,0 +1,3 @@
+[console_scripts]
+joint_demo = scripts.joint_controller_demo:main
+manual_control = scripts.manual_joint_control:main
