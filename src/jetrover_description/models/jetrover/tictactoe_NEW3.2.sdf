@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <sdf version='1.10'>
   <world name='WORKINGPROTO'>
     <physics name='1ms' type='ignored'>
@@ -322,7 +321,7 @@
     </model>
     <model name='enclosure_floor'>
       <static>true</static>
-      <pose>0.18506811559200287 0.086792588233947754 0.42550107836723328 1.5699999781232277 -7.7078375414138466e-06 1.5605699752823263</pose>
+      <pose>0.18506811559200287 0.086792588233947754 0.42550107836723328 1.5699999781232279 -7.7078375412473131e-06 1.5605699752823252</pose>
       <link name='enclosure_floor_link'>
         <inertial>
           <mass>20000000</mass>
@@ -370,7 +369,7 @@
     </model>
     <model name='tictactoe_game'>
       <static>true</static>
-      <pose>-0.12158672511577606 -0.071379348635673523 0.44987404346466064 8.8383396642251733e-08 9.0853599959604141e-07 -0.00040046500550608281</pose>
+      <pose>-0.12158672511577606 -0.071379348635673523 0.44987404346466064 8.8383401357298737e-08 9.0853604816521978e-07 -0.00040046502691401591</pose>
       <link name='board'>
         <inertial>
           <mass>2</mass>
@@ -420,14 +419,14 @@
     </model>
     <model name='o_piece_1'>
       <static>false</static>
-      <pose>0.048889998346567147 -0.15959000587463376 0.43411752581596375 1.0995602395153419 0.00095126979915065952 0.17904404388948791</pose>
+      <pose>0.048477023088733043 -0.15692468629032857 0.43195299651561736 0.9091730242308782 -0.10954491006127365 0.17106002913542745</pose>
       <link name='o_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -466,14 +465,14 @@
     </model>
     <model name='o_piece_2'>
       <static>false</static>
-      <pose>-0.031720213592052446 -0.16102899610996241 0.44032600522041315 0.088685103219420844 -0.13121000430286445 -0.045394301521805437</pose>
+      <pose>-0.031521857994226035 -0.15650868618131444 0.43195320009682348 -0.21168999796319291 -0.050448533902762556 -0.0024304051447464857</pose>
       <link name='o_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -512,14 +511,14 @@
     </model>
     <model name='o_piece_3'>
       <static>false</static>
-      <pose>-0.11018435657024386 -0.15712963044643399 0.43295127153396612 -0.35592000756351155 0.16494999421821305 -0.017814999333957932</pose>
+      <pose>-0.11152079698790619 -0.15609226140093341 0.43195298620428252 -0.41331749588265765 0.085882679913289628 -0.016825383555558272</pose>
       <link name='o_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -558,14 +557,14 @@
     </model>
     <model name='o_piece_4'>
       <static>false</static>
-      <pose>0.010320239700377017 -0.16068400442600247 0.43362399935722357 -2.5435899730425939 -0.28917902160370917 -2.2810399783643338</pose>
+      <pose>0.008477577747482699 -0.15671655438235732 0.43195301939255143 -2.2347077633945363 -0.38917057105508956 -2.4056092857890885</pose>
       <link name='o_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -604,14 +603,14 @@
     </model>
     <model name='o_piece_5'>
       <static>false</static>
-      <pose>-0.070165134966373416 -0.16201399266719821 0.43920800089836121 0.029897100712414165 -0.27779300828984804 0.062587499398944174</pose>
+      <pose>-0.07152129757263441 -0.15630033966032877 0.43195292534871527 -0.38343581957175299 -0.42782620823574358 0.31889235027262891</pose>
       <link name='o_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -779,14 +778,14 @@
     </model>
     <model name='x_piece_1'>
       <static>false</static>
-      <pose>0.10719395428895956 -0.010332060977816578 0.50374704599380493 0.12240500700939549 0.28435399921445698 -0.033669800754770773</pose>
+      <pose>0.11255642085011446 -0.015397750258120501 0.48468982154198204 0.4060868204715784 0.55526586937786371 -0.19920498839105838</pose>
       <link name='x_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -825,14 +824,14 @@
     </model>
     <model name='x_piece_2'>
       <static>false</static>
-      <pose>0.11591972410678866 0.068786889314651503 0.48768323659896856 0.018095103556178656 0.074140713539058281 -0.060699815093356625</pose>
+      <pose>0.11251927767090406 0.064602402677726878 0.48468971360162372 0.30033469804466995 -0.10828330096533743 -0.036868078294457152</pose>
       <link name='x_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -871,14 +870,14 @@
     </model>
     <model name='x_piece_3'>
       <static>false</static>
-      <pose>0.10787877440452573 0.10182945430278779 0.50768119096755993 -0.48764598680590604 0.13936599838416033 -0.19172599966152221</pose>
+      <pose>0.1125006962445662 0.10460244848639624 0.48468983162344148 -0.0071506214883524074 0.68926040925369969 -0.2233334374587844</pose>
       <link name='x_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -917,14 +916,14 @@
     </model>
     <model name='x_piece_4'>
       <static>false</static>
-      <pose>0.1195742338895798 -0.051368568092584603 0.50086212158203125 0.21102500270390748 0.11792400144464195 -0.0159719997788191</pose>
+      <pose>0.11120218708967618 -0.055356134278603995 0.48590401422922663 0.2699362695014666 -0.23619410154860115 0.45295520160432923</pose>
       <link name='x_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -963,14 +962,14 @@
     </model>
     <model name='x_piece_5'>
       <static>false</static>
-      <pose>0.10989312827587125 0.028121132403612175 0.48991683125495911 -0.29124505965303693 0.052572610674419755 -0.043051709744201805</pose>
+      <pose>0.11253852911595442 0.024601982784493048 0.48468895743659063 -0.15916234341002178 0.26284965452558512 0.092250234882021151</pose>
       <link name='x_link'>
         <inertial>
-          <mass>0.0027</mass>
+          <mass>0.0027000000000000001</mass>
           <inertia>
-            <ixx>0.00001</ixx>
-            <iyy>0.00001</iyy>
-            <izz>0.00001</izz>
+            <ixx>1.0000000000000001e-05</ixx>
+            <iyy>1.0000000000000001e-05</iyy>
+            <izz>1.0000000000000001e-05</izz>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyz>0</iyz>
@@ -1108,7 +1107,7 @@
       <self_collide>false</self_collide>
     </model>
     <model name='jetrover'>
-      <pose>0 -0.44 0.69999999999999996 0 0 0</pose>
+      <pose>-0.01999999955296515 0.21999999880790708 0.68000000715255737 -1.5563025624308109 -0.0024779792138049429 -3.0779681277018618</pose>
       <static>false</static>
       <self_collide>false</self_collide>
       <link name='base_footprint'>
@@ -1157,11 +1156,11 @@
         <pose>0 0 0 0 0 0</pose>
       </link>
       <joint name='joint1' type='revolute'>
-        <pose>0 3.4694469519536142e-18 -1.3877787807814457e-17 6.3527471044072525e-22 4.2351647362715017e-22 1.3452465257518244e-43</pose>
+        <pose>0 6.0715321659188248e-18 -1.3877787807814457e-17 1.0058516248644817e-21 2.1175823681357508e-22 1.064986832886861e-43</pose>
         <parent>base_footprint</parent>
         <child>link1</child>
         <axis>
-          <xyz>1.0587911838213564e-22 4.7645603283054394e-22 -1</xyz>
+          <xyz>1.0587911838213564e-22 6.8821426964411903e-22 -1</xyz>
           <limit>
             <lower>-2.0899999999999999</lower>
             <upper>2.0899999999999999</upper>
@@ -1179,7 +1178,7 @@
         </axis>
       </joint>
       <link name='link1'>
-        <pose>0.005132900949425437 -0.010000079355391072 0.073493764024506802 1.5225500856565786e-06 -9.2349101709988409e-07 1.5893335189404207</pose>
+        <pose>0.0051329009494255427 -0.010000079355391045 0.073493764024507025 1.5225728643097179e-06 -9.2345346125064529e-07 1.5893088526251711</pose>
         <inertial>
           <pose>8.4882317065151008e-05 -0.0018903126840200471 0.020339854275225711 0 0 0</pose>
           <mass>0.030629351759666201</mass>
@@ -1239,7 +1238,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint2' type='revolute'>
-        <pose>1.3877787807814457e-17 0 1.5265566588595902e-16 5.0306980803327406e-17 -4.5102810375396984e-17 -1.1344931078656061e-33</pose>
+        <pose>1.214306433183765e-17 0 1.2490009027033011e-16 5.2041704279304213e-17 -4.3368086899420177e-17 -1.128474576789396e-33</pose>
         <parent>link1</parent>
         <child>link2</child>
         <axis>
@@ -1261,7 +1260,7 @@
         </axis>
       </joint>
       <link name='link2'>
-        <pose>0.005132953081118847 -0.010000109668119121 0.1073585652409218 1.5228094400053888e-06 0.018456126532790686 1.5893335470453973</pose>
+        <pose>0.0051329530811187879 -0.01000010966811915 0.10735856524092202 1.5228445320564319e-06 0.018888956059811918 1.5893088813898115</pose>
         <inertial>
           <pose>0.00015629957042515699 -0.00045511369991391599 0.071772702851197495 0 0 0</pose>
           <mass>0.0329250074531705</mass>
@@ -1299,7 +1298,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint3' type='revolute'>
-        <pose>-1.1102230246251565e-16 -6.2450045135165055e-17 1.6653345369377348e-16 0 0 0</pose>
+        <pose>-1.1275702593849246e-16 -6.2450045135165055e-17 1.6653345369377348e-16 0 0 0</pose>
         <parent>link2</parent>
         <child>link3</child>
         <axis>
@@ -1321,7 +1320,7 @@
         </axis>
       </joint>
       <link name='link3'>
-        <pose>0.005088878534764623 -0.007612125650596406 0.236752970789322 1.5226224841665172e-06 0.0097513692926172006 1.5893335337892445</pose>
+        <pose>0.0050879006949672498 -0.0075561286669080241 0.23675192490286751 1.5226445119522995e-06 0.0097006183719710211 1.589308867396938</pose>
         <inertial>
           <pose>0.00012845644092569799 -0.00076142462273371704 0.071772743785429 0 0 0</pose>
           <mass>0.0329250074463074</mass>
@@ -1359,7 +1358,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint4' type='revolute'>
-        <pose>-1.3877787807814457e-17 3.4694469519536142e-18 0 0 0 0</pose>
+        <pose>-1.6913553890773869e-17 8.6736173798840355e-18 1.1102230246251565e-16 0 0 0</pose>
         <parent>link3</parent>
         <child>link4</child>
         <axis>
@@ -1381,7 +1380,7 @@
         </axis>
       </joint>
       <link name='link4'>
-        <pose>0.005065678487651281 -0.00635009646478865 0.36619144763109679 1.5226006708338467e-06 -0.0081503572255031947 1.5893335065322209</pose>
+        <pose>0.0050648533846377082 -0.0063006669070259091 0.36619046563791124 1.5226309316134142e-06 -0.0087324129465214673 1.5893088393305006</pose>
         <inertial>
           <pose>-0.024155385718921799 0.0003017349751323721 0.048529459632962173 0 0 0</pose>
           <mass>0.034930330045039162</mass>
@@ -1441,11 +1440,11 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint5' type='revolute'>
-        <pose>1.7347234759768071e-17 -7.6327832942979512e-17 1.6653345369377348e-16 -2.7494689467874592e-17 6.9388939039072299e-18 5.5511151231257839e-17</pose>
+        <pose>1.9081958235744878e-17 -7.5460471204991109e-17 2.2204460492503131e-16 -2.9226024812062379e-17 6.9931040125315051e-18 8.3266726846886741e-17</pose>
         <parent>link4</parent>
         <child>link5</child>
         <axis>
-          <xyz>-2.087089182034596e-17 -5.3556199188994902e-17 -1</xyz>
+          <xyz>-2.0979312037594511e-17 -5.5290922664971709e-17 -1</xyz>
           <limit>
             <lower>-2.0899999999999999</lower>
             <upper>2.0899999999999999</upper>
@@ -1463,7 +1462,7 @@
         </axis>
       </joint>
       <link name='link5'>
-        <pose>0.005073992461925668 -0.00679407235305493 0.42067297197316811 0.0081272287972167651 -0.00061358421392257478 0.0940767327924006</pose>
+        <pose>0.0050737434294811472 -0.0067763487723634386 0.42067172228712335 0.0087062794135607299 -0.00067509145616854625 0.096070831108654539</pose>
         <inertial>
           <pose>0.013745583285676721 -0.0029797500659027461 0.029288990452975349 0 0 0</pose>
           <mass>0.01851660201761849</mass>
@@ -1501,79 +1500,92 @@
         <enable_wind>false</enable_wind>
       </link>
       <link name='gripper_base_link'>
-        <pose>0.005188510065892979 -0.007068514267138364 0.43107460778457962 0 0 0</pose>
+        <pose>0.0051887490995819272 -0.0070566183597911003 0.43107319731969784 0.00058226782951876122 -6.8405070777945187e-06 0.0019944694289431466</pose>
         <inertial>
           <pose>0 0 0.02 0 0 0</pose>
-          <mass>0.500</mass>
+          <mass>0.5</mass>
           <inertia>
             <ixx>0.001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyy>0.001</iyy>
             <iyz>0</iyz>
-            <izz>0.0008</izz>
+            <izz>0.00080000000000000004</izz>
           </inertia>
         </inertial>
         <collision name='gripper_base_collision'>
           <pose>0 0 0.02 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.060 0.025 0.04</size>
+              <size>0.059999999999999998 0.025000000000000001 0.040000000000000001</size>
             </box>
           </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
         </collision>
         <visual name='gripper_base_visual'>
           <pose>0 0 0.02 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.060 0.025 0.04</size>
+              <size>0.059999999999999998 0.025000000000000001 0.040000000000000001</size>
             </box>
           </geometry>
           <material>
-            <diffuse>0.1 0.1 0.1 1</diffuse>
-            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
           </material>
         </visual>
         <visual name='gripper_extension_visual'>
-          <pose>0 0 0.045 1.5708 0 0</pose>
+          <pose>0 0 0.044999999999999998 1.5708 0 0</pose>
           <geometry>
             <box>
-              <size>0.035 0.035 0.090</size>
+              <size>0.035000000000000003 0.035000000000000003 0.089999999999999997</size>
             </box>
           </geometry>
           <material>
-            <diffuse>0.1 0.1 0.1 1</diffuse>
-            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
           </material>
         </visual>
         <collision name='gripper_extension_collision'>
-          <pose>0 0 0.045 1.5708 0 0</pose>
+          <pose>0 0 0.044999999999999998 1.5708 0 0</pose>
           <geometry>
             <box>
-              <size>0.035 0.035 0.090</size>
+              <size>0.035000000000000003 0.035000000000000003 0.089999999999999997</size>
             </box>
           </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
         </collision>
         <enable_wind>false</enable_wind>
       </link>
       <joint name='gripper_base_joint' type='fixed'>
         <parent>link5</parent>
         <child>gripper_base_link</child>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>8.6736173798840355e-19 0 0 0 3.1763735522036263e-22 0</pose>
       </joint>
-      
       <link name='left_finger_link'>
-        <pose>0.005188510065892979 -0.005 0.46607460778457962 0 0 0</pose>
+        <pose>0.0051843323828684104 -0.0049621843684373168 0.46607442277638084 0.00058226782951944687 -6.8405070650347136e-06 0.0019944694289195596</pose>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
-          <mass>0.050</mass>
+          <mass>0.050000000000000003</mass>
           <inertia>
             <ixx>0.0001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyy>0.0001</iyy>
             <iyz>0</iyz>
-            <izz>0.00008</izz>
+            <izz>8.0000000000000007e-05</izz>
           </inertia>
         </inertial>
         <collision name='left_finger_collision'>
@@ -1587,14 +1599,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>2.0</mu>
-                <mu2>2.0</mu2>
+                <mu>2</mu>
+                <mu2>2</mu2>
               </ode>
             </friction>
             <contact>
               <ode>
                 <soft_cfm>0.001</soft_cfm>
-                <soft_erp>0.8</soft_erp>
+                <soft_erp>0.80000000000000004</soft_erp>
                 <kp>1000000</kp>
                 <kd>1000</kd>
               </ode>
@@ -1610,8 +1622,8 @@
             </mesh>
           </geometry>
           <material>
-            <diffuse>0.1 0.1 0.1 1</diffuse>
-            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
           </material>
         </visual>
         <enable_wind>false</enable_wind>
@@ -1619,38 +1631,37 @@
       <joint name='left_finger_joint' type='prismatic'>
         <parent>gripper_base_link</parent>
         <child>left_finger_link</child>
-        <pose>0 0 0.04 0 0 0</pose>
+        <pose>0 8.6736173798840355e-19 0.039999999999999925 0 3.1763735522036263e-22 0</pose>
         <axis>
           <xyz>0 1 0</xyz>
           <limit>
             <lower>0</lower>
-            <upper>0.03</upper>
+            <upper>0.13</upper>
             <effort>5</effort>
-            <velocity>0.1</velocity>
-            <stiffness>5000</stiffness>
-            <dissipation>5</dissipation>
+            <velocity>0.10000000000000001</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
           </limit>
           <dynamics>
             <spring_reference>0</spring_reference>
-            <spring_stiffness>50</spring_stiffness>
-            <damping>5.0</damping>
-            <friction>1.0</friction>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>5</damping>
+            <friction>1</friction>
           </dynamics>
         </axis>
       </joint>
-      
       <link name='right_finger_link'>
-        <pose>0.005188510065892979 -0.011 0.46607460778457962 0 0 0</pose>
+        <pose>0.005196756396851257 -0.011191396266845954 0.46607079569906562 0.00058226782951944687 -6.8405070650347136e-06 0.0019944694289195596</pose>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
-          <mass>0.050</mass>
+          <mass>0.050000000000000003</mass>
           <inertia>
             <ixx>0.0001</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
             <iyy>0.0001</iyy>
             <iyz>0</iyz>
-            <izz>0.00008</izz>
+            <izz>8.0000000000000007e-05</izz>
           </inertia>
         </inertial>
         <collision name='right_finger_collision'>
@@ -1664,14 +1675,14 @@
           <surface>
             <friction>
               <ode>
-                <mu>2.0</mu>
-                <mu2>2.0</mu2>
+                <mu>2</mu>
+                <mu2>2</mu2>
               </ode>
             </friction>
             <contact>
               <ode>
                 <soft_cfm>0.001</soft_cfm>
-                <soft_erp>0.8</soft_erp>
+                <soft_erp>0.80000000000000004</soft_erp>
                 <kp>1000000</kp>
                 <kd>1000</kd>
               </ode>
@@ -1687,8 +1698,8 @@
             </mesh>
           </geometry>
           <material>
-            <diffuse>0.1 0.1 0.1 1</diffuse>
-            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.100000001 1</diffuse>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
           </material>
         </visual>
         <enable_wind>false</enable_wind>
@@ -1696,23 +1707,22 @@
       <joint name='right_finger_joint' type='prismatic'>
         <parent>gripper_base_link</parent>
         <child>right_finger_link</child>
-        <pose>0 0 0.04 0 0 0</pose>
+        <pose>0 0 0.039999999999999813 0 3.1763735522036263e-22 0</pose>
         <axis>
           <xyz>0 -1 0</xyz>
-          
           <limit>
             <lower>0</lower>
-            <upper>0.03</upper>
+            <upper>0.13</upper>
             <effort>5</effort>
-            <velocity>0.1</velocity>
-            <stiffness>5000</stiffness>
-            <dissipation>5</dissipation>
+            <velocity>0.10000000000000001</velocity>
+            <stiffness>100000000</stiffness>
+            <dissipation>1</dissipation>
           </limit>
           <dynamics>
             <spring_reference>0</spring_reference>
-            <spring_stiffness>50</spring_stiffness>
-            <damping>5.0</damping>
-            <friction>1.0</friction>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>5</damping>
+            <friction>1</friction>
           </dynamics>
         </axis>
       </joint>
@@ -1775,7 +1785,6 @@
         <i_gain>0.2</i_gain>
         <d_gain>5.0</d_gain>
       </plugin>
-      
       <plugin name='gz::sim::systems::JointPositionController' filename='gz-sim-joint-position-controller-system'>
         <joint_name>left_finger_joint</joint_name>
         <initial_position>0.0</initial_position>
@@ -1783,7 +1792,6 @@
         <i_gain>0.5</i_gain>
         <d_gain>5.0</d_gain>
       </plugin>
-      
       <plugin name='gz::sim::systems::JointPositionController' filename='gz-sim-joint-position-controller-system'>
         <joint_name>right_finger_joint</joint_name>
         <initial_position>0.0</initial_position>
