@@ -1563,7 +1563,7 @@
       </joint>
       
       <link name='left_finger_link'>
-        <pose>0.005188510065892979 -0.005068514267138364 0.46607460778457962 0 0 0</pose>
+        <pose>0.005188510065892979 -0.005 0.46607460778457962 0 0 0</pose>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
           <mass>0.050</mass>
@@ -1584,6 +1584,22 @@
               <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_out_link.STL</uri>
             </mesh>
           </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>2.0</mu>
+                <mu2>2.0</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <soft_cfm>0.001</soft_cfm>
+                <soft_erp>0.8</soft_erp>
+                <kp>1000000</kp>
+                <kd>1000</kd>
+              </ode>
+            </contact>
+          </surface>
         </collision>
         <visual name='left_finger_visual'>
           <pose>0 0 0.055 0 0 0</pose>
@@ -1624,7 +1640,7 @@
       </joint>
       
       <link name='right_finger_link'>
-        <pose>0.005188510065892979 -0.009568514267138364 0.46607460778457962 0 0 0</pose>
+        <pose>0.005188510065892979 -0.011 0.46607460778457962 0 0 0</pose>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
           <mass>0.050</mass>
@@ -1645,6 +1661,22 @@
               <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_out_link.STL</uri>
             </mesh>
           </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>2.0</mu>
+                <mu2>2.0</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <soft_cfm>0.001</soft_cfm>
+                <soft_erp>0.8</soft_erp>
+                <kp>1000000</kp>
+                <kd>1000</kd>
+              </ode>
+            </contact>
+          </surface>
         </collision>
         <visual name='right_finger_visual'>
           <pose>0 0 0.055 0 0 0</pose>
