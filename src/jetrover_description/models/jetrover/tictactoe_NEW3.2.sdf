@@ -1638,17 +1638,17 @@
           <xyz>0 1 0</xyz>
           <limit>
             <lower>0</lower>
-            <upper>0.03</upper>
-            <effort>25</effort>
-            <velocity>0.10000000000000001</velocity>
-            <stiffness>100000000</stiffness>
+            <upper>0.15</upper>
+            <effort>200</effort>
+            <velocity>1.0</velocity>
+            <stiffness>50000</stiffness>
             <dissipation>1</dissipation>
           </limit>
           <dynamics>
             <spring_reference>0</spring_reference>
-            <spring_stiffness>0</spring_stiffness>
-            <damping>5</damping>
-            <friction>1</friction>
+            <spring_stiffness>1000</spring_stiffness>
+            <damping>100</damping>
+            <friction>10</friction>
           </dynamics>
         </axis>
       </joint>
@@ -1715,17 +1715,17 @@
           <xyz>0 -1 0</xyz>
           <limit>
             <lower>0</lower>
-            <upper>0.03</upper>
-            <effort>25</effort>
-            <velocity>0.10000000000000001</velocity>
-            <stiffness>100000000</stiffness>
+            <upper>0.15</upper>
+            <effort>200</effort>
+            <velocity>1.0</velocity>
+            <stiffness>50000</stiffness>
             <dissipation>1</dissipation>
           </limit>
           <dynamics>
             <spring_reference>0</spring_reference>
-            <spring_stiffness>0</spring_stiffness>
-            <damping>5</damping>
-            <friction>1</friction>
+            <spring_stiffness>1000</spring_stiffness>
+            <damping>100</damping>
+            <friction>10</friction>
           </dynamics>
         </axis>
       </joint>
@@ -1791,16 +1791,24 @@
       <plugin name='gz::sim::systems::JointPositionController' filename='gz-sim-joint-position-controller-system'>
         <joint_name>left_finger_joint</joint_name>
         <initial_position>0.0</initial_position>
-        <p_gain>10.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>5.0</d_gain>
+        <p_gain>100.0</p_gain>
+        <i_gain>10.0</i_gain>
+        <d_gain>20.0</d_gain>
+        <i_max>50</i_max>
+        <i_min>-50</i_min>
+        <cmd_max>200</cmd_max>
+        <cmd_min>-200</cmd_min>
       </plugin>
       <plugin name='gz::sim::systems::JointPositionController' filename='gz-sim-joint-position-controller-system'>
         <joint_name>right_finger_joint</joint_name>
         <initial_position>0.0</initial_position>
-        <p_gain>10.0</p_gain>
-        <i_gain>0.5</i_gain>
-        <d_gain>5.0</d_gain>
+        <p_gain>100.0</p_gain>
+        <i_gain>10.0</i_gain>
+        <d_gain>20.0</d_gain>
+        <i_max>50</i_max>
+        <i_min>-50</i_min>
+        <cmd_max>200</cmd_max>
+        <cmd_min>-200</cmd_min>
       </plugin>
     </model>
     <light name='sun' type='directional'>

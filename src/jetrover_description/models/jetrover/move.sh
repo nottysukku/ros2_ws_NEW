@@ -3,13 +3,29 @@
 # Test script to move arm joints and navigate around the tic-tac-toe board
 # This script uses Gazebo transport to send joint position commands
 
-echo "Starting robot arm movement test for tictactoe_NEW2.sdf..."
+echo "Starting robot arm movement test for tictactoe_NEW3.2.sdf..."
+
+# Check for command line arguments
+if [ "$1" == "blackball" ]; then
+    echo "=== Quick Black Ball Test ==="
+    move_to_black_ball
+    exit 0
+fi
+
+if [ "$1" == "pickup" ]; then
+    echo "=== Quick Black Ball Pickup Test ==="
+    move_gripper "0.8"  # Open gripper
+    move_to_black_ball
+    move_gripper "0.0"  # Close gripper
+    echo "Black ball pickup complete!"
+    exit 0
+fi
 
 # Function to send joint command
 send_joint_command() {
     local joint_name=$1
     local position=$2
-    local topic="/model/jetrover/joint/${joint_name}/cmd_pos"
+    local topic="/model/jetrover/joint/${joint_name}/0/cmd_pos"
     
     echo "Sending $joint_name to position $position"
     gz topic -t "$topic" -m gz.msgs.Double -p "data: $position"
@@ -18,13 +34,23 @@ send_joint_command() {
 
 # Function to move gripper
 move_gripper() {
-    local r_pos=$1
-    local l_pos=${2:-$(echo "$r_pos * -1" | bc -l)}
+    local grip_pos=$1
     
-    echo "Moving gripper - R_joint: $r_pos, L_joint: $l_pos"
-    gz topic -t "/model/jetrover/joint/r_joint/cmd_pos" -m gz.msgs.Double -p "data: $r_pos"
-    gz topic -t "/model/jetrover/joint/l_joint/cmd_pos" -m gz.msgs.Double -p "data: $l_pos"
-    sleep 0.3
+    echo "Moving gripper - Opening to: $grip_pos"
+    gz topic -t "/model/jetrover/joint/left_finger_joint/0/cmd_pos" -m gz.msgs.Double -p "data: $grip_pos"
+    gz topic -t "/model/jetrover/joint/right_finger_joint/0/cmd_pos" -m gz.msgs.Double -p "data: $grip_pos"
+    sleep 0.5
+}
+
+# Function to move to black ball position (optimized values)
+move_to_black_ball() {
+    echo "Moving to black ball position with optimized joint values..."
+    send_joint_command "joint1" "0.02"   # Base rotation
+    send_joint_command "joint2" "-0.11"  # Shoulder
+    send_joint_command "joint3" "1.05"   # Elbow  
+    send_joint_command "joint4" "0.37"   # Wrist pitch
+    send_joint_command "joint5" "-0.41"  # Wrist roll
+    sleep 2
 }
 
 echo "=== Starting Joint Movement Test ==="
@@ -39,6 +65,18 @@ send_joint_command "joint5" "0.0"
 move_gripper "0.0"
 
 echo "=== Test Sequence 1: Basic Joint Movements ==="
+
+# Test optimized black ball position first
+echo "Testing optimized black ball position..."
+move_to_black_ball
+
+# Return to home before other tests
+echo "Returning to home position..."
+send_joint_command "joint1" "0.0"
+send_joint_command "joint2" "0.0"
+send_joint_command "joint3" "0.0"
+send_joint_command "joint4" "0.0"
+send_joint_command "joint5" "0.0"
 
 # Test joint1 (base rotation) - look around the board
 echo "Testing base rotation (joint1)..."
@@ -141,7 +179,37 @@ move_gripper "0.0"
 echo "Resetting gripper..."
 move_gripper "0.0"
 
-echo "=== Test Sequence 4: Ball Store Interaction ==="
+echo "=== Test Sequence 4: Black Ball Pick-up Test ==="
+
+# Test the optimized black ball position
+echo "Testing black ball pick-up sequence..."
+echo "Opening gripper..."
+move_gripper "0.8"
+
+echo "Moving to black ball position..."
+move_to_black_ball
+
+echo "Closing gripper to grab ball..."
+move_gripper "0.0"
+sleep 1
+
+echo "Lifting ball slightly..."
+send_joint_command "joint2" "-0.20"  # Lift shoulder slightly
+sleep 1
+
+echo "Moving to board center for placement..."
+send_joint_command "joint1" "0.0"    # Center base
+send_joint_command "joint2" "0.1"    # Adjust height
+send_joint_command "joint3" "0.3"    # Bring elbow in
+send_joint_command "joint4" "-0.2"   # Point down
+send_joint_command "joint5" "0.0"    # Reset roll
+sleep 2
+
+echo "Releasing ball..."
+move_gripper "0.8"
+sleep 1
+
+echo "=== Test Sequence 5: Ball Store Interaction ==="
 
 # Move towards grey ball store (left side)
 echo "Moving towards grey ball store..."
@@ -157,7 +225,7 @@ send_joint_command "joint2" "0.1"   # Adjust height
 send_joint_command "joint3" "0.4"   # Reach out
 sleep 1
 
-echo "=== Test Sequence 5: Complex Movement Pattern ==="
+echo "=== Test Sequence 6: Complex Movement Pattern ==="
 
 # Perform a complex movement pattern over the board
 echo "Performing complex movement pattern..."
@@ -197,9 +265,13 @@ echo "=== Test Complete ==="
 echo "Robot arm movement test completed successfully!"
 echo ""
 echo "Usage instructions:"
-echo "1. Start Gazebo with: gz sim tictactoe_NEW2.sdf"
-echo "2. Run this script with: ./move.sh"
-echo "3. Watch the robot arm move through various test sequences"
+echo "1. Start Gazebo with: gz sim tictactoe_NEW3.2.sdf"
+echo "2. Run full test with: ./move.sh"
+echo "3. Quick black ball test: ./move.sh blackball"
+echo "4. Quick pickup test: ./move.sh pickup"
+echo "5. Watch the robot arm move through various test sequences"
+echo ""
+echo "Black ball joint values: J1=0.02, J2=-0.11, J3=1.05, J4=0.37, J5=-0.41"
 echo ""
 echo "Debugging information:"
 echo "If joints are not moving, check:"
