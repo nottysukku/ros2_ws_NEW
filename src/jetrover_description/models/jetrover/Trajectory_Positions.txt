@@ -1,0 +1,14 @@
+almost above black middle ball
+joint 1 = 0, joint 2 = -0.23, joint 3 = 1.24, joint 4 = 0.17, joint 5 = -0.30, joint 6(finger) = 0.15, joint 7(finger) = 0.15
+
+point of picking up (just need to close gripper)
+joint 1 = -0.03, joint 2 = -0.11, joint 3 = 1.28, joint 4 = 0.12, joint 5 = -0.04, joint 6(finger) = 0.00, joint 7(finger) = 0.00
+
+OLD_mid-center of tic tac toe
+joint 1 = 0.04, joint 2 = -0.71, joint 3 = 1.94, joint 4 = 0.73, joint 5 = 0.27, joint 6(finger) = 0.15, joint 7(finger) = 0.15
+NEW MID_CENTER
+Board Center (0.02, -0.24, 1.28, 0.65, 0.27)
+
+`````WHITE BALL `````
+
+j1=-0.59,j2=0.17,j3=1.09, j4=0.30,j5=-1.64,etc...
