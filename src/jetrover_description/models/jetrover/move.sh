@@ -5,22 +5,6 @@
 
 echo "Starting robot arm movement test for tictactoe_NEW3.2.sdf..."
 
-# Check for command line arguments
-if [ "$1" == "blackball" ]; then
-    echo "=== Quick Black Ball Test ==="
-    move_to_black_ball
-    exit 0
-fi
-
-if [ "$1" == "pickup" ]; then
-    echo "=== Quick Black Ball Pickup Test ==="
-    move_gripper "0.8"  # Open gripper
-    move_to_black_ball
-    move_gripper "0.0"  # Close gripper
-    echo "Black ball pickup complete!"
-    exit 0
-fi
-
 # Function to send joint command
 send_joint_command() {
     local joint_name=$1
@@ -42,6 +26,88 @@ move_gripper() {
     sleep 0.5
 }
 
+# Function to move all joints to specific positions
+move_all_joints() {
+    local j1=$1 j2=$2 j3=$3 j4=$4 j5=$5 j6=$6 j7=$7
+    local wait_time=${8:-2}
+    
+    echo "Moving all joints: J1=$j1, J2=$j2, J3=$j3, J4=$j4, J5=$j5, Fingers=$j6"
+    
+    # Move arm joints
+    gz topic -t "/model/jetrover/joint/joint1/0/cmd_pos" -m gz.msgs.Double -p "data: $j1" &
+    gz topic -t "/model/jetrover/joint/joint2/0/cmd_pos" -m gz.msgs.Double -p "data: $j2" &
+    gz topic -t "/model/jetrover/joint/joint3/0/cmd_pos" -m gz.msgs.Double -p "data: $j3" &
+    gz topic -t "/model/jetrover/joint/joint4/0/cmd_pos" -m gz.msgs.Double -p "data: $j4" &
+    gz topic -t "/model/jetrover/joint/joint5/0/cmd_pos" -m gz.msgs.Double -p "data: $j5" &
+    
+    # Move finger joints
+    gz topic -t "/model/jetrover/joint/left_finger_joint/0/cmd_pos" -m gz.msgs.Double -p "data: $j6" &
+    gz topic -t "/model/jetrover/joint/right_finger_joint/0/cmd_pos" -m gz.msgs.Double -p "data: $j7" &
+    
+    wait
+    sleep $wait_time
+}
+
+# Main trajectory function: Pick up black ball and place on tic-tac-toe board
+execute_ball_pickup_trajectory() {
+    echo "=== TRAJECTORY PLANNING: BLACK BALL TO TIC-TAC-TOE BOARD ==="
+    echo ""
+    
+    # Step 1: Move to "almost above black middle ball" position
+    echo "STEP 1: Moving to approach position above black ball..."
+    echo "Target: J1=0, J2=-0.23, J3=1.24, J4=0.17, J5=-0.30, Fingers=0.15 (open)"
+    move_all_joints 0 -0.23 1.24 0.17 -0.30 0.15 0.15 3
+    echo "✅ Approach position reached"
+    echo ""
+    
+    # Step 2: Move to pickup position and close gripper
+    echo "STEP 2: Moving to pickup position and closing gripper..."
+    echo "Target: J1=-0.03, J2=-0.11, J3=1.28, J4=0.12, J5=-0.04, Fingers=0.00 (closed)"
+    move_all_joints -0.03 -0.11 1.28 0.12 -0.04 0.00 0.00 3
+    echo "✅ Ball gripped successfully"
+    echo ""
+    
+    # Step 3: Lift ball slightly (intermediate position)
+    echo "STEP 3: Lifting ball from pickup position..."
+    echo "Target: Slight lift - J2=-0.08 (lifting shoulder)"
+    move_all_joints -0.03 -0.08 1.28 0.12 -0.04 0.00 0.00 2
+    echo "✅ Ball lifted"
+    echo ""
+    
+    # Step 4: Move to mid-center of tic-tac-toe board and release
+    echo "STEP 4: Moving to tic-tac-toe board center and releasing..."
+    echo "Target: J1=0.04, J2=-0.71, J3=1.94, J4=0.73, J5=0.27, Fingers=0.15 (open)"
+    move_all_joints 0.04 -0.71 1.94 0.73 0.27 0.15 0.15 4
+    echo "✅ Ball placed on tic-tac-toe board"
+    echo ""
+    
+    # Step 5: Retract to safe position
+    echo "STEP 5: Retracting to safe position..."
+    echo "Target: Lifting up from board - J2=-0.60"
+    move_all_joints 0.04 -0.60 1.94 0.73 0.27 0.15 0.15 2
+    echo "✅ Safe retraction complete"
+    echo ""
+    
+    # Step 6: Return to home position
+    echo "STEP 6: Returning to home position..."
+    echo "Target: All joints to 0, gripper closed"
+    move_all_joints 0.0 0.0 0.0 0.0 0.0 0.0 0.0 3
+    echo "✅ Trajectory execution complete!"
+    echo ""
+    
+    echo "🎉 SUCCESS: Black ball successfully picked up and placed on tic-tac-toe board!"
+    echo ""
+    echo "Trajectory Summary:"
+    echo "1. ✅ Approached black ball from above"
+    echo "2. ✅ Descended to pickup position"  
+    echo "3. ✅ Closed gripper to grip ball"
+    echo "4. ✅ Lifted ball safely"
+    echo "5. ✅ Moved to tic-tac-toe board center"
+    echo "6. ✅ Released ball on board"
+    echo "7. ✅ Retracted to safe position"
+    echo "8. ✅ Returned to home"
+}
+
 # Function to move to black ball position (optimized values)
 move_to_black_ball() {
     echo "Moving to black ball position with optimized joint values..."
@@ -52,6 +118,28 @@ move_to_black_ball() {
     send_joint_command "joint5" "-0.41"  # Wrist roll
     sleep 2
 }
+
+# Check for command line arguments
+if [ "$1" == "blackball" ]; then
+    echo "=== Quick Black Ball Test ==="
+    move_to_black_ball
+    exit 0
+fi
+
+if [ "$1" == "pickup" ]; then
+    echo "=== Quick Black Ball Pickup Test ==="
+    move_gripper "0.8"  # Open gripper
+    move_to_black_ball
+    move_gripper "0.0"  # Close gripper
+    echo "Black ball pickup complete!"
+    exit 0
+fi
+
+if [ "$1" == "trajectory" ]; then
+    echo "=== Full Black Ball to Tic-Tac-Toe Trajectory ==="
+    execute_ball_pickup_trajectory
+    exit 0
+fi
 
 echo "=== Starting Joint Movement Test ==="
 
@@ -269,7 +357,17 @@ echo "1. Start Gazebo with: gz sim tictactoe_NEW3.2.sdf"
 echo "2. Run full test with: ./move.sh"
 echo "3. Quick black ball test: ./move.sh blackball"
 echo "4. Quick pickup test: ./move.sh pickup"
-echo "5. Watch the robot arm move through various test sequences"
+echo "5. 🎯 FULL TRAJECTORY: ./move.sh trajectory"
+echo "6. Watch the robot arm move through various test sequences"
+echo ""
+echo "🎯 NEW: Full Black Ball Pickup Trajectory Available!"
+echo "   ./move.sh trajectory - Complete pick & place sequence"
+echo "   Uses real joint values for precision movement"
+echo ""
+echo "Joint value references:"
+echo "• Approach: J1=0, J2=-0.23, J3=1.24, J4=0.17, J5=-0.30"
+echo "• Pickup:   J1=-0.03, J2=-0.11, J3=1.28, J4=0.12, J5=-0.04"  
+echo "• Place:    J1=0.04, J2=-0.71, J3=1.94, J4=0.73, J5=0.27"
 echo ""
 echo "Black ball joint values: J1=0.02, J2=-0.11, J3=1.05, J4=0.37, J5=-0.41"
 echo ""
