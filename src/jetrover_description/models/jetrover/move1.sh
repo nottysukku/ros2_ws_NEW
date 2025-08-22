@@ -36,7 +36,7 @@ move_all_joints_smooth() {
     # Send all commands simultaneously for synchronized movement
     send_joint_command "joint1" "$j1" &
     send_joint_command "joint2" "$j2" &
-    send_joint_command "joint3" "$j3" &
+    send_joint_command "joint3" "$j3" & 
     send_joint_command "joint4" "$j4" &
     send_joint_command "joint5" "$j5" &
     send_joint_command "left_finger_joint" "$j6" &
