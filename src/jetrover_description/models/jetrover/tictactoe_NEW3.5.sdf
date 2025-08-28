@@ -9,6 +9,10 @@
     <plugin name='gz::sim::systems::Physics' filename='gz-sim-physics-system'/>
     <plugin name='gz::sim::systems::UserCommands' filename='gz-sim-user-commands-system'/>
     <plugin name='gz::sim::systems::SceneBroadcaster' filename='gz-sim-scene-broadcaster-system'/>
+    <plugin name='gz::sim::systems::Sensors' filename='gz-sim-sensors-system'>
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin name='gz::sim::systems::ImageDisplay' filename='gz-sim-image-display-system'/>
     <gravity>0 0 -9.8000000000000007</gravity>
     <magnetic_field>5.5644999999999998e-06 2.2875799999999999e-05 -4.2388400000000002e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
@@ -174,7 +178,7 @@
     </model>
     <model name='guard_rail'>
       <static>true</static>
-      <pose>-0.13008174300193787 -0.079355299472808838 0.43519699573516846 0 0 0</pose>
+      <pose>-0.052531500000000002 -0.040552699999999997 0.435197 0 0 0</pose>
       <link name='rail_link'>
         <inertial>
           <mass>10</mass>
@@ -224,7 +228,7 @@
     </model>
     <model name='wall'>
       <static>true</static>
-      <pose>-0.035567201673984528 0.23947399854660034 0.86184102296829224 0 0 0</pose>
+      <pose>0.044432800263166428 0.24772383272647858 0.82922697067260742 0 0 0</pose>
       <link name='wall_link'>
         <inertial>
           <mass>20000000</mass>
@@ -242,7 +246,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.34999999999999998 0.050000000000000003 0.5</size>
+              <size>0.49999999999999778 0.040000000000000001 0.44999999999999979</size>
             </box>
           </geometry>
           <material>
@@ -254,7 +258,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.34999999999999998 0.050000000000000003 0.49999999999999978</size>
+              <size>0.49999999999999978 0.040000000000000001 0.44999999999999979</size>
             </box>
           </geometry>
           <surface>
@@ -272,7 +276,7 @@
     </model>
     <model name='st_logo'>
       <static>true</static>
-      <pose>-0.032586298882961273 0.20788650214672089 0.89626419544219971 1.5700000042340219 0 0</pose>
+      <pose>-0.13416899740695953 0.22260417044162753 0.84345448017120361 1.5700000841906603 0 0</pose>
       <link name='logo_link'>
         <inertial>
           <mass>1</mass>
@@ -322,7 +326,7 @@
     </model>
     <model name='enclosure_floor'>
       <static>true</static>
-      <pose>0.18506811559200287 0.086792588233947754 0.42550107836723328 1.5699999781232283 -7.7078375410807797e-06 1.5605699752823248</pose>
+      <pose>0.19129599999999999 0.064957200000000007 0.425506 1.5700000000000003 -7.7423200004696731e-06 1.5605700000000007</pose>
       <link name='enclosure_floor_link'>
         <inertial>
           <mass>20000000</mass>
@@ -340,7 +344,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.34999999999999998 0.070000000000000007 0.5</size>
+              <size>0.3999999999999998 0.060000000000000005 0.46000000000000002</size>
             </box>
           </geometry>
           <material>
@@ -352,7 +356,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.34999999999999998 0.070000000000000007 0.5</size>
+              <size>0.3999999999999998 0.060000000000000005 0.46000000000000002</size>
             </box>
           </geometry>
           <surface>
@@ -370,7 +374,7 @@
     </model>
     <model name='tictactoe_game'>
       <static>true</static>
-      <pose>-0.12158672511577606 -0.071379348635673523 0.44987404346466064 8.8383403714822537e-08 9.0853607244981192e-07 -0.00040046503761798378</pose>
+      <pose>-0.046944 -0.032551099999999999 0.449874 8.8383404715047097e-08 9.0853604856917646e-07 -0.00040046502140793193</pose>
       <link name='board'>
         <inertial>
           <mass>2</mass>
@@ -420,7 +424,7 @@
     </model>
     <model name='o_piece_1'>
       <static>false</static>
-      <pose>0.048477023055087137 -0.1569246862861842 0.4319529964889306 0.90917302257062205 -0.10954491146416037 0.17106003160644484</pose>
+      <pose>0.085922235882675432 -0.19898866163794843 0.43195285692321866 -1.8338060335185091 0.35823291662066714 0.79342201981471638</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -466,7 +470,7 @@
     </model>
     <model name='o_piece_2'>
       <static>false</static>
-      <pose>-0.031521891808004937 -0.15650847299183965 0.43195298816259842 -0.21171107232365011 -0.050447040139347171 -0.0024237710372432188</pose>
+      <pose>0.0059233133003997341 -0.19857245584603733 0.43195286529098115 -1.1600662451198234 1.5256763797631148 1.0027121642090358</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -512,7 +516,7 @@
     </model>
     <model name='o_piece_3'>
       <static>false</static>
-      <pose>-0.11152080701616529 -0.15609226013526251 0.43195298753520889 -0.41331588881572268 0.085887367856849112 -0.016823096604616148</pose>
+      <pose>-0.074075605116429619 -0.19815625290456343 0.43195287770334972 -1.0419118478844027 -0.14607008778276592 3.044122229486228</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -558,7 +562,7 @@
     </model>
     <model name='o_piece_4'>
       <static>false</static>
-      <pose>0.0084775701513216811 -0.15671657252175047 0.43195297739461702 -2.2347241315274489 -0.38917469938203736 -2.4055952940571914</pose>
+      <pose>0.045922767542344825 -0.19878056869830257 0.43195287938425642 2.4439442460567777 0.013313142359254942 2.286080601886058</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -604,7 +608,7 @@
     </model>
     <model name='o_piece_5'>
       <static>false</static>
-      <pose>-0.071521349333762654 -0.15630036593101035 0.43195298617629119 -0.38344597114876372 -0.4278211985205787 0.3188859586336254</pose>
+      <pose>-0.034076147058750936 -0.19836435815970491 0.43195287581162145 -2.3661598279109062 -0.95966009947263653 -1.9010092638363878</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -650,7 +654,7 @@
     </model>
     <model name='robot_box'>
       <static>true</static>
-      <pose>-0.03110777772963047 0.1767670065164566 0.6901090145111084 1.5400000109655501 0 0</pose>
+      <pose>0.048892199993133545 0.22745649516582489 0.71249067783355702 1.5400002335725291 0 0</pose>
       <link name='box_link'>
         <inertial>
           <mass>5</mass>
@@ -779,7 +783,7 @@
     </model>
     <model name='x_piece_1'>
       <static>false</static>
-      <pose>0.11255631334665128 -0.015397455560964239 0.48468986727328567 0.40613692546623176 0.55527851062477884 -0.19916605485111946</pose>
+      <pose>0.19101318481172083 0.016357709845841121 0.4846898791957801 -2.3253469316237685 -0.30230054959631253 2.9930535416695507</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -825,7 +829,7 @@
     </model>
     <model name='x_piece_2'>
       <static>false</static>
-      <pose>0.11251922308517104 0.0646025325019014 0.48468986483645371 0.30032855034958694 -0.10826247406738705 -0.036885037735986406</pose>
+      <pose>0.19097609387063857 0.096357691509161153 0.48468986303600281 -2.6126158393206458 1.125839538683657 2.9193034986721806</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -871,7 +875,7 @@
     </model>
     <model name='x_piece_3'>
       <static>false</static>
-      <pose>0.11250067893889684 0.10460252718903772 0.48468986611432185 -0.0071470975191225104 0.6892577809146494 -0.22332938088805274</pose>
+      <pose>0.19095755927727345 0.1363576883646847 0.48468985494175032 -2.5300725656514134 0.51930940656081181 -2.6385079247043572</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -917,7 +921,7 @@
     </model>
     <model name='x_piece_4'>
       <static>false</static>
-      <pose>0.11257485620786739 -0.05539745074879842 0.48468986775543682 0.3074225252972736 -0.15017594513445784 0.43842892839281877</pose>
+      <pose>0.19103174387148719 -0.023642293337203916 0.48468985692304234 -2.4624949980599649 0.56213637148073714 1.1269603397656365</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -963,7 +967,7 @@
     </model>
     <model name='x_piece_5'>
       <static>false</static>
-      <pose>0.11253777035635687 0.024602537801421992 0.48468986307657852 -0.15917647135366086 0.26283156698727234 0.092249374957451544</pose>
+      <pose>0.19099464687529016 0.056357700528138932 0.48468986210825538 -3.0244266207747175 0.28947613535259609 2.9625508248660646</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -1009,7 +1013,7 @@
     </model>
     <model name='ball_store_grey'>
       <static>true</static>
-      <pose>0.068580798804759979 -0.1370290070772171 0.40764310956001282 0 0 3.1363899998849982</pose>
+      <pose>0.106026 -0.179093 0.40764299999999998 0 0 3.13639</pose>
       <link name='ball_store_link'>
         <inertial>
           <mass>1</mass>
@@ -1059,7 +1063,7 @@
     </model>
     <model name='ball_store_white'>
       <static>true</static>
-      <pose>0.13258412480354309 -0.075388170778751373 0.46037998795509338 0 0 1.5712599421281468</pose>
+      <pose>0.21104100000000001 -0.043632999999999998 0.46038000000000001 0 0 1.5712600000000003</pose>
       <link name='ball_store_link'>
         <inertial>
           <mass>1</mass>
@@ -1108,7 +1112,7 @@
       <self_collide>false</self_collide>
     </model>
     <model name='jetrover'>
-      <pose>-0.026156499981880188 0.21840399503707889 0.6838790178298948 -1.5523375636526826 -0.0067314363976750365 -3.138258735617387</pose>
+      <pose>0.053848257783198336 0.24331834842713235 0.7072468329420103 -1.5657726738650934 -0.0029448898659899876 3.1415887188436451</pose>
       <static>false</static>
       <self_collide>false</self_collide>
       <link name='base_footprint'>
@@ -1157,11 +1161,11 @@
         <pose>0 0 0 0 0 0</pose>
       </link>
       <joint name='joint1' type='revolute'>
-        <pose>0 5.2041699999999996e-18 -1.3877799999999999e-17 1.0587899999999999e-21 4.2351600000000001e-22 2.2420800000000001e-43</pose>
+        <pose>-6.9388900000000004e-18 5.2041699999999996e-18 -2.0816700000000001e-17 1.7999500000000001e-21 2.11758e-22 1.9057700000000001e-43</pose>
         <parent>base_footprint</parent>
         <child>link1</child>
         <axis>
-          <xyz>3.1763735519571072e-22 6.8821426964411903e-22 -1</xyz>
+          <xyz>5.2939559200928581e-22 1.2176098616780567e-21 -1</xyz>
           <limit>
             <lower>-2.0899999999999999</lower>
             <upper>2.0899999999999999</upper>
@@ -1179,7 +1183,7 @@
         </axis>
       </joint>
       <link name='link1'>
-        <pose>0.0035930306846378835 -0.007000055548773732 0.051445635217154801 1.5241840897115976e-06 -9.2079166139383736e-07 1.5875615529699514</pose>
+        <pose>0.0035930578034442801 -0.0070000504409087894 0.051444048327981218 1.9397517479726242e-06 -8.4437912467612689e-07 1.5855070500596888</pose>
         <inertial>
           <pose>8.4882317065151008e-05 -0.0018903126840200471 0.020339854275225711 0 0 0</pose>
           <mass>0.030629351759666201</mass>
@@ -1196,7 +1200,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link1.STL</uri>
             </mesh>
           </geometry>
@@ -1205,7 +1209,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/servo_link1_collision.stl</uri>
             </mesh>
           </geometry>
@@ -1214,7 +1218,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link1.STL</uri>
             </mesh>
           </geometry>
@@ -1227,7 +1231,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/servo_link1.STL</uri>
             </mesh>
           </geometry>
@@ -1239,7 +1243,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint2' type='revolute'>
-        <pose>1.04083e-17 0 1.2489999999999999e-16 4.8572299999999998e-17 -4.33681e-17 -1.05324e-33</pose>
+        <pose>8.6736199999999993e-18 8.6736199999999997e-19 1.9428900000000001e-16 4.8572299999999998e-17 -4.33681e-17 -1.05324e-33</pose>
         <parent>link1</parent>
         <child>link2</child>
         <axis>
@@ -1261,7 +1265,7 @@
         </axis>
       </joint>
       <link name='link2'>
-        <pose>0.0035930671568031663 -0.007000076767683483 0.075150995668645337 1.5244474199758755e-06 0.018587022174101152 1.5875615813046628</pose>
+        <pose>0.0035931040554076088 -0.007000069778602791 0.075149408779456084 1.9403693634989545e-06 0.025231413052112857 1.5855070990143936</pose>
         <inertial>
           <pose>0.00015629957042515699 -0.00045511369991391599 0.071772702851197495 0 0 0</pose>
           <mass>0.0329250074531705</mass>
@@ -1278,7 +1282,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link2_collision.stl</uri>
             </mesh>
           </geometry>
@@ -1287,7 +1291,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link2.STL</uri>
             </mesh>
           </geometry>
@@ -1299,11 +1303,11 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint3' type='revolute'>
-        <pose>-1.14492e-16 -5.8980600000000002e-17 1.38778e-16 0 0 0</pose>
+        <pose>-1.16226e-16 -5.81132e-17 1.6653299999999999e-16 -5.2041699999999996e-18 5.2041699999999996e-18 -1.3541699999999999e-35</pose>
         <parent>link2</parent>
         <child>link3</child>
         <axis>
-          <xyz>-1.1102230246251565e-16 1 -1.7347234759768079e-18</xyz>
+          <xyz>-1.1102230246251565e-16 1 -5.2041704279304221e-18</xyz>
           <limit>
             <lower>-2.0899999999999999</lower>
             <upper>2.0899999999999999</upper>
@@ -1321,7 +1325,7 @@
         </axis>
       </joint>
       <link name='link3'>
-        <pose>0.0035649784081449075 -0.0053165815741627155 0.16572685993562175 1.5242623079959707e-06 0.010130245874434842 1.5875615684122419</pose>
+        <pose>0.0035596594225455053 -0.0047148051377380318 0.16571208641065271 1.940280390602185e-06 0.023343831820618742 1.5855070953507895</pose>
         <inertial>
           <pose>0.00012845644092569799 -0.00076142462273371704 0.071772743785429 0 0 0</pose>
           <mass>0.0329250074463074</mass>
@@ -1338,7 +1342,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link3_collision.stl</uri>
             </mesh>
           </geometry>
@@ -1347,7 +1351,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link3.STL</uri>
             </mesh>
           </geometry>
@@ -1359,7 +1363,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint4' type='revolute'>
-        <pose>-1.73472e-17 1.21431e-17 1.11022e-16 0 0 0</pose>
+        <pose>-1.3877799999999999e-17 6.9388900000000004e-18 1.11022e-16 0 0 0</pose>
         <parent>link3</parent>
         <child>link4</child>
         <axis>
@@ -1381,7 +1385,7 @@
         </axis>
       </joint>
       <link name='link4'>
-        <pose>0.0035497284354734503 -0.0043988097950485389 0.25633345246181467 1.5241983933225634e-06 0.0043299278470061327 1.5875615595709989</pose>
+        <pose>0.0035287227453396353 -0.002600009913059198 0.25629864077104081 2.1747029443572211e-06 0.46913056100101819 1.5855080332683398</pose>
         <inertial>
           <pose>-0.024155385718921799 0.0003017349751323721 0.048529459632962173 0 0 0</pose>
           <mass>0.034930330045039162</mass>
@@ -1398,7 +1402,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link4_collision.stl</uri>
             </mesh>
           </geometry>
@@ -1407,7 +1411,7 @@
           <pose>0 -0.050000000000000003 0.054483333950367398 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/servo_link2_collision.stl</uri>
             </mesh>
           </geometry>
@@ -1416,7 +1420,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link4.STL</uri>
             </mesh>
           </geometry>
@@ -1426,10 +1430,10 @@
           </material>
         </visual>
         <visual name='link4_fixed_joint_lump__servo_link2_visual_3'>
-          <pose>0 -0.00000000000000003 0.054483333950367398 0 0 0</pose>
+          <pose>0 -3.0000000000000001e-17 0.054483333950367398 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/servo_link2.STL</uri>
             </mesh>
           </geometry>
@@ -1441,11 +1445,11 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint5' type='revolute'>
-        <pose>1.8214599999999999e-17 -7.4593100000000004e-17 1.6653299999999999e-16 -3.0964100000000003e-17 6.9931000000000002e-18 8.3266699999999998e-17</pose>
+        <pose>1.9515600000000001e-17 -9.7144500000000003e-17 3.8857800000000001e-16 5.4210099999999998e-19 3.4694499999999997e-18 1.11022e-16</pose>
         <parent>link4</parent>
         <child>link5</child>
         <axis>
-          <xyz>-2.0979312037594511e-17 -5.7023952075054007e-17 -1</xyz>
+          <xyz>-1.8810907692623502e-17 -2.9349691622361507e-17 -1</xyz>
           <limit>
             <lower>-2.0899999999999999</lower>
             <upper>2.0899999999999999</upper>
@@ -1463,7 +1467,7 @@
         </axis>
       </joint>
       <link name='link5'>
-        <pose>0.0035470181686300472 -0.0042337063101528160 0.29447142871159812 -0.0043159025437158084 0.00034822904815647938 0.096923413947615125</pose>
+        <pose>0.0032751282546097105 0.014640999140510313 0.29031683243038847 -0.4678025270953764 0.036657495530938687 0.087123662966859944</pose>
         <inertial>
           <pose>0.013745583285676721 -0.0029797500659027461 0.029288990452975349 0 0 0</pose>
           <mass>0.01851660201761849</mass>
@@ -1480,7 +1484,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link5.STL</uri>
             </mesh>
           </geometry>
@@ -1489,7 +1493,7 @@
           <pose>0 0 0 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/Gazebo Sims/meshes_1/arm/link5.STL</uri>
             </mesh>
           </geometry>
@@ -1501,7 +1505,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <link name='gripper_base_link'>
-        <pose>0.0036259291675067960 -0.0043347113863289821 0.29475442085046256 -0.012478458450109132 -0.00021134021017323205 0.0028463488262552242</pose>
+        <pose>0.0033519073477588507 0.014677590999634615 0.29061562923177148 -0.47724620420940522 -0.0059804071654898381 0.0032455435463388388</pose>
         <inertial>
           <pose>0 0 0.02 0 0 0</pose>
           <mass>0.5</mass>
@@ -1518,7 +1522,7 @@
           <pose>0 0 0.02 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.042 0.0175 0.028</size>
+              <size>0.042000000000000003 0.017500000000000002 0.028000000000000001</size>
             </box>
           </geometry>
           <surface>
@@ -1533,7 +1537,7 @@
           <pose>0 0 0.02 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.042 0.0175 0.028</size>
+              <size>0.042000000000000003 0.017500000000000002 0.028000000000000001</size>
             </box>
           </geometry>
           <material>
@@ -1545,7 +1549,7 @@
           <pose>0 0 0.044999999999999998 1.5708 0 0</pose>
           <geometry>
             <box>
-              <size>0.0245 0.0245 0.063</size>
+              <size>0.024500000000000001 0.024500000000000001 0.063</size>
             </box>
           </geometry>
           <material>
@@ -1557,7 +1561,7 @@
           <pose>0 0 0.044999999999999998 1.5708 0 0</pose>
           <geometry>
             <box>
-              <size>0.0245 0.0245 0.063</size>
+              <size>0.024500000000000001 0.024500000000000001 0.063</size>
             </box>
           </geometry>
           <surface>
@@ -1573,10 +1577,10 @@
       <joint name='gripper_base_joint' type='fixed'>
         <parent>link5</parent>
         <child>gripper_base_link</child>
-        <pose>1.73472e-18 -8.6736199999999997e-19 -5.5511199999999995e-17 0 -1.05879e-22 0</pose>
+        <pose>3.4694499999999997e-18 -5.5511199999999995e-17 1.11022e-16 5.5511199999999995e-17 8.9446700000000006e-19 2.4826400000000001e-35</pose>
       </joint>
       <link name='left_finger_link'>
-        <pose>0.0036155574286094637 -0.0025084270685198654 0.31923553722565203 -0.01247845845011359 -0.00021134021015652531 0.0028463488262296097</pose>
+        <pose>0.0031849849542034958 0.027487255957851731 0.3115750968424052 -0.47724620420938391 -0.0059804071655034201 0.0032455435463186956</pose>
         <gravity>false</gravity>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
@@ -1594,7 +1598,7 @@
           <pose>0 0 0.055 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_out_link.STL</uri>
             </mesh>
           </geometry>
@@ -1619,7 +1623,7 @@
           <pose>0 0 0.055 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/l_out_link.STL</uri>
             </mesh>
           </geometry>
@@ -1633,27 +1637,27 @@
       <joint name='left_finger_joint' type='prismatic'>
         <parent>gripper_base_link</parent>
         <child>left_finger_link</child>
-        <pose>0 8.6736199999999997e-19 0.040000000000000001 0 4.2351600000000001e-22 0</pose>
+        <pose>2.6020900000000001e-18 -2.7755599999999997e-17 0.040000000000000001 0 -2.5749799999999999e-19 0</pose>
         <axis>
           <xyz>0 1 0</xyz>
           <limit>
             <lower>0</lower>
-            <upper>0.15</upper>
-            <effort>200</effort>
-            <velocity>2.0</velocity>
-            <stiffness>50000</stiffness>
+            <upper>0.02749999999999999</upper>
+            <effort>500</effort>
+            <velocity>2</velocity>
+            <stiffness>100000000</stiffness>
             <dissipation>1</dissipation>
           </limit>
           <dynamics>
             <spring_reference>0</spring_reference>
-            <spring_stiffness>1000</spring_stiffness>
-            <damping>100</damping>
-            <friction>10</friction>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
           </dynamics>
         </axis>
       </joint>
       <link name='right_finger_link'>
-        <pose>0.0036450960763049735 -0.012895763541534778 0.31936316242556808 -0.01247845845011359 -0.00021134021015652531 0.0028463488262296097</pose>
+        <pose>0.0031864769850617342 0.017821132185476207 0.31657123637306239 -0.47724620420938391 -0.0059804071655034201 0.0032455435463186956</pose>
         <gravity>false</gravity>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
@@ -1671,7 +1675,7 @@
           <pose>0 0 0.055 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_out_link.STL</uri>
             </mesh>
           </geometry>
@@ -1696,7 +1700,7 @@
           <pose>0 0 0.055 0 0 0</pose>
           <geometry>
             <mesh>
-              <scale>0.7 0.7 0.7</scale>
+              <scale>0.69999999999999996 0.69999999999999996 0.69999999999999996</scale>
               <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/gripper/r_out_link.STL</uri>
             </mesh>
           </geometry>
@@ -1710,22 +1714,22 @@
       <joint name='right_finger_joint' type='prismatic'>
         <parent>gripper_base_link</parent>
         <child>right_finger_link</child>
-        <pose>1.73472e-18 3.4694499999999997e-18 0.040000000000000001 0 4.2351600000000001e-22 0</pose>
+        <pose>1.73472e-18 -4.1633400000000002e-17 0.040000000000000001 0 -2.5749799999999999e-19 0</pose>
         <axis>
           <xyz>0 -1 0</xyz>
           <limit>
             <lower>0</lower>
-            <upper>0.15</upper>
-            <effort>200</effort>
-            <velocity>2.0</velocity>
-            <stiffness>50000</stiffness>
+            <upper>0.02749999999999999</upper>
+            <effort>500</effort>
+            <velocity>2</velocity>
+            <stiffness>100000000</stiffness>
             <dissipation>1</dissipation>
           </limit>
           <dynamics>
             <spring_reference>0</spring_reference>
-            <spring_stiffness>1000</spring_stiffness>
-            <damping>100</damping>
-            <friction>10</friction>
+            <spring_stiffness>0</spring_stiffness>
+            <damping>0</damping>
+            <friction>0</friction>
           </dynamics>
         </axis>
       </joint>
@@ -1810,6 +1814,129 @@
         <cmd_max>200</cmd_max>
         <cmd_min>-200</cmd_min>
       </plugin>
+    </model>
+    <model name='overhead_camera'>
+      <static>true</static>
+      <pose>0.036840200424194336 0.20014800131320953 0.5957069993019104 0.021799506252814953 -0.7330293231808428 -1.576377491649319</pose>
+      <link name='camera_housing'>
+        <inertial>
+          <mass>0.050000000000000003</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <iyy>0.0001</iyy>
+            <izz>0.0001</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 0 0</pose>
+        </inertial>
+        <visual name='camera_body'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.100000001 0.100000001 0.100000001 1</ambient>
+            <diffuse>0.200000003 0.200000003 0.200000003 1</diffuse>
+            <specular>0.100000001 0.100000001 0.100000001 1</specular>
+          </material>
+        </visual>
+        <visual name='camera_lens'>
+          <pose>0.0080000000000000002 0.0080000000000000002 0.010999999999999999 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0030000000000000001</radius>
+              <length>0.001</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0.100000001 0.100000001 0.300000012 1</diffuse>
+            <specular>0.5 0.5 0.800000012 1</specular>
+          </material>
+        </visual>
+        <visual name='led_indicator'>
+          <pose>-0.0080000000000000002 -0.0080000000000000002 0.010999999999999999 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.001</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <specular>0.5 1 0.5 1</specular>
+          </material>
+        </visual>
+        <collision name='camera_collision'>
+          <pose>0 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.02 0.02 0.02</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <sensor name='workspace_camera' type='camera'>
+          <pose>0 0 -0.0050000000000000001 3.1415899999999999 1.5707900000629724 3.1415899999999999</pose>
+          <topic>/camera/image</topic>
+          <update_rate>30</update_rate>
+          <enable_metrics>false</enable_metrics>
+          <camera>
+            <pose>0 0 0 0 0 0</pose>
+            <horizontal_fov>1.518</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+              <format>RGB_INT8</format>
+              <anti_aliasing>4</anti_aliasing>
+            </image>
+            <camera_info_topic>__default__</camera_info_topic>
+            <trigger_topic></trigger_topic>
+            <triggered>false</triggered>
+            <clip>
+              <near>0.10000000000000001</near>
+              <far>10</far>
+            </clip>
+            <save enabled='true'>
+              <path>/tmp/camera_save_tutorial</path>
+            </save>
+            <visibility_mask>4294967295</visibility_mask>
+            <noise>
+              <type>none</type>
+              <mean>0</mean>
+              <stddev>0</stddev>
+            </noise>
+            <distortion>
+              <k1>0</k1>
+              <k2>0</k2>
+              <k3>0</k3>
+              <p1>0</p1>
+              <p2>0</p2>
+              <center>0.5 0.5</center>
+            </distortion>
+            <lens>
+              <type>stereographic</type>
+              <scale_to_hfov>true</scale_to_hfov>
+              <cutoff_angle>1.5707963267948966</cutoff_angle>
+              <env_texture_size>256</env_texture_size>
+            </lens>
+            <optical_frame_id></optical_frame_id>
+          </camera>
+        </sensor>
+        <enable_wind>false</enable_wind>
+        <pose>0 0 0 0 0 0</pose>
+      </link>
+      <self_collide>false</self_collide>
     </model>
     <light name='sun' type='directional'>
       <pose>0 0 10 0 0 0</pose>
