@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <sdf version='1.10'>
   <world name='WORKINGPROTO'>
     <physics name='1ms' type='ignored'>
@@ -228,7 +227,7 @@
     </model>
     <model name='wall'>
       <static>true</static>
-      <pose>0.044432800263166428 0.24772383272647858 0.82922697067260742 0 0 0</pose>
+      <pose>0.044432800263166428 0.30083191394805908 0.82922697067260742 0 0 0</pose>
       <link name='wall_link'>
         <inertial>
           <mass>20000000</mass>
@@ -246,7 +245,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.49999999999999778 0.040000000000000001 0.44999999999999979</size>
+              <size>0.44999999999999979 0.040000000000000001 0.49999999999999789</size>
             </box>
           </geometry>
           <material>
@@ -258,7 +257,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.49999999999999978 0.040000000000000001 0.44999999999999979</size>
+              <size>0.44999999999999979 0.040000000000000001 0.49999999999999789</size>
             </box>
           </geometry>
           <surface>
@@ -276,7 +275,7 @@
     </model>
     <model name='st_logo'>
       <static>true</static>
-      <pose>-0.13416899740695953 0.22260417044162753 0.84345448017120361 1.5700000841906603 0 0</pose>
+      <pose>-0.097844697535037994 0.27269262075424194 0.84345400333404552 1.5700000841906609 0 0</pose>
       <link name='logo_link'>
         <inertial>
           <mass>1</mass>
@@ -326,7 +325,7 @@
     </model>
     <model name='enclosure_floor'>
       <static>true</static>
-      <pose>0.19129599999999999 0.064957200000000007 0.425506 1.5700000000000003 -7.7423200004696731e-06 1.5605700000000007</pose>
+      <pose>0.19129599999999999 0.064957200000000007 0.425506 1.5699999999999996 -7.7423200003031396e-06 1.56057</pose>
       <link name='enclosure_floor_link'>
         <inertial>
           <mass>20000000</mass>
@@ -344,7 +343,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.3999999999999998 0.060000000000000005 0.46000000000000002</size>
+              <size>0.49999999999999778 0.059999999999999998 0.44999999999999979</size>
             </box>
           </geometry>
           <material>
@@ -356,7 +355,7 @@
           <pose>0 0 -0.14999999999999999 0 0 0</pose>
           <geometry>
             <box>
-              <size>0.3999999999999998 0.060000000000000005 0.46000000000000002</size>
+              <size>0.49999999999999778 0.059999999999999998 0.44999999999999979</size>
             </box>
           </geometry>
           <surface>
@@ -374,7 +373,7 @@
     </model>
     <model name='tictactoe_game'>
       <static>true</static>
-      <pose>-0.046944 -0.032551099999999999 0.449874 8.8383404715047097e-08 9.0853604856917646e-07 -0.00040046502140793193</pose>
+      <pose>-0.046944 -0.032551099999999999 0.449874 8.8383411787619145e-08 9.0853612142295618e-07 -0.00040046505351983664</pose>
       <link name='board'>
         <inertial>
           <mass>2</mass>
@@ -397,8 +396,8 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.0500000007 0.0500000007 0.0500000007 1</ambient>
-            <diffuse>0.0500000007 0.0500000007 0.0500000007 1</diffuse>
+            <ambient>1 0.824000001 0 1</ambient>
+            <diffuse>1 0.824000001 0 1</diffuse>
           </material>
         </visual>
         <collision name='board_collision'>
@@ -424,7 +423,7 @@
     </model>
     <model name='o_piece_1'>
       <static>false</static>
-      <pose>0.085922235882675432 -0.19898866163794843 0.43195285692321866 -1.8338060335185091 0.35823291662066714 0.79342201981471638</pose>
+      <pose>0.1099393525596648 -0.24861967760384329 0.41761831579179942 -1.4588476219218958 0.90043694443897182 1.0776434998803412</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -441,7 +440,7 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -452,7 +451,7 @@
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -470,7 +469,7 @@
     </model>
     <model name='o_piece_2'>
       <static>false</static>
-      <pose>0.0059233133003997341 -0.19857245584603733 0.43195286529098115 -1.1600662451198234 1.5256763797631148 1.0027121642090358</pose>
+      <pose>0.040796528809825004 -0.24861387891693534 0.42853351006261425 0.82851101076994571 0.80552366694457622 2.9140446978738708</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -487,7 +486,7 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -498,53 +497,7 @@
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
-            </sphere>
-          </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <pose>0 0 0 0 0 0</pose>
-        <enable_wind>false</enable_wind>
-      </link>
-      <self_collide>false</self_collide>
-    </model>
-    <model name='o_piece_3'>
-      <static>false</static>
-      <pose>-0.074075605116429619 -0.19815625290456343 0.43195287770334972 -1.0419118478844027 -0.14607008778276592 3.044122229486228</pose>
-      <link name='o_link'>
-        <inertial>
-          <mass>0.0027000000000000001</mass>
-          <inertia>
-            <ixx>1.0000000000000001e-05</ixx>
-            <iyy>1.0000000000000001e-05</iyy>
-            <izz>1.0000000000000001e-05</izz>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyz>0</iyz>
-          </inertia>
-          <pose>0 0 0 0 0 0</pose>
-        </inertial>
-        <visual name='o_visual'>
-          <geometry>
-            <sphere>
-              <radius>0.02</radius>
-            </sphere>
-          </geometry>
-          <material>
-            <ambient>0 0 0 1</ambient>
-            <diffuse>0 0 0 1</diffuse>
-          </material>
-        </visual>
-        <collision name='o_collision'>
-          <geometry>
-            <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -562,7 +515,7 @@
     </model>
     <model name='o_piece_4'>
       <static>false</static>
-      <pose>0.045922767542344825 -0.19878056869830257 0.43195287938425642 2.4439442460567777 0.013313142359254942 2.286080601886058</pose>
+      <pose>0.075366646924427516 -0.24879373696134291 0.42306779429466496 3.1055192206494411 -0.44642602037470852 2.1928004977980442</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -579,7 +532,7 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -590,7 +543,7 @@
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -608,7 +561,7 @@
     </model>
     <model name='o_piece_5'>
       <static>false</static>
-      <pose>-0.034076147058750936 -0.19836435815970491 0.43195287581162145 -2.3661598279109062 -0.95966009947263653 -1.9010092638363878</pose>
+      <pose>0.0061041695001538051 -0.24843338495959641 0.43316032363063167 2.4910403643003205 -0.82398633191238613 -0.44439925270835018</pose>
       <link name='o_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -625,7 +578,7 @@
         <visual name='o_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -636,7 +589,7 @@
         <collision name='o_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -654,7 +607,7 @@
     </model>
     <model name='robot_box'>
       <static>true</static>
-      <pose>0.048892199993133545 0.22745649516582489 0.71249067783355702 1.5400002335725291 0 0</pose>
+      <pose>0.048892199993133545 0.23245614767074585 0.71249097585678089 1.5400002335725291 0 0</pose>
       <link name='box_link'>
         <inertial>
           <mass>5</mass>
@@ -783,7 +736,7 @@
     </model>
     <model name='x_piece_1'>
       <static>false</static>
-      <pose>0.19101318481172083 0.016357709845841121 0.4846898791957801 -2.3253469316237685 -0.30230054959631253 2.9930535416695507</pose>
+      <pose>0.19010747498110189 0.024089638661575919 0.47832042141581349 -2.2820346579633282 -0.19599227618411025 2.9983956457047305</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -800,7 +753,7 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -811,7 +764,7 @@
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -829,7 +782,7 @@
     </model>
     <model name='x_piece_2'>
       <static>false</static>
-      <pose>0.19097609387063857 0.096357691509161153 0.48468986303600281 -2.6126158393206458 1.125839538683657 2.9193034986721806</pose>
+      <pose>0.19007536141718581 0.09335165594228606 0.48842259022812701 2.3104585928622905 -0.096964751236550323 1.9114531461953974</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -846,7 +799,7 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -857,53 +810,7 @@
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
-            </sphere>
-          </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <pose>0 0 0 0 0 0</pose>
-        <enable_wind>false</enable_wind>
-      </link>
-      <self_collide>false</self_collide>
-    </model>
-    <model name='x_piece_3'>
-      <static>false</static>
-      <pose>0.19095755927727345 0.1363576883646847 0.48468985494175032 -2.5300725656514134 0.51930940656081181 -2.6385079247043572</pose>
-      <link name='x_link'>
-        <inertial>
-          <mass>0.0027000000000000001</mass>
-          <inertia>
-            <ixx>1.0000000000000001e-05</ixx>
-            <iyy>1.0000000000000001e-05</iyy>
-            <izz>1.0000000000000001e-05</izz>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyz>0</iyz>
-          </inertia>
-          <pose>0 0 0 0 0 0</pose>
-        </inertial>
-        <visual name='x_visual'>
-          <geometry>
-            <sphere>
-              <radius>0.02</radius>
-            </sphere>
-          </geometry>
-          <material>
-            <ambient>1 1 1 0.800000012</ambient>
-            <diffuse>1 1 1 0.800000012</diffuse>
-          </material>
-        </visual>
-        <collision name='x_collision'>
-          <geometry>
-            <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -921,7 +828,7 @@
     </model>
     <model name='x_piece_4'>
       <static>false</static>
-      <pose>0.19103174387148719 -0.023642293337203916 0.48468985692304234 -2.4624949980599649 0.56213637148073714 1.1269603397656365</pose>
+      <pose>0.19057666043196236 -0.010502604703684568 0.47301422873409477 -2.2741299795587064 0.0031722152632823156 1.2863550203101051</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -938,7 +845,7 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -949,7 +856,7 @@
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -967,7 +874,7 @@
     </model>
     <model name='x_piece_5'>
       <static>false</static>
-      <pose>0.19099464687529016 0.056357700528138932 0.48468986210825538 -3.0244266207747175 0.28947613535259609 2.9625508248660646</pose>
+      <pose>0.19009144656618984 0.058659551469329441 0.48379037351939036 1.7786992007352092 -0.16399578777786625 2.7618975756734998</pose>
       <link name='x_link'>
         <inertial>
           <mass>0.0027000000000000001</mass>
@@ -984,7 +891,7 @@
         <visual name='x_visual'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <material>
@@ -995,7 +902,7 @@
         <collision name='x_collision'>
           <geometry>
             <sphere>
-              <radius>0.02</radius>
+              <radius>0.017500000000000002</radius>
             </sphere>
           </geometry>
           <surface>
@@ -1013,7 +920,7 @@
     </model>
     <model name='ball_store_grey'>
       <static>true</static>
-      <pose>0.106026 -0.179093 0.40764299999999998 0 0 3.13639</pose>
+      <pose>0.052929170429706573 -0.24887700378894806 0.39546999335289001 0 0 3.1363899998849982</pose>
       <link name='ball_store_link'>
         <inertial>
           <mass>1</mass>
@@ -1032,7 +939,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/BALLSTORE2.stl</uri>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/Slider_Bracket.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -1045,7 +952,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/BALLSTORE2.stl</uri>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/Slider_Bracket.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -1063,7 +970,7 @@
     </model>
     <model name='ball_store_white'>
       <static>true</static>
-      <pose>0.21104100000000001 -0.043632999999999998 0.46038000000000001 0 0 1.5712600000000003</pose>
+      <pose>0.18989700078964233 0.04668100178241729 0.45074987411499023 0 0 1.5712599811587433</pose>
       <link name='ball_store_link'>
         <inertial>
           <mass>1</mass>
@@ -1082,7 +989,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/BALLSTORE2.stl</uri>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/Slider_Bracket.stl</uri>
             </mesh>
           </geometry>
           <material>
@@ -1095,7 +1002,7 @@
           <geometry>
             <mesh>
               <scale>0.001 0.001 0.001</scale>
-              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/BALLSTORE2.stl</uri>
+              <uri>file:///home/sukritchopra/ros2_ws/src/jetrover_description/models/jetrover/meshes_1/EXTERNAL_MESHES/Slider_Bracket.stl</uri>
             </mesh>
           </geometry>
           <surface>
@@ -1112,7 +1019,7 @@
       <self_collide>false</self_collide>
     </model>
     <model name='jetrover'>
-      <pose>0.053848257783198336 0.24331834842713235 0.7072468329420103 -1.5657726738650934 -0.0029448898659899876 3.1415887188436451</pose>
+      <pose>0.053852898629216953 0.28409981053819278 0.70589840253458758 -1.540217077153373 -0.0028489789382044328 3.1414386436589892</pose>
       <static>false</static>
       <self_collide>false</self_collide>
       <link name='base_footprint'>
@@ -1153,19 +1060,19 @@
             </cylinder>
           </geometry>
           <material>
-            <diffuse>0 1 0.400000006 1</diffuse>
-            <ambient>0 1 0.400000006 1</ambient>
+            <diffuse>1 0.824000001 0 1</diffuse>
+            <ambient>1 0.824000001 0 1</ambient>
           </material>
         </visual>
         <enable_wind>false</enable_wind>
         <pose>0 0 0 0 0 0</pose>
       </link>
       <joint name='joint1' type='revolute'>
-        <pose>-6.9388900000000004e-18 5.2041699999999996e-18 -2.0816700000000001e-17 1.7999500000000001e-21 2.11758e-22 1.9057700000000001e-43</pose>
+        <pose>-7.8062599999999993e-18 3.4694499999999997e-18 -2.7755599999999997e-17 1.7999500000000001e-21 2.11758e-22 1.9057700000000001e-43</pose>
         <parent>base_footprint</parent>
         <child>link1</child>
         <axis>
-          <xyz>5.2939559200928581e-22 1.2176098616780567e-21 -1</xyz>
+          <xyz>1.0587911838213564e-22 1.3234889800848443e-21 -1</xyz>
           <limit>
             <lower>-2.0899999999999999</lower>
             <upper>2.0899999999999999</upper>
@@ -1183,7 +1090,7 @@
         </axis>
       </joint>
       <link name='link1'>
-        <pose>0.0035930578034442801 -0.0070000504409087894 0.051444048327981218 1.9397517479726242e-06 -8.4437912467612689e-07 1.5855070500596888</pose>
+        <pose>0.003593057803444405 -0.0070000504409077902 0.051444048327981884 1.9403513698305283e-06 -8.4300030672147912e-07 1.5847963382113464</pose>
         <inertial>
           <pose>8.4882317065151008e-05 -0.0018903126840200471 0.020339854275225711 0 0 0</pose>
           <mass>0.030629351759666201</mass>
@@ -1243,7 +1150,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint2' type='revolute'>
-        <pose>8.6736199999999993e-18 8.6736199999999997e-19 1.9428900000000001e-16 4.8572299999999998e-17 -4.33681e-17 -1.05324e-33</pose>
+        <pose>8.6736199999999993e-18 -1.30104e-18 2.3592199999999998e-16 4.8572299999999998e-17 -4.5102799999999997e-17 -1.0953700000000001e-33</pose>
         <parent>link1</parent>
         <child>link2</child>
         <axis>
@@ -1265,7 +1172,7 @@
         </axis>
       </joint>
       <link name='link2'>
-        <pose>0.0035931040554076088 -0.007000069778602791 0.075149408779456084 1.9403693634989545e-06 0.025231413052112857 1.5855070990143936</pose>
+        <pose>0.0035931040554077198 -0.0070000697785874699 0.075149408779456861 1.9409942651148517e-06 0.025738454865964502 1.5847963881656584</pose>
         <inertial>
           <pose>0.00015629957042515699 -0.00045511369991391599 0.071772702851197495 0 0 0</pose>
           <mass>0.0329250074531705</mass>
@@ -1303,7 +1210,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint3' type='revolute'>
-        <pose>-1.16226e-16 -5.81132e-17 1.6653299999999999e-16 -5.2041699999999996e-18 5.2041699999999996e-18 -1.3541699999999999e-35</pose>
+        <pose>-1.1796099999999999e-16 -5.7245900000000004e-17 1.11022e-16 -5.2041699999999996e-18 5.2041699999999996e-18 -1.3541699999999999e-35</pose>
         <parent>link2</parent>
         <child>link3</child>
         <axis>
@@ -1325,7 +1232,7 @@
         </axis>
       </joint>
       <link name='link3'>
-        <pose>0.0035596594225455053 -0.0047148051377380318 0.16571208641065271 1.940280390602185e-06 0.023343831820618742 1.5855070953507895</pose>
+        <pose>0.0035606408052549499 -0.0046688676760560099 0.16571091592045395 1.9409034229661476e-06 0.023851186326243501 1.5847963845014335</pose>
         <inertial>
           <pose>0.00012845644092569799 -0.00076142462273371704 0.071772743785429 0 0 0</pose>
           <mass>0.0329250074463074</mass>
@@ -1363,11 +1270,11 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint4' type='revolute'>
-        <pose>-1.3877799999999999e-17 6.9388900000000004e-18 1.11022e-16 0 0 0</pose>
+        <pose>-5.5511199999999995e-17 2.0816700000000001e-17 5.5511199999999995e-17 5.5511199999999995e-17 1.11022e-16 1.11022e-16</pose>
         <parent>link3</parent>
         <child>link4</child>
         <axis>
-          <xyz>-5.5511151231257827e-17 1 -6.9388939039072284e-17</xyz>
+          <xyz>-5.5511151231257827e-17 1 -1.3877787807814457e-17</xyz>
           <limit>
             <lower>-2.0899999999999999</lower>
             <upper>2.0899999999999999</upper>
@@ -1385,7 +1292,7 @@
         </axis>
       </joint>
       <link name='link4'>
-        <pose>0.0035287227453396353 -0.002600009913059198 0.25629864077104081 2.1747029443572211e-06 0.46913056100101819 1.5855080332683398</pose>
+        <pose>0.0035305637893476294 -0.0025080962793058159 0.25629638555632872 2.5463488265327905e-06 0.70438000805762724 1.5847979871304809</pose>
         <inertial>
           <pose>-0.024155385718921799 0.0003017349751323721 0.048529459632962173 0 0 0</pose>
           <mass>0.034930330045039162</mass>
@@ -1445,7 +1352,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <joint name='joint5' type='revolute'>
-        <pose>1.9515600000000001e-17 -9.7144500000000003e-17 3.8857800000000001e-16 5.4210099999999998e-19 3.4694499999999997e-18 1.11022e-16</pose>
+        <pose>2.0816700000000001e-17 -2.7755599999999997e-17 4.7184499999999998e-16 4.3368099999999998e-19 -3.3101899999999998e-35 1.52656e-16</pose>
         <parent>link4</parent>
         <child>link5</child>
         <axis>
@@ -1467,7 +1374,7 @@
         </axis>
       </joint>
       <link name='link5'>
-        <pose>0.0032751282546097105 0.014640999140510313 0.29031683243038847 -0.4678025270953764 0.036657495530938687 0.087123662966859944</pose>
+        <pose>0.0031848574587351047 0.022186573807557064 0.28535852284106911 -0.70265872707998611 0.054027623944453769 0.077679402862181668</pose>
         <inertial>
           <pose>0.013745583285676721 -0.0029797500659027461 0.029288990452975349 0 0 0</pose>
           <mass>0.01851660201761849</mass>
@@ -1505,7 +1412,7 @@
         <enable_wind>false</enable_wind>
       </link>
       <link name='gripper_base_link'>
-        <pose>0.0033519073477588507 0.014677590999634615 0.29061562923177148 -0.47724620420940522 -0.0059804071654898381 0.0032455435463388388</pose>
+        <pose>0.0032609409448758619 0.022291914298503634 0.28564070754284987 -0.71250195185067933 -0.0069737628125500625 0.0060269472965318038</pose>
         <inertial>
           <pose>0 0 0.02 0 0 0</pose>
           <mass>0.5</mass>
@@ -1577,10 +1484,10 @@
       <joint name='gripper_base_joint' type='fixed'>
         <parent>link5</parent>
         <child>gripper_base_link</child>
-        <pose>3.4694499999999997e-18 -5.5511199999999995e-17 1.11022e-16 5.5511199999999995e-17 8.9446700000000006e-19 2.4826400000000001e-35</pose>
+        <pose>6.0715299999999996e-18 -5.5511199999999995e-17 1.6653299999999999e-16 0 0 0</pose>
       </joint>
       <link name='left_finger_link'>
-        <pose>0.0031849849542034958 0.027487255957851731 0.3115750968424052 -0.47724620420938391 -0.0059804071655034201 0.0032455435463186956</pose>
+        <pose>0.0030351012342027875 0.039633714257790609 0.30303684598060893 -0.71250195185065457 -0.0069737628125765656 0.0060269472965228284</pose>
         <gravity>false</gravity>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
@@ -1637,9 +1544,9 @@
       <joint name='left_finger_joint' type='prismatic'>
         <parent>gripper_base_link</parent>
         <child>left_finger_link</child>
-        <pose>2.6020900000000001e-18 -2.7755599999999997e-17 0.040000000000000001 0 -2.5749799999999999e-19 0</pose>
+        <pose>5.2041699999999996e-18 -1.38778e-16 0.040000000000000001 8.4703300000000008e-22 6.5052099999999998e-19 -4.3368099999999998e-19</pose>
         <axis>
-          <xyz>0 1 0</xyz>
+          <xyz>6.5052130349130266e-19 1 -8.4703294725430053e-22</xyz>
           <limit>
             <lower>0</lower>
             <upper>0.02749999999999999</upper>
@@ -1657,7 +1564,7 @@
         </axis>
       </joint>
       <link name='right_finger_link'>
-        <pose>0.0031864769850617342 0.017821132185476207 0.31657123637306239 -0.47724620420938391 -0.0059804071655034201 0.0032455435463186956</pose>
+        <pose>0.0030351405326809189 0.031163533820838363 0.31035118345206081 -0.71250195185065457 -0.0069737628125765656 0.0060269472965228284</pose>
         <gravity>false</gravity>
         <inertial>
           <pose>0 0 0.055 0 0 0</pose>
@@ -1714,9 +1621,9 @@
       <joint name='right_finger_joint' type='prismatic'>
         <parent>gripper_base_link</parent>
         <child>right_finger_link</child>
-        <pose>1.73472e-18 -4.1633400000000002e-17 0.040000000000000001 0 -2.5749799999999999e-19 0</pose>
+        <pose>5.2041699999999996e-18 -1.11022e-16 0.040000000000000001 8.4703300000000008e-22 6.5052099999999998e-19 -4.3368099999999998e-19</pose>
         <axis>
-          <xyz>0 -1 0</xyz>
+          <xyz>-6.5052130349130266e-19 -1 8.4703294725430053e-22</xyz>
           <limit>
             <lower>0</lower>
             <upper>0.02749999999999999</upper>
@@ -1817,7 +1724,7 @@
     </model>
     <model name='overhead_camera'>
       <static>true</static>
-      <pose>0.036840200424194336 0.20014800131320953 0.5957069993019104 0.021799506252814953 -0.7330293231808428 -1.576377491649319</pose>
+      <pose>0.036840200424194336 0.20014800131320953 0.5957069993019104 0.021799506252815251 -0.73302932318084324 -1.5763774916493196</pose>
       <link name='camera_housing'>
         <inertial>
           <mass>0.050000000000000003</mass>

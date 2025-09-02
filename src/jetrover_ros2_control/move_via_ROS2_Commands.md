@@ -83,7 +83,7 @@ Create `~/ros2_ws/src/jetrover_ros2_control/config/bridge_config.yaml`:
 gz sim tictactoe_NEW3.4.sdf
 
 # Terminal 2: Start ROS2-Gazebo bridge
-ros2 run ros_gz_bridge parameter_bridge --ros-args -p config_file:=~/ros2_ws/src/jetrover_ros2_control/config/bridge_config.yaml
+ros2 run ros_gz_bridge parameter_bridge --ros-args -p config_file:=/home/sukritchopra/ros2_ws/src/jetrover_ros2_control/config/bridge_config.yaml
 
 # Terminal 3: Test ROS2 commands
 ros2 topic pub /joint1_cmd std_msgs/msg/Float64 "data: -0.59" --once

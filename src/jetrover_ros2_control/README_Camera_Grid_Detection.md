@@ -85,7 +85,7 @@ gz sim tictactoe_NEW3.6.sdf
 # In new terminal
 cd ~/ros2_ws
 source install/setup.bash
-ros2 run ros_gz_bridge parameter_bridge --ros-args -p config_file:=src/jetrover_ros2_control/config/bridge_config.yaml
+ros2 run ros_gz_bridge parameter_bridge --ros-args -p config_file:=home/sukritchopra/ros2_ws/src/jetrover_ros2_control/config/bridge_config.yaml
 ```
 
 ### **Step 3: Launch Camera Detection System**
