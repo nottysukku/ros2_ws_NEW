@@ -36,7 +36,7 @@ class TicTacToeGUI:
         
         self.poses = {
             'home': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0},
-            'pickup': {'joint1': 0.0, 'joint2': -0.5, 'joint3': 0.8, 'joint4': 0.5, 'joint5': 0.0},
+            'pickup': {'joint1': 0.0, 'joint2': 0.78, 'joint3': 0.17, 'joint4': 0.76, 'joint5': 0.04},
             'waiting': {'joint1': 0.0, 'joint2': -1.0, 'joint3': 1.5, 'joint4': 0.0, 'joint5': 0.0}
         }
         
