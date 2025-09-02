@@ -1,3 +1,15 @@
+import requests
+import os
+# Add function to fetch API calls from cloud backend
+def fetch_data_from_cloud_api():
+    API_URL = os.getenv('API_URL', 'https://ros2-joint-controller-api.onrender.com')
+    try:
+        response = requests.get(f'{API_URL}/api/joints')
+        joints = response.json()['joints']
+        print('Received joints data from cloud API:', joints)
+        # Further processing can be done here if needed.
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data from cloud API: {e}")
 #!/usr/bin/env python3
 """
 WSL2 ROS2 Bridge Server

@@ -10,12 +10,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-// WSL2 IP Configuration - Update this with your WSL2 IP
-const WSL2_IP = process.env.WSL2_IP || '172.20.226.22' ; // Get this from: wsl hostname -I
-const WSL2_PORT = 8080; // Port where ROS2 bridge server runs
-const WSL2_BASE_URL = `http://${WSL2_IP}:${WSL2_PORT}`;
+// ngrok Tunnel Configuration - Update this with your ngrok URL
+const WSL2_TUNNEL_URL = process.env.WSL2_TUNNEL_URL || 'https://89cf7a9d42ec.ngrok-free.app/';
+const WSL2_BASE_URL = WSL2_TUNNEL_URL;
 
-console.log(`🔗 Connecting to WSL2 ROS2 Bridge at: ${WSL2_BASE_URL}`);
+console.log(`🔗 Connecting to ROS2 Bridge via ngrok tunnel at: ${WSL2_BASE_URL}`);
 
 // Joint configuration
 const JOINT_CONFIG = {
@@ -29,6 +28,14 @@ const JOINT_CONFIG = {
   },
   'joint3': {
     topic: '/joint3_cmd',
+    type: 'std_msgs/Float64'
+  },
+  'joint4': {
+    topic: '/joint4_cmd',
+    type: 'std_msgs/Float64'
+  },
+  'joint5': {
+    topic: '/joint5_cmd',
     type: 'std_msgs/Float64'
   }
 };
@@ -162,17 +169,44 @@ const PREDEFINED_POSES = {
   'home': {
     joint1: 0.0,
     joint2: 0.0,
-    joint3: 0.0
+    joint3: 0.0,
+    joint4: 0.0,
+    joint5: 0.0
   },
   'pose1': {
     joint1: 1.5708,  // 90 degrees
     joint2: 0.7854,  // 45 degrees
-    joint3: -0.7854  // -45 degrees
+    joint3: -0.7854, // -45 degrees
+    joint4: 0.3927,  // 22.5 degrees
+    joint5: -0.3927  // -22.5 degrees
   },
   'pose2': {
     joint1: -1.5708, // -90 degrees
     joint2: 1.5708,  // 90 degrees
-    joint3: 0.0
+    joint3: 0.0,
+    joint4: -0.7854, // -45 degrees
+    joint5: 0.7854   // 45 degrees
+  },
+  'pose3': {
+    joint1: 0.0,
+    joint2: -1.5708, // -90 degrees
+    joint3: 1.5708,  // 90 degrees
+    joint4: 1.5708,  // 90 degrees
+    joint5: 0.0
+  },
+  'stretch': {
+    joint1: 0.0,
+    joint2: 0.0,
+    joint3: 0.0,
+    joint4: 0.0,
+    joint5: 1.5708  // 90 degrees (stretched out)
+  },
+  'curl': {
+    joint1: 0.0,
+    joint2: 0.0,
+    joint3: 0.0,
+    joint4: -1.5708, // -90 degrees
+    joint5: -1.5708  // -90 degrees (curled up)
   }
 };
 
@@ -208,7 +242,7 @@ app.get('/api/poses', (req, res) => {
 // WSL2 IP detection endpoint
 app.get('/api/wsl2/detect', async (req, res) => {
   const possibleIPs = [
-    '172.20.240.1',   // Common WSL2 IP
+    '172.20.226.22',   // Common WSL2 IP
     '172.18.0.1',     // Another common range
     '192.168.1.1',    // Local network
     'localhost'       // Fallback
@@ -268,8 +302,8 @@ app.use((req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`\n🚀 Windows ROS2 Joint Controller API running on http://localhost:${PORT}`);
-  console.log(`🔗 Connecting to WSL2 ROS2 Bridge at: ${WSL2_BASE_URL}`);
+  console.log(`\n🚀 ROS2 Joint Controller API running on http://localhost:${PORT}`);
+  console.log(`🔗 Connecting to ROS2 Bridge via ngrok tunnel at: ${WSL2_BASE_URL}`);
   console.log('\n📋 Available endpoints:');
   console.log(`  GET  http://localhost:${PORT}/api/health`);
   console.log(`  GET  http://localhost:${PORT}/api/joints`);
@@ -279,8 +313,8 @@ app.listen(PORT, () => {
   console.log(`  POST http://localhost:${PORT}/api/pose/:poseName`);
   console.log(`  GET  http://localhost:${PORT}/api/wsl2/detect`);
   console.log(`\n📖 Visit http://localhost:${PORT} for the web interface`);
-  console.log(`\n💡 To find your WSL2 IP, run in WSL2: hostname -I`);
-  console.log(`💡 Then set: set WSL2_IP=YOUR_WSL2_IP`);
+  console.log(`\n💡 To get your ngrok URL, run in WSL2: ngrok http 8080`);
+  console.log(`💡 Then set: export WSL2_TUNNEL_URL=https://your-ngrok-url.ngrok-free.app`);
 });
 
 // Graceful shutdown
