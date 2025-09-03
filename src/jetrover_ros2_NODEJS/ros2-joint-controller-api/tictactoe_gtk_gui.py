@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+"""
+Beautiful GTK-based Tic-Tac-Toe Game with Robot Arm Integration
+Features:
+- Mouse click interface
+- Beautiful modern UI with animations
+- Robot arm control integration
+- Sound effects and visual feedback
+- Real-time status updates
+"""
+
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('Gdk', '3.0')
@@ -7,6 +18,8 @@ import os
 import requests
 import time
 import threading
+import subprocess
+import json
 from typing import Optional, Dict, List
 
 class TicTacToeGUI:
@@ -34,14 +47,37 @@ class TicTacToeGUI:
             9: {'joint1': -0.23, 'joint2': 0.35, 'joint3': 0.31, 'joint4': -0.26, 'joint5': -0.26}
         }
         
+        # Gazebo world coordinates for each tile (spawn positions)
+        self.tile_world_positions = {
+            1: {'x': -0.01, 'y': 0.11, 'z': 0.51},  # +0.04 on Z axis
+            2: {'x': 0.04, 'y': 0.11, 'z': 0.51},
+            3: {'x': 0.09, 'y': 0.10, 'z': 0.49},
+            4: {'x': -0.01, 'y': 0.05, 'z': 0.51},
+            5: {'x': 0.04, 'y': 0.05, 'z': 0.51},
+            6: {'x': 0.09, 'y': 0.05, 'z': 0.51},
+            7: {'x': -0.01, 'y': 0.00, 'z': 0.51},  # Note: Same as tile 4, might need adjustment
+            8: {'x': 0.04, 'y': 0.00, 'z': 0.51},
+            9: {'x': 0.09, 'y': 0.00, 'z': 0.51}
+        }
+        
+        # Available game pieces in the world
+        self.available_x_pieces = ['x_piece_1', 'x_piece_2', 'x_piece_4', 'x_piece_5']
+        self.available_o_pieces = ['o_piece_1', 'o_piece_2', 'o_piece_4', 'o_piece_5']
+        self.used_x_pieces = []
+        self.used_o_pieces = []
+        
         self.poses = {
             'home': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0},
             'pickup': {'joint1': 0.0, 'joint2': 0.78, 'joint3': 0.17, 'joint4': 0.76, 'joint5': 0.04},
+            'near_home': {'joint1': 0.0, 'joint2': -0.2, 'joint3': 0.3, 'joint4': 0.2, 'joint5': 0.0},
             'waiting': {'joint1': 0.0, 'joint2': -1.0, 'joint3': 1.5, 'joint4': 0.0, 'joint5': 0.0}
         }
         
         # Initialize GUI
         self.create_gui()
+        
+        # Reset pieces to original positions at startup
+        self.reset_pieces_to_original_positions()
         
         # Initialize robot arm
         self.initialize_robot()
@@ -290,8 +326,70 @@ class TicTacToeGUI:
             self.update_robot_action(f"❌ Robot API error", "#BF616A")
             return False
     
+    def teleport_game_piece(self, tile_number: int, piece_type: str = "x_piece"):
+        """Teleport an existing game piece to specified tile position"""
+        def teleport_thread():
+            try:
+                # Select available piece
+                if piece_type == "x_piece":
+                    if not self.available_x_pieces:
+                        print("❌ No more X pieces available!")
+                        return False
+                    piece_name = self.available_x_pieces.pop(0)
+                    self.used_x_pieces.append(piece_name)
+                    piece_symbol = "X"
+                    color_desc = "white"
+                else:
+                    if not self.available_o_pieces:
+                        print("❌ No more O pieces available!")
+                        return False
+                    piece_name = self.available_o_pieces.pop(0)
+                    self.used_o_pieces.append(piece_name)
+                    piece_symbol = "O"
+                    color_desc = "black"
+                
+                # Get tile world coordinates
+                pos = self.tile_world_positions[tile_number]
+                
+                # Teleport the piece using gz service
+                pose_cmd = f"{pos['x']} {pos['y']} {pos['z']} 0 0 0"
+                cmd = f'gz service -s /world/WORKINGPROTO/set_pose --reqtype gz.msgs.Pose --reptype gz.msgs.Boolean --timeout 1000 --req \'name: "{piece_name}" position {{x: {pos["x"]} y: {pos["y"]} z: {pos["z"]}}} orientation {{x: 0 y: 0 z: 0 w: 1}}\''
+                
+                result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+                
+                if result.returncode == 0:
+                    print(f"✅ Teleported {color_desc} {piece_symbol} piece ({piece_name}) to tile {tile_number}")
+                    return True
+                else:
+                    print(f"❌ Failed to teleport {piece_symbol} piece: {result.stderr}")
+                    # Return piece to available list if teleport failed
+                    if piece_type == "x_piece":
+                        self.used_x_pieces.remove(piece_name)
+                        self.available_x_pieces.insert(0, piece_name)
+                    else:
+                        self.used_o_pieces.remove(piece_name)
+                        self.available_o_pieces.insert(0, piece_name)
+                    return False
+                    
+            except Exception as e:
+                print(f"❌ Gazebo teleport error: {e}")
+                return False
+        
+        # Run in background thread
+        threading.Thread(target=teleport_thread, daemon=True).start()
+    
+    def teleport_human_piece(self, tile_number: int):
+        """Teleport white ball (X piece) for human player"""
+        self.teleport_game_piece(tile_number, "x_piece")
+        self.update_status(f"⚪ White piece teleported to tile {tile_number}!", "#A3BE8C")
+    
+    def teleport_computer_piece(self, tile_number: int):
+        """Teleport black ball (O piece) for computer player"""
+        self.teleport_game_piece(tile_number, "o_piece")
+        self.update_robot_action(f"⚫ Black piece moved to tile {tile_number}!", "#BF616A")
+    
     def robot_sequence_to_tile(self, tile_number: int):
-        """Execute robot sequence: pickup → move to tile → place"""
+        """Execute robot sequence: pickup → near home → move to tile → place"""
         def robot_sequence_thread():
             try:
                 self.update_robot_action(f"🤖 Computer moving to tile {tile_number}...", "#D08770")
@@ -303,7 +401,14 @@ class TicTacToeGUI:
                     return
                 time.sleep(1.5)
                 
-                # Step 2: Move to target tile
+                # Step 2: Move to near home position (intermediate maneuver)
+                success = self.move_robot_arm(self.poses['near_home'], "Moving to near home position")
+                if not success:
+                    self.update_robot_action("❌ Failed to reach near home position", "#BF616A")
+                    return
+                time.sleep(1.0)
+                
+                # Step 3: Move to target tile
                 target_position = self.tile_positions[tile_number]
                 success = self.move_robot_arm(target_position, f"Placing piece on tile {tile_number}")
                 if not success:
@@ -311,10 +416,13 @@ class TicTacToeGUI:
                     return
                 time.sleep(2)
                 
-                # Step 3: Return to waiting position (arm up)
+                # Step 4: Return to waiting position (arm up)
                 success = self.move_robot_arm(self.poses['waiting'], "Moving to waiting position")
                 if success:
                     self.update_robot_action(f"✅ Computer placed O on tile {tile_number}", "#A3BE8C")
+                    # Teleport black ball after robot arm sequence completes
+                    time.sleep(0.5)  # Small delay before teleporting
+                    self.teleport_computer_piece(tile_number)
                 else:
                     self.update_robot_action("⚠️ Move completed, arm position unclear", "#D08770")
                     
@@ -345,6 +453,9 @@ class TicTacToeGUI:
         self.make_move(position, self.human)
         self.update_button_display(position, self.human)
         self.update_status(f"👤 You placed X on tile {position + 1}", "#A3BE8C")
+        
+        # Spawn white ball immediately when human clicks
+        self.teleport_human_piece(position + 1)
         
         # Check for winner after human move
         winner = self.check_winner()
@@ -391,7 +502,7 @@ class TicTacToeGUI:
                     return
                 
                 # Back to human turn after robot finishes moving
-                GLib.timeout_add(4000, self.prepare_human_turn)  # Wait for robot sequence to complete
+                GLib.timeout_add(5500, self.prepare_human_turn)  # Wait for robot sequence to complete (pickup + near_home + tile + waiting)
         
         # Run computer move in background thread
         threading.Thread(target=computer_move_thread, daemon=True).start()
@@ -573,8 +684,57 @@ class TicTacToeGUI:
         
         return False  # Don't repeat timeout
     
+    def reset_pieces_to_original_positions(self):
+        """Reset all used pieces back to their original positions"""
+        def reset_pieces_thread():
+            try:
+                # Original positions from the SDF file
+                original_positions = {
+                    'x_piece_1': {'x': 0.197454, 'y': -0.026346, 'z': 0.483760},
+                    'x_piece_2': {'x': 0.175725, 'y': -0.053232, 'z': 0.478285},
+                    'x_piece_4': {'x': 0.219260, 'y': 0.000635, 'z': 0.488400},
+                    'x_piece_5': {'x': 0.153513, 'y': -0.079791, 'z': 0.473160},
+                    'o_piece_1': {'x': -0.051335, 'y': 0.205269, 'z': 0.494283},
+                    'o_piece_2': {'x': 0.017689, 'y': 0.208588, 'z': 0.483151},
+                    'o_piece_4': {'x': -0.016757, 'y': 0.206961, 'z': 0.489135},
+                    'o_piece_5': {'x': 0.052095, 'y': 0.210449, 'z': 0.477005}
+                }
+                
+                # Reset all used pieces
+                all_used_pieces = self.used_x_pieces + self.used_o_pieces
+                
+                for piece_name in all_used_pieces:
+                    if piece_name in original_positions:
+                        pos = original_positions[piece_name]
+                        cmd = f'gz service -s /world/WORKINGPROTO/set_pose --reqtype gz.msgs.Pose --reptype gz.msgs.Boolean --timeout 1000 --req \'name: "{piece_name}" position {{x: {pos["x"]} y: {pos["y"]} z: {pos["z"]}}} orientation {{x: 0 y: 0 z: 0 w: 1}}\''
+                        
+                        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+                        if result.returncode == 0:
+                            print(f"✅ Reset {piece_name} to original position")
+                        else:
+                            print(f"⚠️ Failed to reset {piece_name}: {result.stderr}")
+                        
+                        time.sleep(0.1)  # Small delay between resets
+                
+                # Reset piece availability
+                self.available_x_pieces = ['x_piece_1', 'x_piece_2', 'x_piece_4', 'x_piece_5']
+                self.available_o_pieces = ['o_piece_1', 'o_piece_2', 'o_piece_4', 'o_piece_5']
+                self.used_x_pieces = []
+                self.used_o_pieces = []
+                
+                print("✅ All pieces reset to original positions")
+                
+            except Exception as e:
+                print(f"❌ Piece reset error: {e}")
+        
+        # Run in background thread
+        threading.Thread(target=reset_pieces_thread, daemon=True).start()
+    
     def new_game(self, widget):
         """Start a new game"""
+        # Reset pieces to original positions first
+        self.reset_pieces_to_original_positions()
+        
         self.board = [' ' for _ in range(9)]
         self.game_over = False
         self.current_player = self.human
