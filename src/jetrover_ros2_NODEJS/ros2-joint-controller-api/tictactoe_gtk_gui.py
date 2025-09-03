@@ -34,17 +34,17 @@ class TicTacToeGUI:
         # API configuration
         self.api_url = os.getenv('ROBOT_API_URL', 'https://ros2-joint-controller-api.onrender.com')
         
-        # Robot arm positions
+        # Robot arm positions (with finger control)
         self.tile_positions = {
-            1: {'joint1': 0.24, 'joint2': 0.61, 'joint3': 0.05, 'joint4': 0.30, 'joint5': -0.80},
-            2: {'joint1': 0.05, 'joint2': 0.40, 'joint3': 0.34, 'joint4': 0.41, 'joint5': -0.50},
-            3: {'joint1': -0.20, 'joint2': 0.40, 'joint3': 0.34, 'joint4': 0.41, 'joint5': -0.50},
-            4: {'joint1': 0.23, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.16, 'joint5': -0.26},
-            5: {'joint1': 0.02, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.11, 'joint5': -0.26},
-            6: {'joint1': -0.20, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.11, 'joint5': -0.26},
-            7: {'joint1': 0.23, 'joint2': 0.36, 'joint3': 0.31, 'joint4': -0.22, 'joint5': -0.26},
-            8: {'joint1': -0.02, 'joint2': 0.35, 'joint3': 0.31, 'joint4': -0.26, 'joint5': -0.26},
-            9: {'joint1': -0.23, 'joint2': 0.35, 'joint3': 0.31, 'joint4': -0.26, 'joint5': -0.26}
+            1: {'joint1': 0.24, 'joint2': 0.61, 'joint3': 0.05, 'joint4': 0.30, 'joint5': -0.80, 'left_finger': 0.0, 'right_finger': 0.0},
+            2: {'joint1': 0.05, 'joint2': 0.40, 'joint3': 0.34, 'joint4': 0.41, 'joint5': -0.50, 'left_finger': 0.0, 'right_finger': 0.0},
+            3: {'joint1': -0.20, 'joint2': 0.40, 'joint3': 0.34, 'joint4': 0.41, 'joint5': -0.50, 'left_finger': 0.0, 'right_finger': 0.0},
+            4: {'joint1': 0.23, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.16, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
+            5: {'joint1': 0.02, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.11, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
+            6: {'joint1': -0.20, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.11, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
+            7: {'joint1': 0.23, 'joint2': 0.36, 'joint3': 0.31, 'joint4': -0.22, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
+            8: {'joint1': -0.02, 'joint2': 0.35, 'joint3': 0.31, 'joint4': -0.26, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
+            9: {'joint1': -0.23, 'joint2': 0.35, 'joint3': 0.31, 'joint4': -0.26, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0}
         }
         
         # Gazebo world coordinates for each tile (spawn positions)
@@ -67,10 +67,12 @@ class TicTacToeGUI:
         self.used_o_pieces = []
         
         self.poses = {
-            'home': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0},
-            'pickup': {'joint1': 0.0, 'joint2': 0.78, 'joint3': 0.17, 'joint4': 0.76, 'joint5': 0.04},
-            'near_home': {'joint1': 0.0, 'joint2': -0.2, 'joint3': 0.3, 'joint4': 0.2, 'joint5': 0.0},
-            'waiting': {'joint1': 0.0, 'joint2': -1.0, 'joint3': 1.5, 'joint4': 0.0, 'joint5': 0.0}
+            'home': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
+            'pickup': {'joint1': 0.56, 'joint2': 0.65, 'joint3': 0.17, 'joint4': -0.40, 'joint5': 1.22, 'left_finger': 0.15, 'right_finger': 0.15},
+            'near_home': {'joint1': 0.0, 'joint2': -0.2, 'joint3': 0.3, 'joint4': 0.2, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
+            'waiting': {'joint1': 0.0, 'joint2': -1.0, 'joint3': 1.5, 'joint4': 0.0, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
+            'grip_open': {'left_finger': 0.15, 'right_finger': 0.15},
+            'grip_close': {'left_finger': 0.0, 'right_finger': 0.0}
         }
         
         # Initialize GUI
@@ -326,6 +328,14 @@ class TicTacToeGUI:
             self.update_robot_action(f"❌ Robot API error", "#BF616A")
             return False
     
+    def open_gripper(self, description: str = "Opening gripper") -> bool:
+        """Open the gripper fingers"""
+        return self.move_robot_arm(self.poses['grip_open'], description)
+    
+    def close_gripper(self, description: str = "Closing gripper") -> bool:
+        """Close the gripper fingers"""
+        return self.move_robot_arm(self.poses['grip_close'], description)
+    
     def teleport_game_piece(self, tile_number: int, piece_type: str = "x_piece"):
         """Teleport an existing game piece to specified tile position"""
         def teleport_thread():
@@ -389,34 +399,54 @@ class TicTacToeGUI:
         self.update_robot_action(f"⚫ Black piece moved to tile {tile_number}!", "#BF616A")
     
     def robot_sequence_to_tile(self, tile_number: int):
-        """Execute robot sequence: pickup → near home → move to tile → place"""
+        """Execute robot sequence: pickup → grip → near home → move to tile → release → waiting"""
         def robot_sequence_thread():
             try:
                 self.update_robot_action(f"🤖 Computer moving to tile {tile_number}...", "#D08770")
                 
-                # Step 1: Move to pickup position (simulate picking up piece)
+                # Step 1: Open gripper first
+                success = self.open_gripper("Opening gripper for pickup")
+                if not success:
+                    self.update_robot_action("❌ Failed to open gripper", "#BF616A")
+                    return
+                time.sleep(1.0)
+                
+                # Step 2: Move to pickup position (simulate picking up piece)
                 success = self.move_robot_arm(self.poses['pickup'], "Moving to pickup position")
                 if not success:
                     self.update_robot_action("❌ Failed to reach pickup position", "#BF616A")
                     return
+                time.sleep(1.0)
+                
+                # Step 3: Close gripper to grab piece
+                success = self.close_gripper("Grabbing game piece")
+                if not success:
+                    self.update_robot_action("❌ Failed to close gripper", "#BF616A")
+                    return
                 time.sleep(1.5)
                 
-                # Step 2: Move to near home position (intermediate maneuver)
+                # Step 4: Move to near home position (intermediate maneuver)
                 success = self.move_robot_arm(self.poses['near_home'], "Moving to near home position")
                 if not success:
                     self.update_robot_action("❌ Failed to reach near home position", "#BF616A")
                     return
                 time.sleep(1.0)
                 
-                # Step 3: Move to target tile
+                # Step 5: Move to target tile
                 target_position = self.tile_positions[tile_number]
-                success = self.move_robot_arm(target_position, f"Placing piece on tile {tile_number}")
+                success = self.move_robot_arm(target_position, f"Moving to tile {tile_number}")
                 if not success:
                     self.update_robot_action(f"❌ Failed to reach tile {tile_number}", "#BF616A")
                     return
-                time.sleep(2)
+                time.sleep(1.5)
                 
-                # Step 4: Return to waiting position (arm up)
+                # Step 6: Open gripper to release piece
+                success = self.open_gripper("Releasing game piece")
+                if not success:
+                    self.update_robot_action("⚠️ Failed to open gripper, but continuing", "#D08770")
+                time.sleep(1.0)
+                
+                # Step 7: Return to waiting position (arm up)
                 success = self.move_robot_arm(self.poses['waiting'], "Moving to waiting position")
                 if success:
                     self.update_robot_action(f"✅ Computer placed O on tile {tile_number}", "#A3BE8C")
@@ -694,10 +724,10 @@ class TicTacToeGUI:
                     'x_piece_2': {'x': 0.175725, 'y': -0.053232, 'z': 0.478285},
                     'x_piece_4': {'x': 0.219260, 'y': 0.000635, 'z': 0.488400},
                     'x_piece_5': {'x': 0.153513, 'y': -0.079791, 'z': 0.473160},
-                    'o_piece_1': {'x': -0.051335, 'y': 0.205269, 'z': 0.494283},
-                    'o_piece_2': {'x': 0.017689, 'y': 0.208588, 'z': 0.483151},
-                    'o_piece_4': {'x': -0.016757, 'y': 0.206961, 'z': 0.489135},
-                    'o_piece_5': {'x': 0.052095, 'y': 0.210449, 'z': 0.477005}
+                    'o_piece_1': {'x': -0.071335, 'y': 0.05269, 'z': 0.494283},
+                    'o_piece_2': {'x': -0.077689, 'y': 0.128588, 'z': 0.493151},
+                    'o_piece_4': {'x': -0.076757, 'y': 0.086961, 'z': 0.489135},
+                    'o_piece_5': {'x': -0.072095, 'y': 0.150449, 'z': 0.497005}
                 }
                 
                 # Reset all used pieces

@@ -52,6 +52,14 @@ class ROS2BridgeNode(Node):
             'joint5': {
                 'topic': '/joint5_cmd',
                 'type': 'std_msgs/Float64'
+            },
+            'left_finger': {
+                'topic': '/left_finger_cmd',
+                'type': 'std_msgs/Float64'
+            },
+            'right_finger': {
+                'topic': '/right_finger_cmd',
+                'type': 'std_msgs/Float64'
             }
         }
 

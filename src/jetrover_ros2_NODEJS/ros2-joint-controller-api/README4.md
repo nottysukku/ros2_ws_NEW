@@ -103,9 +103,13 @@ python3 tictactoe_logic.py
 - Arm moves to **waiting position** (up and out of the way)
 
 ### Computer Turn:
-1. **Pickup position** - simulates picking up game piece
-2. **Target tile position** - places piece on chosen tile  
-3. **Waiting position** - returns to up position
+1. **Open gripper** - opens fingers to prepare for pickup
+2. **Pickup position** - moves to game piece location
+3. **Close gripper** - grabs the game piece
+4. **Near home** - intermediate safe position
+5. **Target tile position** - moves to chosen tile
+6. **Open gripper** - releases the game piece
+7. **Waiting position** - returns to up position
 
 ### Tile Positions (1-9):
 - **Tile 1:** j1=0.24, j2=0.61, j3=0.05, j4=0.30, j5=-0.80
@@ -117,6 +121,24 @@ python3 tictactoe_logic.py
 - **Tile 7:** j1=0.23, j2=0.36, j3=0.31, j4=-0.22, j5=-0.26
 - **Tile 8:** j1=-0.02, j2=0.35, j3=0.31, j4=-0.26, j5=-0.26
 - **Tile 9:** j1=-0.23, j2=0.35, j3=0.31, j4=-0.26, j5=-0.26
+
+### Gripper Control:
+- **Open gripper:** left_finger=0.15, right_finger=0.15
+- **Close gripper:** left_finger=0.0, right_finger=0.0
+
+### Manual Control Commands:
+```bash
+# Joint control
+ros2 topic pub /joint1_cmd std_msgs/msg/Float64 "data: 0.0" --once
+ros2 topic pub /joint2_cmd std_msgs/msg/Float64 "data: 0.78" --once
+ros2 topic pub /joint3_cmd std_msgs/msg/Float64 "data: 0.17" --once
+ros2 topic pub /joint4_cmd std_msgs/msg/Float64 "data: 0.76" --once
+ros2 topic pub /joint5_cmd std_msgs/msg/Float64 "data: 0.04" --once
+
+# Gripper control
+ros2 topic pub /left_finger_cmd std_msgs/msg/Float64 "data: 0.15" --once
+ros2 topic pub /right_finger_cmd std_msgs/msg/Float64 "data: 0.15" --once
+```
 
 ---
 
