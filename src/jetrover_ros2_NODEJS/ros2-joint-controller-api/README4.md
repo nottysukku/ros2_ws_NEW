@@ -32,7 +32,7 @@ Replace `YOUR_AUTHTOKEN_HERE` with your actual token.
 ```bash
 cd ~/ros2_ws/src/jetrover_description/models/jetrover
 source ~/ros2_ws/install/setup.bash
-gz sim tictactoe_NEW3.6.sdf
+gz sim tictactoe_NEW3.7.sdf
 ```
 
 **Terminal 2: Start ROS2-Gazebo Bridge**

@@ -34,30 +34,32 @@ class TicTacToeGUI:
         # API configuration
         self.api_url = os.getenv('ROBOT_API_URL', 'https://ros2-joint-controller-api.onrender.com')
         
-        # Robot arm positions (with finger control)
+    
+        
+        # Robot arm positions (updated for calm and composed movement)
         self.tile_positions = {
-            1: {'joint1': 0.24, 'joint2': 0.61, 'joint3': 0.05, 'joint4': 0.30, 'joint5': -0.80, 'left_finger': 0.0, 'right_finger': 0.0},
-            2: {'joint1': 0.05, 'joint2': 0.40, 'joint3': 0.34, 'joint4': 0.41, 'joint5': -0.50, 'left_finger': 0.0, 'right_finger': 0.0},
-            3: {'joint1': -0.20, 'joint2': 0.40, 'joint3': 0.34, 'joint4': 0.41, 'joint5': -0.50, 'left_finger': 0.0, 'right_finger': 0.0},
-            4: {'joint1': 0.23, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.16, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
-            5: {'joint1': 0.02, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.11, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
-            6: {'joint1': -0.20, 'joint2': 0.36, 'joint3': 0.31, 'joint4': 0.11, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
-            7: {'joint1': 0.23, 'joint2': 0.36, 'joint3': 0.31, 'joint4': -0.22, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
-            8: {'joint1': -0.02, 'joint2': 0.35, 'joint3': 0.31, 'joint4': -0.26, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0},
-            9: {'joint1': -0.23, 'joint2': 0.35, 'joint3': 0.31, 'joint4': -0.26, 'joint5': -0.26, 'left_finger': 0.0, 'right_finger': 0.0}
+            1: {'joint1': 0.34, 'joint2': -0.42, 'joint3': 1.52, 'joint4': 0.35, 'joint5': -0.13, 'left_finger': 0.0, 'right_finger': 0.0},
+            2: {'joint1': 0.16, 'joint2': -0.42, 'joint3': 1.52, 'joint4': 0.35, 'joint5': -0.14, 'left_finger': 0.0, 'right_finger': 0.0},
+            3: {'joint1': -0.12, 'joint2': -0.42, 'joint3': 1.52, 'joint4': 0.35, 'joint5': -0.13, 'left_finger': 0.0, 'right_finger': 0.0},
+            4: {'joint1': 0.37, 'joint2': 0.0, 'joint3': 2.03, 'joint4': -1.37, 'joint5': 1.45, 'left_finger': 0.0, 'right_finger': 0.0},
+            5: {'joint1': 0.12, 'joint2': 0.0, 'joint3': 2.03, 'joint4': -1.36, 'joint5': 1.44, 'left_finger': 0.0, 'right_finger': 0.0},
+            6: {'joint1': -0.12, 'joint2': -0.42, 'joint3': 1.52, 'joint4': -0.69, 'joint5': -0.13, 'left_finger': 0.0, 'right_finger': 0.0},
+            7: {'joint1': 0.40, 'joint2': 0.92, 'joint3': 0.65, 'joint4': -1.72, 'joint5': 1.44, 'left_finger': 0.0, 'right_finger': 0.0},
+            8: {'joint1': 0.12, 'joint2': 0.92, 'joint3': 0.65, 'joint4': -1.72, 'joint5': 1.48, 'left_finger': 0.0, 'right_finger': 0.0},
+            9: {'joint1': -0.15, 'joint2': 0.92, 'joint3': 0.65, 'joint4': -1.74, 'joint5': 1.76, 'left_finger': 0.0, 'right_finger': 0.0}
         }
         
-        # Gazebo world coordinates for each tile (spawn positions)
+        # Gazebo world coordinates for each tile (spawn positions for white balls - human player only)
         self.tile_world_positions = {
-            1: {'x': -0.01, 'y': 0.11, 'z': 0.51},  # +0.04 on Z axis
-            2: {'x': 0.04, 'y': 0.11, 'z': 0.51},
-            3: {'x': 0.09, 'y': 0.10, 'z': 0.49},
-            4: {'x': -0.01, 'y': 0.05, 'z': 0.51},
-            5: {'x': 0.04, 'y': 0.05, 'z': 0.51},
-            6: {'x': 0.09, 'y': 0.05, 'z': 0.51},
-            7: {'x': -0.01, 'y': 0.00, 'z': 0.51},  # Note: Same as tile 4, might need adjustment
-            8: {'x': 0.04, 'y': 0.00, 'z': 0.51},
-            9: {'x': 0.09, 'y': 0.00, 'z': 0.51}
+            1: {'x': -0.01, 'y': 0.10, 'z': 0.47},
+            2: {'x': 0.04, 'y': 0.10, 'z': 0.47},
+            3: {'x': 0.09, 'y': 0.10, 'z': 0.47},
+            4: {'x': -0.01, 'y': 0.05, 'z': 0.47},
+            5: {'x': 0.04, 'y': 0.06, 'z': 0.47},
+            6: {'x': 0.09, 'y': 0.06, 'z': 0.47},
+            7: {'x': -0.01, 'y': 0.00, 'z': 0.47},
+            8: {'x': 0.04, 'y': 0.00, 'z': 0.47},
+            9: {'x': 0.09, 'y': 0.00, 'z': 0.47}
         }
         
         # Available game pieces in the world
@@ -68,10 +70,15 @@ class TicTacToeGUI:
         
         self.poses = {
             'home': {'joint1': 0.0, 'joint2': 0.0, 'joint3': 0.0, 'joint4': 0.0, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
-            'pickup': {'joint1': 0.56, 'joint2': 0.65, 'joint3': 0.17, 'joint4': -0.40, 'joint5': 1.22, 'left_finger': 0.15, 'right_finger': 0.15},
-            'near_home': {'joint1': 0.0, 'joint2': -0.2, 'joint3': 0.3, 'joint4': 0.2, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
-            'waiting': {'joint1': 0.0, 'joint2': -1.0, 'joint3': 1.5, 'joint4': 0.0, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
-            'grip_open': {'left_finger': 0.15, 'right_finger': 0.15},
+            'crane_high': {'joint1': 0.59, 'joint2': 0.20, 'joint3': 0.40, 'joint4': 0.60, 'joint5': 0.05, 'left_finger': 0.15, 'right_finger': 0.15},
+            'pickup_approach': {'joint1': 0.59, 'joint2': 0.60, 'joint3': 0.20, 'joint4': 0.80, 'joint5': 0.05, 'left_finger': 0.15, 'right_finger': 0.15},
+            'pickup': {'joint1': 0.59, 'joint2': 0.85, 'joint3': -0.75, 'joint4': 1.10, 'joint5': 0.05, 'left_finger': 0.15, 'right_finger': 0.15},
+            'carry_high': {'joint1': 0.20, 'joint2': -0.30, 'joint3': 0.80, 'joint4': 0.60, 'joint5': 0.05, 'left_finger': 0.0, 'right_finger': 0.0},
+            'transit': {'joint1': 0.10, 'joint2': -0.50, 'joint3': 1.20, 'joint4': 0.40, 'joint5': 0.00, 'left_finger': 0.0, 'right_finger': 0.0},
+            'pre_place': {'joint1': 0.12, 'joint2': -0.30, 'joint3': 1.40, 'joint4': 0.20, 'joint5': -0.10, 'left_finger': 0.0, 'right_finger': 0.0},
+            'waiting': {'joint1': 0.0, 'joint2': -0.80, 'joint3': 1.40, 'joint4': 0.20, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
+            'safe_retreat': {'joint1': 0.0, 'joint2': -0.60, 'joint3': 1.00, 'joint4': 0.50, 'joint5': 0.0, 'left_finger': 0.0, 'right_finger': 0.0},
+            'grip_open': {'left_finger': 0.20, 'right_finger': 0.20},
             'grip_close': {'left_finger': 0.0, 'right_finger': 0.0}
         }
         
@@ -312,18 +319,40 @@ class TicTacToeGUI:
         threading.Thread(target=init_robot_thread, daemon=True).start()
     
     def move_robot_arm(self, joint_positions: Dict, description: str = "Moving arm") -> bool:
-        """Send joint commands to robot arm via API"""
+        """Send joint commands to robot arm via API - calm and composed sequential movement"""
         try:
             self.update_robot_action(f"🤖 {description}...", "#D08770")
-            response = requests.post(f'{self.api_url}/api/joints/move', 
-                                   json={'joints': joint_positions}, 
-                                   timeout=10)
-            if response.ok:
-                self.update_robot_action(f"✅ {description} completed", "#A3BE8C")
-                return True
-            else:
-                self.update_robot_action(f"❌ {description} failed", "#BF616A")
-                return False
+            
+            # Define joint order for sequential movement
+            joint_order = ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'left_finger', 'right_finger']
+            
+            # Move each joint individually with calm delays for smooth operation
+            for joint_name in joint_order:
+                if joint_name in joint_positions:
+                    position = joint_positions[joint_name]
+                    
+                    # Send individual joint command
+                    response = requests.post(
+                        f'{self.api_url}/api/joint/{joint_name}/move', 
+                        json={'position': position}, 
+                        timeout=10
+                    )
+                    
+                    if not response.ok:
+                        self.update_robot_action(f"❌ {joint_name} move failed", "#BF616A")
+                        return False
+                    
+                    # Calm, composed timing between joint movements
+                    if joint_name in ['joint1', 'joint2', 'joint3']:
+                        time.sleep(0.8)  # Slower for major joints
+                    elif joint_name in ['joint4', 'joint5']:
+                        time.sleep(0.6)  # Medium speed for positioning
+                    else:
+                        time.sleep(0.4)  # Faster for gripper
+            
+            self.update_robot_action(f"✅ {description} completed smoothly", "#A3BE8C")
+            return True
+            
         except requests.exceptions.RequestException as e:
             self.update_robot_action(f"❌ Robot API error", "#BF616A")
             return False
@@ -335,6 +364,94 @@ class TicTacToeGUI:
     def close_gripper(self, description: str = "Closing gripper") -> bool:
         """Close the gripper fingers"""
         return self.move_robot_arm(self.poses['grip_close'], description)
+    
+    def move_to_pickup_position(self, description: str = "Moving to pickup position") -> bool:
+        """Crane-like pickup sequence: move to high position above pickup → open gripper → descend → position precisely"""
+        try:
+            self.update_robot_action(f"🤖 {description}...", "#D08770")
+            
+            # Step 1: Move to crane high position (directly above pickup area with gripper closed)
+            crane_high_pose = self.poses['crane_high']
+            success = self.move_robot_arm(crane_high_pose, "Moving to crane high position")
+            if not success:
+                self.update_robot_action("❌ Failed to reach crane high position", "#BF616A")
+                return False
+            time.sleep(1.0)  # Stable positioning above
+            
+            # Step 2: Open gripper while at high position (crane preparation)
+            success = self.open_gripper("Opening gripper at crane position")
+            if not success:
+                self.update_robot_action("❌ Failed to open gripper", "#BF616A")
+                return False
+            time.sleep(0.8)  # Gripper stabilization
+            
+            # Step 3: Descend to intermediate approach position (crane lowering)
+            approach_pose = self.poses['pickup_approach']
+            success = self.move_robot_arm(approach_pose, "Descending to approach position")
+            if not success:
+                self.update_robot_action("❌ Failed to reach approach position", "#BF616A")
+                return False
+            time.sleep(1.0)  # Careful descent
+            
+            # Step 4: Final precise descent to pickup position (crane landing)
+            pickup_pose = self.poses['pickup']
+            
+            # Move joints 2 and 3 first for the final descent (crane lowering motion)
+            descent_joints = ['joint2', 'joint3']
+            for joint_name in descent_joints:
+                if joint_name in pickup_pose:
+                    position = pickup_pose[joint_name]
+                    
+                    response = requests.post(
+                        f'{self.api_url}/api/joint/{joint_name}/move', 
+                        json={'position': position}, 
+                        timeout=10
+                    )
+                    
+                    if not response.ok:
+                        self.update_robot_action(f"❌ {joint_name} descent failed", "#BF616A")
+                        return False
+                    
+                    time.sleep(0.8)  # Slow, controlled descent like a crane
+            
+            # Step 5: Fine-tune joint4 for final positioning
+            if 'joint4' in pickup_pose:
+                position = pickup_pose['joint4']
+                
+                response = requests.post(
+                    f'{self.api_url}/api/joint/joint4/move', 
+                    json={'position': position}, 
+                    timeout=10
+                )
+                
+                if not response.ok:
+                    self.update_robot_action("❌ joint4 positioning failed", "#BF616A")
+                    return False
+                
+                time.sleep(0.6)  # Precise final positioning
+            
+            # Step 6: Final wrist adjustment (joint5) for optimal grip angle
+            if 'joint5' in pickup_pose:
+                position = pickup_pose['joint5']
+                
+                response = requests.post(
+                    f'{self.api_url}/api/joint/joint5/move', 
+                    json={'position': position}, 
+                    timeout=10
+                )
+                
+                if not response.ok:
+                    self.update_robot_action("❌ joint5 positioning failed", "#BF616A")
+                    return False
+                
+                time.sleep(0.5)  # Final wrist adjustment
+            
+            self.update_robot_action(f"✅ {description} completed - crane positioned for pickup", "#A3BE8C")
+            return True
+            
+        except requests.exceptions.RequestException as e:
+            self.update_robot_action(f"❌ Robot API error", "#BF616A")
+            return False
     
     def teleport_game_piece(self, tile_number: int, piece_type: str = "x_piece"):
         """Teleport an existing game piece to specified tile position"""
@@ -355,7 +472,7 @@ class TicTacToeGUI:
                         return False
                     piece_name = self.available_o_pieces.pop(0)
                     self.used_o_pieces.append(piece_name)
-                    piece_symbol = "O"
+                    piece_symbol = "O" 
                     color_desc = "black"
                 
                 # Get tile world coordinates
@@ -399,62 +516,22 @@ class TicTacToeGUI:
         self.update_robot_action(f"⚫ Black piece moved to tile {tile_number}!", "#BF616A")
     
     def robot_sequence_to_tile(self, tile_number: int):
-        """Execute robot sequence: pickup → grip → near home → move to tile → release → waiting"""
+        """Simplified robot sequence: move directly to tile position → teleport black ball"""
         def robot_sequence_thread():
             try:
                 self.update_robot_action(f"🤖 Computer moving to tile {tile_number}...", "#D08770")
                 
-                # Step 1: Open gripper first
-                success = self.open_gripper("Opening gripper for pickup")
-                if not success:
-                    self.update_robot_action("❌ Failed to open gripper", "#BF616A")
-                    return
-                time.sleep(1.0)
-                
-                # Step 2: Move to pickup position (simulate picking up piece)
-                success = self.move_robot_arm(self.poses['pickup'], "Moving to pickup position")
-                if not success:
-                    self.update_robot_action("❌ Failed to reach pickup position", "#BF616A")
-                    return
-                time.sleep(1.0)
-                
-                # Step 3: Close gripper to grab piece
-                success = self.close_gripper("Grabbing game piece")
-                if not success:
-                    self.update_robot_action("❌ Failed to close gripper", "#BF616A")
-                    return
-                time.sleep(1.5)
-                
-                # Step 4: Move to near home position (intermediate maneuver)
-                success = self.move_robot_arm(self.poses['near_home'], "Moving to near home position")
-                if not success:
-                    self.update_robot_action("❌ Failed to reach near home position", "#BF616A")
-                    return
-                time.sleep(1.0)
-                
-                # Step 5: Move to target tile
+                # Step 1: Move directly to target tile position (top of tile)
                 target_position = self.tile_positions[tile_number]
-                success = self.move_robot_arm(target_position, f"Moving to tile {tile_number}")
+                success = self.move_robot_arm(target_position, f"Moving directly to tile {tile_number}")
                 if not success:
                     self.update_robot_action(f"❌ Failed to reach tile {tile_number}", "#BF616A")
                     return
-                time.sleep(1.5)
+                time.sleep(1.0)  # Brief pause for positioning
                 
-                # Step 6: Open gripper to release piece
-                success = self.open_gripper("Releasing game piece")
-                if not success:
-                    self.update_robot_action("⚠️ Failed to open gripper, but continuing", "#D08770")
-                time.sleep(1.0)
-                
-                # Step 7: Return to waiting position (arm up)
-                success = self.move_robot_arm(self.poses['waiting'], "Moving to waiting position")
-                if success:
-                    self.update_robot_action(f"✅ Computer placed O on tile {tile_number}", "#A3BE8C")
-                    # Teleport black ball after robot arm sequence completes
-                    time.sleep(0.5)  # Small delay before teleporting
-                    self.teleport_computer_piece(tile_number)
-                else:
-                    self.update_robot_action("⚠️ Move completed, arm position unclear", "#D08770")
+                # Step 2: Immediately teleport black ball to tile
+                self.update_robot_action(f"✅ Computer positioned at tile {tile_number}", "#A3BE8C")
+                self.teleport_computer_piece(tile_number)
                     
             except Exception as e:
                 self.update_robot_action(f"❌ Robot sequence error: {str(e)[:30]}...", "#BF616A")
@@ -532,7 +609,7 @@ class TicTacToeGUI:
                     return
                 
                 # Back to human turn after robot finishes moving
-                GLib.timeout_add(5500, self.prepare_human_turn)  # Wait for robot sequence to complete (pickup + near_home + tile + waiting)
+                GLib.timeout_add(8500, self.prepare_human_turn)  # Extended time for enhanced sequence (pickup + carry + transit + pre-place + place + retreat + waiting)
         
         # Run computer move in background thread
         threading.Thread(target=computer_move_thread, daemon=True).start()
