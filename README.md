@@ -1,323 +1,482 @@
-# JetRover Description Package - Setup and Visualization Guide
+# 6DOF Robot Arm TicTacToe Project - Complete Setup Guide
 
-This guide will help you set up and visualize the JetRover robot model in RViz using ROS2 Jazzy on Ubuntu 24.04.
+This comprehensive guide covers the complete 6DOF robot arm TicTacToe project, including Gazebo simulation, ROS2 control, web interface, and motion planning with MoveIt2.
 
-## Prerequisites
+## ⚠️ **IMPORTANT: Path Configuration Warning**
 
-- Ubuntu 24.04
-- ROS2 Jazzy Jalisco installed
-- Basic ROS2 workspace setup
+**🚨 BEFORE STARTING: You MUST update all file paths in the project to match your Linux username!**
 
-## Installation and Setup
+The project contains hardcoded paths with username `sukritchopra`. You need to replace these with your actual username in:
 
-### 1. Install Required Dependencies
+### 📝 Files to Update:
+- **SDF Files**: `~/ros2_ws/src/jetrover_description/models/jetrover/*.sdf`
+- **Python Scripts**: `~/ros2_ws/src/jetrover_ros2_NODEJS/ros2-joint-controller-api/*.py`
+- **Launch Files**: `~/ros2_ws/src/jetrover_description/launch/*.py`
+- **Shell Scripts**: Any `.sh` files in the project
 
+### 🔍 Paths to Find & Replace:
 ```bash
-# Update package list
-sudo apt update
-
-# Install ROS2 visualization tools
-sudo apt install ros-jazzy-rviz2 ros-jazzy-robot-state-publisher ros-jazzy-joint-state-publisher-gui
-
-# Install xacro for processing URDF files
-sudo apt install ros-jazzy-xacro
-```
-
-### 2. Set Up Your Workspace
-
-Navigate to your ROS2 workspace:
-
-```bash
+# Find all files with hardcoded paths
 cd ~/ros2_ws
+grep -r "/home/sukritchopra" . --include="*.sdf" --include="*.py" --include="*.sh" --include="*.launch.py"
+
+# Replace with your username (example: replace 'sukritchopra' with 'yourusername')
+find . -type f \( -name "*.sdf" -o -name "*.py" -o -name "*.sh" -o -name "*.launch.py" \) -exec sed -i 's/sukritchopra/yourusername/g' {} +
 ```
 
-### 3. Build the Package
+### 🛠️ Quick Fix Command:
+```bash
+# Replace 'YOUR_USERNAME' with your actual Linux username
+cd ~/ros2_ws
+find . -type f \( -name "*.sdf" -o -name "*.py" -o -name "*.sh" -o -name "*.launch.py" \) -exec sed -i 's/sukritchopra/YOUR_USERNAME/g' {} +
+```
+
+**⚡ Alternative**: Use environment variables in paths like `$HOME` instead of hardcoded `/home/username/`
+
+---
+
+## 🎯 Project Overview
+
+This project creates a complete robotic TicTacToe game with:
+- **6DOF Robot Arm**: 5 joints + gripper for precise manipulation
+- **Gazebo Simulation**: Complete 3D physics simulation environment
+- **Web Interface**: Remote control via web browser
+- **Motion Planning**: MoveIt2 integration for collision-free path planning
+- **Real-time Control**: ROS2 bridges connecting simulation to web commands
+
+**🌐 Live Demo**: [https://ros2-joint-controller-api.onrender.com/](https://ros2-joint-controller-api.onrender.com/)
+
+## 📋 Prerequisites
+
+- Ubuntu 24.04 (WSL or native)
+- ROS2 Jazzy Jalisco installed
+- Node.js and npm
+- Python 3.12+
+- Internet connection for ngrok tunneling
+
+## 🚀 Quick Start (For Experienced Users)
 
 ```bash
-# Build the jetrover_description package
-colcon build --packages-select jetrover_description
+# 1. Build the workspace
+cd ~/ros2_ws && colcon build && source install/setup.bash
 
-# Source the workspace
-source install/setup.bash
+# 2. Launch Gazebo with TicTacToe world
+cd ~/ros2_ws/src/jetrover_description/models/jetrover
+gz sim tictactoe_NEW3.7.sdf
+
+# 3. Start ROS2 bridges (new terminal)
+cd ~/ros2_ws && source install/setup.bash
+python3 src/jetrover_ros2_NODEJS/ros2-joint-controller-api/gazebo_bridge.py
+
+# 4. Start web server (new terminal)  
+cd ~/ros2_ws/src/jetrover_ros2_NODEJS/ros2-joint-controller-api
+npm start
+
+# 5. Expose to internet (new terminal)
+ngrok http 3000
 ```
 
-### 4. Fix the Launch File (if needed)
+## 📁 Repository Structure & Mesh Files
 
-The launch file needs to be corrected for proper path handling. Update your `display.launch.py`:
-
-```python
-# filepath: /home/your_username/ros2_ws/src/jetrover_description/launch/display.launch.py
-import os
-from ament_index_python.packages import get_package_share_directory
-
-from launch import LaunchDescription
-from launch.substitutions import Command, LaunchConfiguration
-from launch.actions import DeclareLaunchArgument, TimerAction, ExecuteProcess
-from launch_ros.actions import Node
-
-def generate_launch_description():
-    # Get package directory
-    jetrover_description_package_path = get_package_share_directory('jetrover_description')
-    
-    # Define paths
-    urdf_path = os.path.join(jetrover_description_package_path, 'urdf/jetrover.xacro')
-    rviz_config_file = os.path.join(jetrover_description_package_path, 'rviz/view.rviz')
-
-    # Launch configuration
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    frame_prefix = LaunchConfiguration('frame_prefix', default='')
-
-    # Robot description
-    robot_description = Command(['xacro ', urdf_path, 
-                               ' LIDAR_TYPE:=ouster', 
-                               ' MACHINE_TYPE:=jetrover'])
-
-    # Nodes
-    joint_state_publisher_gui_node = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        output='screen',
-    )
-
-    robot_state_publisher_node = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        output='screen',
-        parameters=[{
-            'robot_description': robot_description,
-            'use_sim_time': use_sim_time,
-            'frame_prefix': frame_prefix
-        }],
-    )
-
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        arguments=['-d', rviz_config_file],
-        output='screen'
-    )
-
-    return LaunchDescription([
-        DeclareLaunchArgument('use_sim_time', default_value='false'),
-        DeclareLaunchArgument('frame_prefix', default_value=''),
-        joint_state_publisher_gui_node,
-        robot_state_publisher_node,
-        rviz_node,
-    ])
+### 🎨 Mesh Files Location
+All STL mesh files for the robot arm are located in:
+```
+~/ros2_ws/src/jetrover_description/meshes/
+├── arm/                    # Robot arm components
+│   ├── link1.STL          # Base link mesh
+│   ├── link2.STL          # Shoulder link mesh  
+│   ├── link3.STL          # Elbow link mesh
+│   ├── link4.STL          # Wrist link mesh
+│   ├── link5.STL          # End effector base mesh
+│   ├── left_finger.STL    # Gripper left finger
+│   └── right_finger.STL   # Gripper right finger
+├── common/                 # Shared components
+├── mecanum/               # Mecanum wheel meshes (if used)
+└── tank/                  # Tank drive meshes (if used)
 ```
 
-### 5. Rebuild After Changes
+### 📦 Key Project Components
+```
+~/ros2_ws/
+├── src/
+│   ├── jetrover_description/          # Robot URDF/SDF models & meshes
+│   │   ├── models/jetrover/           # Gazebo SDF world files
+│   │   │   ├── tictactoe_NEW3.7.sdf  # Main TicTacToe world
+│   │   │   └── jetrover_world.sdf    # Basic robot world
+│   │   ├── meshes/                   # STL mesh files (see above)
+│   │   ├── urdf/                     # URDF/XACRO robot descriptions
+│   │   └── launch/                   # ROS2 launch files
+│   │
+│   ├── jetrover_ros2_NODEJS/         # Web interface & bridges
+│   │   └── ros2-joint-controller-api/
+│   │       ├── server.js             # Node.js web server
+│   │       ├── gazebo_bridge.py      # ROS2-Gazebo bridge
+│   │       ├── tictactoe_gtk_gui.py  # Desktop GUI version
+│   │       └── public/               # Web frontend files
+│   │
+│   └── jetrover_overall/             # Additional components
+│
+└── ws_moveit2/                       # MoveIt2 workspace (optional)
+    └── src/jetrover_moveit_config/   # Motion planning setup
+```
+
+## 🛠 Complete Setup From Scratch
+
+### Step 1: Install All Dependencies
 
 ```bash
-# Rebuild the package
-colcon build --packages-select jetrover_description
+# Update system
+sudo apt update && sudo apt upgrade -y
 
-# Source the workspace again
-source install/setup.bash
+# Install ROS2 Jazzy (if not already installed)
+# Follow: https://docs.ros.org/en/jazzy/Installation.html
+
+# Install ROS2 visualization and control tools
+sudo apt install -y \
+    ros-jazzy-rviz2 \
+    ros-jazzy-robot-state-publisher \
+    ros-jazzy-joint-state-publisher-gui \
+    ros-jazzy-xacro \
+    ros-jazzy-gz-sim \
+    ros-jazzy-gz-gazebo \
+    ros-jazzy-ros-gz-control \
+    ros-jazzy-ros-gz-sim \
+    ros-jazzy-ros-gz-interfaces \
+    ros-jazzy-joint-state-controller \
+    ros-jazzy-joint-trajectory-controller \
+    ros-jazzy-effort-controllers \
+    ros-jazzy-position-controllers
+
+# Install Node.js and npm
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Install Python dependencies
+pip3 install rclpy geometry_msgs sensor_msgs std_msgs flask flask-cors requests
+
+# Install ngrok for web tunneling
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+tar -xzf ngrok-v3-stable-linux-amd64.tgz
+sudo mv ngrok /usr/local/bin/
 ```
 
-## Running the Visualization
-
-### Method 1: Using Launch File (Recommended)
+### Step 2: Build the ROS2 Workspace
 
 ```bash
 # Navigate to workspace
 cd ~/ros2_ws
 
+# Build all packages
+colcon build
+
 # Source the workspace
 source install/setup.bash
 
-# Set required environment variables
-export LIDAR_TYPE=A1
-export MACHINE_TYPE=JetRover_Mecanum
-export need_compile=True
+# Add to bashrc for automatic sourcing
+echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+```
 
-# Launch the visualization
+### Step 3: Install Web Server Dependencies
+
+```bash
+# Navigate to web server directory
+cd ~/ros2_ws/src/jetrover_ros2_NODEJS/ros2-joint-controller-api
+
+# Install Node.js dependencies
+npm install express cors ws
+
+# Verify installation
+npm list
+```
+
+## 🎮 Running the Complete TicTacToe System
+
+### 🔥 Method 1: Full System Launch (Recommended)
+
+#### Terminal 1: Launch Gazebo Simulation
+```bash
+cd ~/ros2_ws
+source install/setup.bash
+
+# Navigate to Gazebo models directory
+cd ~/ros2_ws/src/jetrover_description/models/jetrover
+
+# Launch the TicTacToe world with 6DOF arm
+gz sim tictactoe_NEW3.7.sdf
+```
+
+#### Terminal 2: Start ROS2-Gazebo Bridge
+```bash
+cd ~/ros2_ws
+source install/setup.bash
+
+# Start the bridge that connects ROS2 commands to Gazebo
+python3 src/jetrover_ros2_NODEJS/ros2-joint-controller-api/gazebo_bridge.py
+```
+
+#### Terminal 3: Launch Web Server
+```bash
+cd ~/ros2_ws/src/jetrover_ros2_NODEJS/ros2-joint-controller-api
+
+# Start the Node.js web server
+npm start
+```
+
+#### Terminal 4: Expose Web Server to Internet
+```bash
+# Sign up for free ngrok account at https://ngrok.com
+# Get your authtoken and authenticate
+ngrok config add-authtoken YOUR_AUTH_TOKEN
+
+# Create public tunnel to your local server
+ngrok http 3000
+```
+
+The ngrok terminal will show your public URL (e.g., `https://abc123.ngrok.io`) - share this with anyone to control your robot!
+
+### 🎯 Alternative Launch Methods
+
+#### Desktop GUI Version (Local Control)
+```bash
+cd ~/ros2_ws
+source install/setup.bash
+
+# Launch desktop TicTacToe GUI
+python3 src/jetrover_ros2_NODEJS/ros2-joint-controller-api/tictactoe_gtk_gui.py
+```
+
+#### Basic Robot Visualization (RViz)
+```bash
+cd ~/ros2_ws
+source install/setup.bash
+
+# Launch robot in RViz for debugging
 ros2 launch jetrover_description display.launch.py
 ```
 
-### Method 2: Manual Launch (Alternative)
-
-If the launch file doesn't work, you can run the components manually:
-
-```bash
-# Terminal 1: Source workspace and start robot state publisher
-cd ~/ros2_ws
-source install/setup.bash
-export LIDAR_TYPE=ouster
-export MACHINE_TYPE=jetrover
-ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro /home/your_username/ros2_ws/src/jetrover_description/urdf/jetrover.xacro LIDAR_TYPE:=ouster MACHINE_TYPE:=jetrover)"
-
-# Terminal 2: Start joint state publisher GUI
-cd ~/ros2_ws
-source install/setup.bash
-ros2 run joint_state_publisher_gui joint_state_publisher_gui
-
-# Terminal 3: Start RViz
-cd ~/ros2_ws
-source install/setup.bash
-rviz2
-```
-
-### Method 3: Viewing Just the Arm
-
-To visualize only the arm component:
-
-```bash
-cd ~/ros2_ws
-source install/setup.bash
-
-# View the arm URDF directly
-ros2 run robot_state_publisher robot_state_publisher --ros-args -p robot_description:="$(xacro /home/your_username/ros2_ws/src/jetrover_description/urdf/arm.urdf.xacro)"
-
-# In another terminal
-ros2 run joint_state_publisher_gui joint_state_publisher_gui
-
-# In another terminal
-rviz2
-```
-
-## Configuring RViz
-
-Once RViz opens:
-
-1. **Add Robot Model Display:**
-   - Click "Add" button
-   - Select "RobotModel"
-   - Set "Robot Description" topic to `/robot_description`
-
-2. **Add TF Display:**
-   - Click "Add" button
-   - Select "TF"
-   - This shows coordinate frames
-
-3. **Set Fixed Frame:**
-   - In "Global Options", set "Fixed Frame" to your base link (e.g., `base_link` or `link1`)
-
-4. **Use Joint State Publisher:**
-   - The GUI window allows you to move joints interactively
-   - Slide the joint controls to see the robot move
-
-## Troubleshooting
-
-### Common Issues:
-
-1. **Package not found:**
-   ```bash
-   # Make sure workspace is sourced
-   source install/setup.bash
-   ```
-
-2. **Xacro file not found:**
-   ```bash
-   # Check if the file exists
-   ls src/jetrover_description/urdf/
-   ```
-
-3. **Missing dependencies:**
-   ```bash
-   # Install missing packages
-   sudo apt install ros-jazzy-joint-state-publisher-gui ros-jazzy-xacro
-   ```
-
-4. **Environment variables not set:**
-   ```bash
-   export LIDAR_TYPE=A1
-   export MACHINE_TYPE=JetRover_Mecanum
-   ```
-
-### Verification Commands:
-
-```bash
-# Check if package is built correctly
-ros2 pkg list | grep jetrover
-
-# Check available launch files
-ros2 pkg executables jetrover_description
-
-# Test xacro conversion manually
-xacro src/jetrover_description/urdf/jetrover.xacro LIDAR_TYPE:=ouster MACHINE_TYPE:=JetRover_Mecanum
-```
-
-## Package Structure
-
-```
-jetrover_description/
-├── urdf/
-│   ├── jetrover.xacro          # Main robot description
-│   ├── arm.urdf.xacro          # Arm component
-│   └── ...                     # Other URDF files
-├── launch/
-│   └── display.launch.py       # Launch file for visualization
-├── rviz/
-│   └── view.rviz              # RViz configuration
-├── meshes/                     # 3D mesh files
-└── package.xml                 # Package configuration
-```
-
-## Environment Variables
-
-The jetrover.xacro file expects these environment variables:
-- `LIDAR_TYPE`: Set to `A1` (default)
-- `MACHINE_TYPE`: Set to `JetRover_Mecanum` (default)
-
-These can be set in your `~/.bashrc` for persistence:
-
-```bash
-echo "export LIDAR_TYPE=A1" >> ~/.bashrc
-echo "export MACHINE_TYPE=JetRover_Mecanum" >> ~/.bashrc
-source ~/.bashrc
-```
-
-## Gazebo Setup
-
-This section guides you through setting up and simulating the JetRover in Gazebo Harmonic.
-
-### 1. Install Gazebo Harmonic and Required Dependencies
-
-```bash
-# Install Gazebo Harmonic
-sudo apt update
-sudo apt install ros-jazzy-gz-sim ros-jazzy-gz-gazebo
-
-# Install Gazebo ROS packages for joint and arm control
-sudo apt install ros-jazzy-ros-gz-control ros-jazzy-ros-gz-sim ros-jazzy-ros-gz-interfaces
-
-# Install joint controllers and related plugins
-sudo apt install ros-jazzy-joint-state-controller ros-jazzy-joint-trajectory-controller ros-jazzy-effort-controllers ros-jazzy-position-controllers
-
-# (Optional) Install additional Gazebo plugins for sensors and arms
-sudo apt install ros-jazzy-ros-gz-sensors ros-jazzy-ros-gz-actuators
-```
-
-### 2. Launching JetRover in Gazebo
-
-Navigate to the JetRover Gazebo model directory:
-
+#### Simple Gazebo World (No TicTacToe)
 ```bash
 cd ~/ros2_ws/src/jetrover_description/models/jetrover
-```
 
-#### To launch the full JetRover world (with gravity and sleazy arm, no joints):
-
-```bash
+# Launch basic robot world
 gz sim jetrover_world.sdf
-or 
-cd /home/your_user_name/ros2_ws/src/jetrover_description/models/jetrover
 ```
 
+## 🤖 Motion Planning with MoveIt2 (Advanced)
 
+For collision-free motion planning, you can optionally set up MoveIt2 integration:
 
-#### To launch Full TicTacToe Setup:
-
+### Setup MoveIt2 Workspace
 ```bash
+# Create separate MoveIt workspace
+mkdir -p ~/ws_moveit2/src
+cd ~/ws_moveit2
+
+# Clone MoveIt2 dependencies (if needed)
+# Build MoveIt configuration
+colcon build
+source install/setup.bash
+
+# Launch integrated MoveIt + Gazebo + TicTacToe
+ros2 launch jetrover_moveit_config tictactoe_world_moveit.launch.py
+
+# In new terminal: Start MoveIt-Gazebo bridge
+cd ~/ws_moveit2 && source install/setup.bash
+python3 src/jetrover_moveit_config/scripts/gazebo_moveit_bridge.py
+```
+
+## 🌐 Web Interface Usage
+
+### Accessing the Interface
+1. **Local**: `http://localhost:3000`
+2. **Public**: Use the ngrok URL from Terminal 4
+3. **Live Demo**: [https://ros2-joint-controller-api.onrender.com/](https://ros2-joint-controller-api.onrender.com/)
+
+### Game Controls
+- **Grid Buttons**: Click any tile (1-9) to place X/O
+- **Joint Sliders**: Manual control of each robot joint
+- **Reset Game**: Start a new TicTacToe match
+- **Manual Mode**: Direct joint control
+- **Auto Mode**: AI-controlled robot movements
+
+### Robot Joint Controls
+- **Joint 1**: Base rotation (-π to π rad)
+- **Joint 2**: Shoulder elevation (-π/2 to π/2 rad)  
+- **Joint 3**: Elbow bend (-π to π rad)
+- **Joint 4**: Wrist rotation (-π to π rad)
+- **Joint 5**: End effector rotation (-π to π rad)
+- **Gripper**: Open/close gripper fingers (0 to 0.02 m)
+
+## 🔧 Technical Architecture
+
+### System Components
+1. **Gazebo Simulation**: Physics engine with 6DOF robot arm
+2. **ROS2 Bridge**: `gazebo_bridge.py` - connects ROS2 topics to Gazebo joint control
+3. **Web Server**: Node.js Express server with WebSocket support
+4. **Frontend**: HTML/CSS/JavaScript TicTacToe interface
+5. **Game Logic**: Python TicTacToe game with robot movement integration
+
+### Communication Flow
+```
+Web Browser → Node.js Server → ROS2 Topics → Gazebo Bridge → Gazebo Joints
+```
+
+### ROS2 Topics Used
+- `/model/jetrover/joint/joint1/0/cmd_pos` - Joint 1 position control
+- `/model/jetrover/joint/joint2/0/cmd_pos` - Joint 2 position control  
+- `/model/jetrover/joint/joint3/0/cmd_pos` - Joint 3 position control
+- `/model/jetrover/joint/joint4/0/cmd_pos` - Joint 4 position control
+- `/model/jetrover/joint/joint5/0/cmd_pos` - Joint 5 position control
+- `/model/jetrover/joint/left_finger_joint/0/cmd_pos` - Left gripper finger
+- `/model/jetrover/joint/right_finger_joint/0/cmd_pos` - Right gripper finger
+
+## 🎯 Game Features
+
+### TicTacToe Grid Layout
+```
+[1] [2] [3]
+[4] [5] [6]
+[7] [8] [9]
+```
+
+### Robot Behavior
+- **Place X/O**: Robot moves to grid position and places piece
+- **Game Logic**: Automatic win/draw detection
+- **Reset**: Robot returns to home position
+- **Manual Control**: Direct joint manipulation via sliders
+
+## 🛠 Troubleshooting
+
+### Common Issues & Solutions
+
+#### 1. Gazebo Won't Start
+```bash
+# Check if Gazebo processes are running
+ps aux | grep gz
+
+# Kill existing processes
+killall gz
+
+# Restart Gazebo
 cd ~/ros2_ws/src/jetrover_description/models/jetrover
-gz WORKINGPROTO_CorrectDim1.sdf
+gz sim tictactoe_NEW3.7.sdf
 ```
 
-> **Note:**  
-> - Make sure all dependencies are installed before launching Gazebo.  
-> - For joint and arm control, ensure your URDF/SDF files include the appropriate controllers and plugins.
+#### 2. ROS2 Bridge Not Working
+```bash
+# Check ROS2 installation
+ros2 topic list
 
+# Verify bridge is publishing
+ros2 topic echo /model/jetrover/joint/joint1/0/cmd_pos
 
+# Restart bridge
+python3 src/jetrover_ros2_NODEJS/ros2-joint-controller-api/gazebo_bridge.py
 ```
+
+#### 3. Web Server Issues
+```bash
+# Check if port 3000 is available
+netstat -an | grep 3000
+
+# Kill process using port 3000
+sudo lsof -t -i:3000 | xargs kill -9
+
+# Restart server
+cd ~/ros2_ws/src/jetrover_ros2_NODEJS/ros2-joint-controller-api
+npm start
+```
+
+#### 4. Mesh Files Not Loading
+```bash
+# Verify mesh files exist
+ls ~/ros2_ws/src/jetrover_description/meshes/arm/
+
+# Check SDF file paths
+grep -r "meshes" ~/ros2_ws/src/jetrover_description/models/jetrover/tictactoe_NEW3.7.sdf
+
+# Rebuild package
+cd ~/ros2_ws && colcon build --packages-select jetrover_description
+```
+
+#### 5. Joint Controllers Not Responding
+```bash
+# Check Gazebo topics
+gz topic -l | grep cmd_pos
+
+# Test manual joint command
+gz topic -t /model/jetrover/joint/joint1/0/cmd_pos -m gz.msgs.Double -p 'data: 0.5'
+
+# Verify controller parameters in SDF file
+```
+
+### Debugging Commands
+
+#### Check System Status
+```bash
+# ROS2 nodes
+ros2 node list
+
+# ROS2 topics
+ros2 topic list
+
+# Gazebo topics  
+gz topic -l
+
+# Process status
+ps aux | grep -E "(gz|node|python)"
+```
+
+#### Manual Testing
+```bash
+# Test joint movement
+gz topic -t /model/jetrover/joint/joint1/0/cmd_pos -m gz.msgs.Double -p 'data: 1.0'
+
+# Test ROS2 publishing
+ros2 topic pub /test_joint std_msgs/Float64 "data: 0.5"
+
+# Monitor joint states
+gz topic -e -t /model/jetrover/joint_state
+```
+
+## 📚 Additional Resources
+
+### Learning Materials
+- [ROS2 Jazzy Documentation](https://docs.ros.org/en/jazzy/)
+- [Gazebo Documentation](https://gazebosim.org/docs)
+- [MoveIt2 Tutorials](https://moveit.picknik.ai/jazzy/index.html)
+
+### Related Projects
+- **Original Repository**: This project
+- **MoveIt2 Integration**: `~/ws_moveit2/` (optional advanced setup)
+- **Desktop GUI**: `tictactoe_gtk_gui.py` for local control
+
+### Development
+```bash
+# Run tests
+cd ~/ros2_ws && colcon test
+
+# Build specific package
+colcon build --packages-select jetrover_description
+
+# Clean build
+rm -rf build/ install/ log/ && colcon build
+```
+
+## 🏆 Project Achievements
+
+✅ **6DOF Robot Arm Simulation** - Complete physics simulation  
+✅ **Web-based Control** - Remote robot control via browser  
+✅ **Real-time Communication** - WebSocket integration  
+✅ **TicTacToe Game Logic** - Complete game implementation  
+✅ **Joint Control System** - Precise robot joint manipulation  
+✅ **Public Web Access** - ngrok tunnel for remote access  
+✅ **Motion Planning** - MoveIt2 integration (optional)  
+✅ **Desktop GUI** - GTK-based local interface  
+✅ **Live Demo** - Deployed web version  
+
+**🚀 Live Demo**: [https://ros2-joint-controller-api.onrender.com/](https://ros2-joint-controller-api.onrender.com/)
+
+---
+
+*This project demonstrates the integration of ROS2, Gazebo, web technologies, and robotics for creating an interactive robotic game system. Perfect for learning robot control, web development, and ROS2 integration.*
